@@ -51,12 +51,12 @@ return array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/devdrive.db',
 		),
 		*/
-		// uncomment the following to use a MySQL database
+		// [MySQL] Modify dbname, username and password to your needs
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=ktvs_development',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'sominehopohlavia',
+			'password' => '',
 			'charset' => 'utf8',
 		),
 		'errorHandler'=>array(
