@@ -10,7 +10,6 @@
  * @property integer $class
  * @property string $phone
  * @property string $skills
- * @property string $created_at
  * @property string $updated_at
  *
  * The followings are the available model relations:
@@ -39,7 +38,7 @@ class Student extends CActiveRecord
 			array('name, email, phone, skills', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, email, class, phone, skills, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, name, email, class, phone, skills, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,7 +66,6 @@ class Student extends CActiveRecord
 			'class' => 'Class',
 			'phone' => 'Phone',
 			'skills' => 'Skills',
-			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
 		);
 	}
@@ -96,7 +94,6 @@ class Student extends CActiveRecord
 		$criteria->compare('class',$this->class);
 		$criteria->compare('phone',$this->phone,true);
 		$criteria->compare('skills',$this->skills,true);
-		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(

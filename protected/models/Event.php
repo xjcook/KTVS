@@ -8,7 +8,6 @@
  * @property integer $user_id
  * @property string $name
  * @property string $description
- * @property string $created_at
  * @property string $updated_at
  *
  * The followings are the available model relations:
@@ -38,7 +37,7 @@ class Event extends CActiveRecord
 			array('description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, name, description, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, user_id, name, description, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,7 +63,6 @@ class Event extends CActiveRecord
 			'user_id' => 'User',
 			'name' => 'Name',
 			'description' => 'Description',
-			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
 		);
 	}
@@ -91,7 +89,6 @@ class Event extends CActiveRecord
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(
