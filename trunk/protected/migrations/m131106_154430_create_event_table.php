@@ -13,10 +13,11 @@ class m131106_154430_create_event_table extends CDbMigration
 			'name' => 'string NOT NULL',
 			'description' => 'text',
 			
-			// timestamps
-			'created_at' => 'timestamp',
+			// timestamp
 			'updated_at' => 'timestamp',
 		));
+		
+		$this->addForeignKey('event_user_fk', 'tbl_event', 'user_id', 'tbl_user', 'id');
 	}
 
 	public function safeDown()

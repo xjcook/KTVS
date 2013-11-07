@@ -14,8 +14,7 @@ class m131106_120740_create_sport_table extends CDbMigration
 			'description' => 'text',
 			'capacity' => 'integer',
 			
-			// timestamps
-			'created_at' => 'timestamp',
+			// timestamp
 			'updated_at' => 'timestamp',
 		));
 	}

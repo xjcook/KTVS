@@ -14,8 +14,7 @@ class m131106_145218_create_course_table extends CDbMigration
 			'description' => 'text',
 			'type' => 'integer NOT NULL',	// 0 winter, 1 summer		
 			
-			// timestamps
-			'created_at' => 'timestamp',
+			// timestamp
 			'updated_at' => 'timestamp',
 		));
 	}

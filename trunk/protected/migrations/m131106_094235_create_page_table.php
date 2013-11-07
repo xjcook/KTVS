@@ -1,10 +1,10 @@
 <?php
 
-class m131106_104858_create_news_table extends CDbMigration
+class m131106_094235_create_page_table extends CDbMigration
 {
 	public function safeUp()
 	{
-		$this->createTable('tbl_news', array(
+		$this->createTable('tbl_page', array(
 			// keys
 			'id' => 'pk',
 			'user_id' => 'integer REFERENCES tbl_user(id)',
@@ -12,17 +12,16 @@ class m131106_104858_create_news_table extends CDbMigration
 			// attributes
 			'title' => 'string NOT NULL',
 			'content' => 'text NOT NULL',
-			'valid_to' => 'datetime',
 			
 			// timestamp
 			'updated_at' => 'timestamp',
 		));
 		
-		$this->addForeignKey('news_user_fk', 'tbl_news', 'user_id', 'tbl_user', 'id');
+		$this->addForeignKey('page_user_fk', 'tbl_page', 'user_id', 'tbl_user', 'id');
 	}
 
 	public function safeDown()
 	{
-		$this->dropTable('tbl_news');
+		$this->dropTable('tbl_page');
 	}
 }

@@ -77,3 +77,9 @@ Stack trace:
 REQUEST_URI=/ktvs/trunk/index.php?r=user/create
 HTTP_REFERER=http://localhost/ktvs/trunk/index.php?r=user/create
 ---
+2013/11/07 14:35:12 [warning] [application] Failed to set unsafe attribute "created_at" of "Page".
+in /home/xj/public_html/ktvs/trunk/protected/controllers/PageController.php (72)
+in /home/xj/public_html/ktvs/trunk/index.php (13)
+2013/11/07 14:35:12 [warning] [application] Failed to set unsafe attribute "updated_at" of "Page".
+in /home/xj/public_html/ktvs/trunk/protected/controllers/PageController.php (72)
+in /home/xj/public_html/ktvs/trunk/index.php (13)
