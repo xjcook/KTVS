@@ -18,3 +18,9 @@ $this->pageTitle=Yii::app()->name;
 the <a href="http://www.yiiframework.com/doc/">documentation</a>.
 Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
 should you have any questions.</p>
+
+<?php echo CHtml::link('Gii Code Generator',array('gii/default/index')); ?><br/>
+
+<?php echo CHtml::link('Users',array('user/index')); ?><br/>
+
+<?php echo CHtml::link('Pages',array('page/index')); ?><br/>
