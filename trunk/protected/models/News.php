@@ -9,7 +9,6 @@
  * @property string $title
  * @property string $content
  * @property string $valid_to
- * @property string $created_at
  * @property string $updated_at
  *
  * The followings are the available model relations:
@@ -39,7 +38,7 @@ class News extends CActiveRecord
 			array('valid_to', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, title, content, valid_to, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, user_id, title, content, valid_to, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,7 +65,6 @@ class News extends CActiveRecord
 			'title' => 'Title',
 			'content' => 'Content',
 			'valid_to' => 'Valid To',
-			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
 		);
 	}
@@ -94,7 +92,6 @@ class News extends CActiveRecord
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('valid_to',$this->valid_to,true);
-		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(

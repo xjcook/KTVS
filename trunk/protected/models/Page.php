@@ -8,7 +8,6 @@
  * @property integer $user_id
  * @property string $title
  * @property string $content
- * @property string $created_at
  * @property string $updated_at
  *
  * The followings are the available model relations:
@@ -37,7 +36,7 @@ class Page extends CActiveRecord
 			array('title', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, title, content, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, user_id, title, content, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,7 +62,6 @@ class Page extends CActiveRecord
 			'user_id' => 'User',
 			'title' => 'Title',
 			'content' => 'Content',
-			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
 		);
 	}
@@ -90,7 +88,6 @@ class Page extends CActiveRecord
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('content',$this->content,true);
-		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(

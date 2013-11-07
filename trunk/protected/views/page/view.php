@@ -25,7 +25,6 @@ $this->menu=array(
 		'user_id',
 		'title',
 		'content',
-		'created_at',
 		'updated_at',
 	),
 )); ?>

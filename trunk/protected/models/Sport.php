@@ -8,12 +8,11 @@
  * @property string $name
  * @property string $description
  * @property integer $capacity
- * @property string $created_at
  * @property string $updated_at
  *
  * The followings are the available model relations:
- * @property TblUserSport[] $tblUserSports
  * @property TblStudentSport[] $tblStudentSports
+ * @property TblUserSport[] $tblUserSports
  */
 class Sport extends CActiveRecord
 {
@@ -39,7 +38,7 @@ class Sport extends CActiveRecord
 			array('description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description, capacity, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, name, description, capacity, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,8 +50,8 @@ class Sport extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'tblUserSports' => array(self::HAS_MANY, 'TblUserSport', 'sport_id'),
 			'tblStudentSports' => array(self::HAS_MANY, 'TblStudentSport', 'sport_id'),
+			'tblUserSports' => array(self::HAS_MANY, 'TblUserSport', 'sport_id'),
 		);
 	}
 
@@ -66,7 +65,6 @@ class Sport extends CActiveRecord
 			'name' => 'Name',
 			'description' => 'Description',
 			'capacity' => 'Capacity',
-			'created_at' => 'Created At',
 			'updated_at' => 'Updated At',
 		);
 	}
@@ -93,7 +91,6 @@ class Sport extends CActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('capacity',$this->capacity);
-		$criteria->compare('created_at',$this->created_at,true);
 		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(
