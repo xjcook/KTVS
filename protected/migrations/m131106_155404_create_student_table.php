@@ -16,8 +16,7 @@ class m131106_155404_create_student_table extends CDbMigration
 			'phone' => 'string NOT NULL',	
 			'skills' => 'string NOT NULL',	// maybe 1:N (beginner, intermediate, advanced) 
 			
-			// timestamps
-			'created_at' => 'timestamp',
+			// timestamp
 			'updated_at' => 'timestamp',
 		));
 	}

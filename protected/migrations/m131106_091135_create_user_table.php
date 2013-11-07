@@ -14,8 +14,7 @@ class m131106_091135_create_user_table extends CDbMigration
 			'password' => 'string NOT NULL',
 			'is_admin' => 'boolean DEFAULT FALSE',
 				
-			// timestamps
-			'created_at' => 'timestamp',
+			// timestamp
 			'updated_at' => 'timestamp',
 		));
 	}

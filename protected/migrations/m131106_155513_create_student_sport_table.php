@@ -12,10 +12,12 @@ class m131106_155513_create_student_sport_table extends CDbMigration
 
 			// attributes		
 			
-			// timestamps
-			'created_at' => 'timestamp',
+			// timestamp
 			'updated_at' => 'timestamp',
 		));
+		
+		$this->addForeignKey('sport_student_fk', 'tbl_student_sport', 'student_id', 'tbl_student', 'id');
+		$this->addForeignKey('student_sport_fk', 'tbl_student_sport', 'sport_id', 'tbl_sport', 'id');
 	}
 
 	public function safeDown()

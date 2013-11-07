@@ -10,8 +10,7 @@ class {ClassName} extends CDbMigration
 
 			// attributes		
 			
-			// timestamps
-			'created_at' => 'timestamp',
+			// timestamp
 			'updated_at' => 'timestamp',
 		));
 	}
