@@ -10,6 +10,9 @@
  * @property integer $type
  * @property string $created_at
  * @property string $updated_at
+ *
+ * The followings are the available model relations:
+ * @property TblUserCourse[] $tblUserCourses
  */
 class Course extends CActiveRecord
 {
@@ -47,6 +50,7 @@ class Course extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'tblUserCourses' => array(self::HAS_MANY, 'TblUserCourse', 'course_id'),
 		);
 	}
 

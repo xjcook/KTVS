@@ -11,6 +11,9 @@
  * @property string $valid_to
  * @property string $created_at
  * @property string $updated_at
+ *
+ * The followings are the available model relations:
+ * @property TblUser $user
  */
 class News extends CActiveRecord
 {
@@ -33,6 +36,7 @@ class News extends CActiveRecord
 			array('title, content', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
+			array('valid_to', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, user_id, title, content, valid_to, created_at, updated_at', 'safe', 'on'=>'search'),
@@ -47,6 +51,7 @@ class News extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'user' => array(self::BELONGS_TO, 'TblUser', 'user_id'),
 		);
 	}
 

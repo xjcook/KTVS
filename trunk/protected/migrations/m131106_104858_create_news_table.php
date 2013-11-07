@@ -7,7 +7,7 @@ class m131106_104858_create_news_table extends CDbMigration
 		$this->createTable('tbl_news', array(
 			// keys
 			'id' => 'pk',
-			'user_id' => 'integer',
+			'user_id' => 'integer REFERENCES tbl_user(id)',
 			
 			// attributes
 			'title' => 'string NOT NULL',

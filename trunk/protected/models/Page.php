@@ -10,6 +10,9 @@
  * @property string $content
  * @property string $created_at
  * @property string $updated_at
+ *
+ * The followings are the available model relations:
+ * @property TblUser $user
  */
 class Page extends CActiveRecord
 {
@@ -46,6 +49,7 @@ class Page extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'user' => array(self::BELONGS_TO, 'TblUser', 'user_id'),
 		);
 	}
 

@@ -11,6 +11,14 @@
  * @property integer $is_admin
  * @property string $created_at
  * @property string $updated_at
+ *
+ * The followings are the available model relations:
+ * @property TblPage[] $tblPages
+ * @property TblNews[] $tblNews
+ * @property TblUserCourse[] $tblUserCourses
+ * @property TblUserSport[] $tblUserSports
+ * @property TblLeague[] $tblLeagues
+ * @property TblEvent[] $tblEvents
  */
 class User extends CActiveRecord
 {
@@ -47,6 +55,12 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'tblPages' => array(self::HAS_MANY, 'TblPage', 'user_id'),
+			'tblNews' => array(self::HAS_MANY, 'TblNews', 'user_id'),
+			'tblUserCourses' => array(self::HAS_MANY, 'TblUserCourse', 'user_id'),
+			'tblUserSports' => array(self::HAS_MANY, 'TblUserSport', 'user_id'),
+			'tblLeagues' => array(self::HAS_MANY, 'TblLeague', 'user_id'),
+			'tblEvents' => array(self::HAS_MANY, 'TblEvent', 'user_id'),
 		);
 	}
 
