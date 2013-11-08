@@ -54,12 +54,12 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'tblEvents' => array(self::HAS_MANY, 'TblEvent', 'user_id'),
-			'tblLeagues' => array(self::HAS_MANY, 'TblLeague', 'user_id'),
-			'tblNews' => array(self::HAS_MANY, 'TblNews', 'user_id'),
-			'tblPages' => array(self::HAS_MANY, 'TblPage', 'user_id'),
-			'tblUserCourses' => array(self::HAS_MANY, 'TblUserCourse', 'user_id'),
-			'tblUserSports' => array(self::HAS_MANY, 'TblUserSport', 'user_id'),
+			'events' => array(self::HAS_MANY, 'TblEvent', 'user_id'),
+			'leagues' => array(self::HAS_MANY, 'TblLeague', 'user_id'),
+			'news' => array(self::HAS_MANY, 'TblNews', 'user_id'),
+			'pages' => array(self::HAS_MANY, 'TblPage', 'user_id'),
+			'courses' => array(self::HAS_MANY, 'TblUserCourse', 'user_id'),
+			'sports' => array(self::HAS_MANY, 'TblUserSport', 'user_id'),
 		);
 	}
 
