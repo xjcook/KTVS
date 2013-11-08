@@ -11,7 +11,7 @@
  * @property string $updated_at
  *
  * The followings are the available model relations:
- * @property TblUserCourse[] $tblUserCourses
+ * @property User[] $users
  */
 class Course extends CActiveRecord
 {
@@ -49,7 +49,7 @@ class Course extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'users' => array(self::HAS_MANY, 'TblUserCourse', 'course_id'),
+			'users' => array(self::MANY_MANY, 'User', 'tbl_user_course(user_id, course_id)'),
 		);
 	}
 

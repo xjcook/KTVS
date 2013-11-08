@@ -12,12 +12,12 @@
  * @property string $updated_at
  *
  * The followings are the available model relations:
- * @property TblEvent[] $tblEvents
- * @property TblLeague[] $tblLeagues
- * @property TblNews[] $tblNews
- * @property TblPage[] $tblPages
- * @property TblUserCourse[] $tblUserCourses
- * @property TblUserSport[] $tblUserSports
+ * @property Event[] $events
+ * @property League[] $leagues
+ * @property News[] $news
+ * @property Page[] $pages
+ * @property Course[] $courses
+ * @property Sport[] $sports
  */
 class User extends CActiveRecord
 {
@@ -54,12 +54,12 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'events' => array(self::HAS_MANY, 'TblEvent', 'user_id'),
-			'leagues' => array(self::HAS_MANY, 'TblLeague', 'user_id'),
-			'news' => array(self::HAS_MANY, 'TblNews', 'user_id'),
-			'pages' => array(self::HAS_MANY, 'TblPage', 'user_id'),
-			'courses' => array(self::HAS_MANY, 'TblUserCourse', 'user_id'),
-			'sports' => array(self::HAS_MANY, 'TblUserSport', 'user_id'),
+			'events' => array(self::HAS_MANY, 'Event', 'user_id'),
+			'leagues' => array(self::HAS_MANY, 'League', 'user_id'),
+			'news' => array(self::HAS_MANY, 'News', 'user_id'),
+			'pages' => array(self::HAS_MANY, 'Page', 'user_id'),
+			'courses' => array(self::MANY_MANY, 'Course', 'tbl_user_course(user_id, course_id)'),
+			'sports' => array(self::MANY_MANY, 'Sport', 'tbl_user_sport(user_id, sport_id)'),
 		);
 	}
 
