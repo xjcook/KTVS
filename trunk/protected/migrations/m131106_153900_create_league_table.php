@@ -7,7 +7,7 @@ class m131106_153900_create_league_table extends CDbMigration
 		$this->createTable('tbl_league', array(
 			// keys
 			'id' => 'pk',
-			'user_id' => 'integer REFERENCES tbl_user(id)',
+			'user_id' => 'integer NOT NULL',
 
 			// attributes		
 			'name' => 'string NOT NULL',

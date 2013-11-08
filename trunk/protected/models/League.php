@@ -32,7 +32,6 @@ class League extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'required'),
-			array('user_id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			array('description', 'safe'),
 			// The following rule is used by search().

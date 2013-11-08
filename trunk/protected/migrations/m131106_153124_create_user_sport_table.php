@@ -6,8 +6,8 @@ class m131106_153124_create_user_sport_table extends CDbMigration
 	{
 		$this->createTable('tbl_user_sport', array(
 			// keys
-			'user_id' => 'integer NOT NULL REFERENCES tbl_user(id)',
-			'sport_id' => 'integer NOT NULL REFERENCES tbl_sport(id)',
+			'user_id' => 'integer NOT NULL',
+			'sport_id' => 'integer NOT NULL',
 
 			// attributes		
 			

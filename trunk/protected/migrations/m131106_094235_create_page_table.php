@@ -7,7 +7,7 @@ class m131106_094235_create_page_table extends CDbMigration
 		$this->createTable('tbl_page', array(
 			// keys
 			'id' => 'pk',
-			'user_id' => 'integer REFERENCES tbl_user(id)',
+			'user_id' => 'integer NOT NULL',
 			
 			// attributes
 			'title' => 'string NOT NULL',
