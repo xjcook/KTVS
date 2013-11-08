@@ -17,6 +17,9 @@ class m131106_091135_create_user_table extends CDbMigration
 			// timestamp
 			'updated_at' => 'timestamp',
 		));
+		
+		// Unique Index
+		$this->createIndex('tbl_user_email_idx', 'tbl_user', 'email', true);
 	}
 
 	public function safeDown()
