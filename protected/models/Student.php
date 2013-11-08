@@ -50,7 +50,7 @@ class Student extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'tblStudentSports' => array(self::HAS_MANY, 'TblStudentSport', 'student_id'),
+			'sports' => array(self::HAS_MANY, 'TblStudentSport', 'student_id'),
 		);
 	}
 
