@@ -11,8 +11,8 @@
  * @property string $updated_at
  *
  * The followings are the available model relations:
- * @property TblStudentSport[] $tblStudentSports
- * @property TblUserSport[] $tblUserSports
+ * @property Student[] $students
+ * @property User[] $users
  */
 class Sport extends CActiveRecord
 {
@@ -50,8 +50,8 @@ class Sport extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'students' => array(self::HAS_MANY, 'TblStudentSport', 'sport_id'),
-			'users' => array(self::HAS_MANY, 'TblUserSport', 'sport_id'),
+			'students' => array(self::MANY_MANY, 'Student', 'tbl_student_sport(student_id, sport_id)'),
+			'users' => array(self::MANY_MANY, 'User', 'tbl_user_sport(user_id, sport_id'),
 		);
 	}
 
