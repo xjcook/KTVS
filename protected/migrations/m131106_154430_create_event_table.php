@@ -7,7 +7,7 @@ class m131106_154430_create_event_table extends CDbMigration
 		$this->createTable('tbl_event', array(
 			// keys
 			'id' => 'pk',
-			'user_id' => 'integer REFERENCES tbl_user(id)',
+			'user_id' => 'integer NOT NULL',
 
 			// attributes		
 			'name' => 'string NOT NULL',

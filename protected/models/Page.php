@@ -32,7 +32,6 @@ class Page extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('title, content', 'required'),
-			array('user_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
