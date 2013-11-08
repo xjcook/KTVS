@@ -19,7 +19,7 @@ class m131106_091135_create_user_table extends CDbMigration
 		));
 		
 		// Unique Index
-		$this->createIndex('tbl_user_email_idx', 'tbl_user', 'email', true);
+		$this->createIndex('user_email_idx', 'tbl_user', 'email', true);
 	}
 
 	public function safeDown()
