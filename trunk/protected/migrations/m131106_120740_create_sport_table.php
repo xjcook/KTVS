@@ -7,6 +7,7 @@ class m131106_120740_create_sport_table extends CDbMigration
 		$this->createTable('tbl_sport', array(
 			// keys
 			'id' => 'pk',
+			'schedule_id' => 'integer NOT NULL',
 			/* M:N relation in tbl_user_sport */
 
 			// attributes	

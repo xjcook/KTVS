@@ -12,6 +12,8 @@ class m131106_091135_create_user_table extends CDbMigration
 			'name' => 'string',	// admin can create user without name
 			'email' => 'string NOT NULL',
 			'password' => 'string NOT NULL',
+			'description' => 'text',
+			'consultation' => 'text',
 			'is_admin' => 'boolean DEFAULT FALSE',
 				
 			// timestamp
