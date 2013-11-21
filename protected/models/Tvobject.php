@@ -1,26 +1,29 @@
 <?php
 
 /**
- * This is the model class for table "tbl_event".
+ * This is the model class for table "tbl_tvobject".
  *
- * The followings are the available columns in table 'tbl_event':
+ * The followings are the available columns in table 'tbl_tvobject':
  * @property integer $id
- * @property integer $user_id
+ * @property integer $sport_id
  * @property string $name
  * @property string $description
+ * @property string $image
+ * @property string $map
  * @property string $updated_at
  *
  * The followings are the available model relations:
- * @property User $user
+ * @property Schedule[] $schedules
+ * @property Sport $sport
  */
-class Event extends CActiveRecord
+class Tvobject extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'tbl_event';
+		return 'tbl_tvobject';
 	}
 
 	/**
@@ -31,12 +34,13 @@ class Event extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'required'),
-			array('name', 'length', 'max'=>255),
-			array('description', 'safe'),
+			array('sport_id, name', 'required'),
+			array('sport_id', 'numerical', 'integerOnly'=>true),
+			array('name, image', 'length', 'max'=>255),
+			array('description, map', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, name, description, updated_at', 'safe', 'on'=>'search'),
+			array('id, sport_id, name, description, image, map, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,7 +52,8 @@ class Event extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'schedules' => array(self::HAS_MANY, 'Schedule', 'tvobject_id'),
+			'sport' => array(self::BELONGS_TO, 'Sport', 'sport_id'),
 		);
 	}
 
@@ -59,9 +64,11 @@ class Event extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'user_id' => 'User',
+			'sport_id' => 'Sport',
 			'name' => 'Name',
 			'description' => 'Description',
+			'image' => 'Image',
+			'map' => 'Map',
 			'updated_at' => 'Updated At',
 		);
 	}
@@ -85,9 +92,11 @@ class Event extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('sport_id',$this->sport_id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('description',$this->description,true);
+		$criteria->compare('image',$this->image,true);
+		$criteria->compare('map',$this->map,true);
 		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(
@@ -99,7 +108,7 @@ class Event extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Event the static model class
+	 * @return Tvobject the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
