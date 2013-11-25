@@ -62,10 +62,12 @@
 			'activeCssClass'=>'active',
 		)); ?>
     <div class="clearfloat"></div>
+    <a href="http://www.fmph.uniba.sk/"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo1.png" alt="FMFI"></a> 
+    <a href="http://www.fmph.uniba.sk/"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo2.png" alt="FMFI"></a> 
 </header>
 
 <div class="wrapper">
-	<div class="logo"><h1><a href=""><?php echo CHtml::encode(Yii::app()->name); ?></a></h1>
+	<div class="logo"><h1><a href=""><?php echo CHtml::encode(Yii::app()->name); ?><br/></a></h1>
   </div><div class="clearfloat"></div>    
     <div class="contentBody">
     	<div class="post">
