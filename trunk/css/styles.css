@@ -21,7 +21,7 @@ body {
 
 h1 {
 	/*float:left;*/
-	margin:0px 20px 10px 20px;
+	margin:0px 20px 0px 20px;
 }
 h1 a {
 	font-size:1.2em; 
@@ -72,17 +72,26 @@ header {
 	background:url(../images/footerBackground.jpg) repeat;
 	padding: 10px;	
 }
-header img{	
+.logo1{	
 	position:relative;
-	top: 10px;
-	right:0;
+	right:13%;
 	float: right ;
 	width: 90px;
 	height: 90px;
-
+	margin: 5px;
+}
+.logo2{	
+	position:relative;
+	right:13%;
+	float: right ;
+	width: 90px;
+	height: 90px;
+	margin: 5px;
 }
 .logo {
 	float:left;
+	margin: 0;
+	padding: 0;
 }
 .contentBody .post {
 	padding:5%;

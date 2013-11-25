@@ -62,9 +62,14 @@
 			'activeCssClass'=>'active',
 		)); ?>
     <div class="clearfloat"></div>
-    <a href="http://www.fmph.uniba.sk/"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo1.png" alt="FMFI"></a> 
-    <a href="http://www.fmph.uniba.sk/"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo2.png" alt="FMFI"></a> 
+    
 </header>
+<div class="logo1">
+    <a href="http://www.fmph.uniba.sk/"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo1.png" alt="FMFI"></a> 
+</div>
+<div class="logo2">
+    <a href="http://www.fmph.uniba.sk/"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo2.png" alt="FMFI"></a> 
+</div>
 
 <div class="wrapper">
 	<div class="logo"><h1><a href=""><?php echo CHtml::encode(Yii::app()->name); ?><br/></a></h1>
@@ -72,11 +77,11 @@
     <div class="clearfloat"></div>  
     <div id="sliderFrame">
         <div id="slider">
-            <img src="images/image-slider-1.jpg" />
-            <img src="images/image-slider-2.jpg"  />
-            <img src="images/image-slider-3.jpg" />
-            <img src="images/image-slider-4.jpg" />
-            <img src="images/image-slider-5.jpg" />
+            <img src="images/1.jpg" />
+            <img src="images/2.png"  />
+            <img src="images/3.jpg" />
+            <img src="images/5.png" />
+            <img src="images/9.png" />
         </div>
     </div>  
     <div class="contentBody">
