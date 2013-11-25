@@ -68,19 +68,15 @@
 
 <div class="wrapper">
 	<div class="logo"><h1><a href=""><?php echo CHtml::encode(Yii::app()->name); ?><br/></a></h1>
-  </div><div class="clearfloat"></div>  
+    </div>
+    <div class="clearfloat"></div>  
     <div id="sliderFrame">
         <div id="slider">
-            <a href="http://www.menucool.com/javascript-image-slider" target="_blank">
-                <img src="images/image-slider-1.jpg" alt="Welcome to Menucool.com" />
-            </a>
-            <img src="images/image-slider-2.jpg" alt="" />
-            <img src="images/image-slider-3.jpg" alt="Pure Javascript. No jQuery. No flash." />
-            <img src="images/image-slider-4.jpg" alt="#htmlcaption" />
+            <img src="images/image-slider-1.jpg" />
+            <img src="images/image-slider-2.jpg"  />
+            <img src="images/image-slider-3.jpg" />
+            <img src="images/image-slider-4.jpg" />
             <img src="images/image-slider-5.jpg" />
-        </div>
-        <div id="htmlcaption" style="display: none;">
-            <em>HTML</em> caption. Link to <a href="http://www.google.com/">Google</a>.
         </div>
     </div>  
     <div class="contentBody">
