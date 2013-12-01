@@ -7,7 +7,7 @@
  * @property integer $id
  * @property string $name
  * @property string $email
- * @property string $password
+ * @property string $hashed_password
  * @property integer $is_admin
  * @property string $updated_at
  *
@@ -21,6 +21,8 @@
  */
 class User extends CActiveRecord
 {
+	public $password;
+		
 	/**
 	 * @return string the associated database table name
 	 */
@@ -117,5 +119,32 @@ class User extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+	
+	public function validatePassword($password)
+	{
+		return CPasswordHelper::verifyPassword($password,$this->hashed_password);
+	}
+	
+	public function hashPassword($password)
+	{
+		return CPasswordHelper::hashPassword($password);
+	}
+	
+	protected function beforeSave()
+	{
+		if (parent::beforeSave()) {
+			if (!empty($this->password)) {
+				$this->hashed_password = $this->hashPassword($this->password);
+			}
+				
+			/*if ($this->isNewRecord) {
+			
+			}*/
+				
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
