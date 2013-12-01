@@ -1,0 +1,15 @@
+---Module---
+Name:   Schedule
+Author: 
+
+Migrations:
+protected/migrations/m131121_110019_create_schedule_table.php
+
+Models:
+protected/models/Schedule.php
+
+Controllers:
+protected/controllers/ScheduleController.php
+
+Views:
+protected/views/schedule/*

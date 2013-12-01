@@ -1,0 +1,18 @@
+---Module---
+Name:   El (EventLeague)
+Author: 
+
+Migrations:
+protected/migrations/m131121_113529_create_el_table.php
+protected/migrations/m131121_114745_create_page_el_table.php
+
+Models:
+protected/models/El.php
+
+Controllers:
+protected/controllers/EventController.php
+protected/controllers/LeagueController.php
+
+Views:
+protected/views/event/*
+protected/views/league/*

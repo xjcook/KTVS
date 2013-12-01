@@ -1,0 +1,15 @@
+---Module---
+Name:   Page
+Author: 
+
+Migrations:
+protected/migrations/m131106_094235_create_page_table.php
+
+Models:
+protected/models/Page.php
+
+Controllers:
+protected/controllers/PageController.php
+
+Views:
+protected/views/page/*

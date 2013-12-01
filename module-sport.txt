@@ -1,0 +1,18 @@
+---Module---
+Name:   Sport
+Author: 
+
+Migrations:
+protected/migrations/m131106_120740_create_sport_table.php
+protected/migrations/m131106_153124_create_user_sport_table.php
+protected/migrations/m131106_155513_create_student_sport_table.php
+protected/migrations/m131121_115823_add_sport_fk.php
+
+Models:
+protected/models/Sport.php
+
+Controllers:
+protected/controllers/SportController.php
+
+Views:
+protected/views/sport/*
