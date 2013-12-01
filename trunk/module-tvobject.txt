@@ -1,0 +1,15 @@
+---Module---
+Name:   Tvobject (Sportovisko)
+Author: 
+
+Migrations:
+protected/migrations/m131121_103633_create_tvobject_table.php
+
+Models:
+protected/models/Tvobject.php
+
+Controllers:
+protected/controllers/TvobjectController.php
+
+Views:
+protected/views/tvobject/*

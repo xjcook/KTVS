@@ -1,0 +1,15 @@
+---Module---
+Name:   User
+Author: Ondrej Danko
+
+Migrations:
+protected/migrations/m131106_091135_create_user_table.php
+
+Models:
+protected/models/User.php
+
+Controllers:
+protected/controllers/UserController.php
+
+Views:
+protected/views/user/*

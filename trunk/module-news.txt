@@ -1,0 +1,16 @@
+---Module---
+Name:   News
+Author: 
+
+Migrations:
+protected/migrations/m131106_104858_create_news_table.php
+protected/migrations/m131121_115817_add_news_fk.php
+
+Models:
+protected/models/News.php
+
+Controllers:
+protected/controllers/NewsController.php
+
+Views:
+protected/views/news/*

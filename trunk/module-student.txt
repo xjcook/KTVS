@@ -1,0 +1,15 @@
+---Module---
+Name:   Student
+Author: 
+
+Migrations:
+protected/migrations/m131106_155404_create_student_table.php
+
+Models:
+protected/models/Student.php
+
+Controllers:
+protected/controllers/StudentController.php
+
+Views:
+protected/views/student/*
