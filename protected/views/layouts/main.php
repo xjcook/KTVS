@@ -77,11 +77,11 @@
     <div class="clearfloat"></div>  
     <div id="sliderFrame">
         <div id="slider">
-            <img src="images/1.jpg" />
-            <img src="images/2.png"  />
-            <img src="images/3.jpg" />
-            <img src="images/5.png" />
-            <img src="images/9.png" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/1.jpg" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/2.png"  />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/3.jpg" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/5.png" />
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/9.png" />
         </div>
     </div>  
     <div class="contentBody">
