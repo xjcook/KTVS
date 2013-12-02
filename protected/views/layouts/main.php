@@ -52,12 +52,12 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'O Nás', 'url'=>array('/site/index')),
-				array('label'=>'Novinky', 'url'=>array('/site/page', 'view'=>'nothing')),
-				array('label'=>'Rozvrh', 'url'=>array('/site/page', 'view'=>'nothing')),
-				array('label'=>'Galéria', 'url'=>array('/site/page', 'view'=>'nothing')),
-				array('label'=>'Ligy', 'url'=>array('/site/page', 'view'=>'nothing')),
-				array('label'=>'Akcie', 'url'=>array('/site/page', 'view'=>'nothing')),
-				array('label'=>'Kurzy', 'url'=>array('/site/page', 'view'=>'nothing')),
+				array('label'=>'Novinky', 'url'=>array('/news/index')),
+				array('label'=>'Rozvrh', 'url'=>array('/schedule/index')),
+				array('label'=>'Galéria', 'url'=>array('/gallery/index')),
+				array('label'=>'Ligy', 'url'=>array('/league/index')),
+				array('label'=>'Akcie', 'url'=>array('/event/index')),
+				array('label'=>'Kurzy', 'url'=>array('/course/index')),
 			),
 			'activeCssClass'=>'active',
 		)); ?>
