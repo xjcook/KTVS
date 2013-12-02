@@ -2,6 +2,10 @@
 Name:   User
 Author: Ondrej Danko
 
+Default accounts:
+    admin@admin.com : admin
+    user@user.com   : user
+
 Migrations:
 protected/migrations/m131106_091135_create_user_table.php
 

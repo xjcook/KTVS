@@ -122,21 +122,40 @@
     	<div class="authorBox">
         	<div class="authorPic"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/prihlas.png" alt="pic3"></div>
             <div class="authorDescription">
-                <h2>Prihlásenie užívateľa</h2>
-                <p>
-                  <form method="POST" action=" http://YOUR_DOMAIN_HERE:81/login/login.php">
-                  Email: <input type="text" name="username" size="20" />
-                  <br /> <br />
-                  Heslo: <input type="password" name="passwort" size="20" />
-                  <br /> <br />
-                  
-                    <p>
-                      <input class="prihlas" type="submit" value="Prihlás ma"/>
-                    </p>
-                 
-                  </form>
-                </p>
-                <p class="button"><a href="">zabudli ste heslo?</a></p>
+            	<?php if(Yii::app()->user->isGuest): ?>
+	                <h2>Prihlásenie učiteľa</h2>
+	                <p>
+		                <?php $form=$this->beginWidget('CActiveForm', array(
+							'id'=>'login-form',
+							'enableClientValidation'=>true,
+							'clientOptions'=>array(
+								'validateOnSubmit'=>true,
+							),
+						)); ?>
+		                
+		                <?php echo $form->labelEx($this->loginForm,'username'); ?>
+						<?php echo $form->textField($this->loginForm,'username'); ?>
+						<?php echo $form->error($this->loginForm,'username'); ?>
+						<br /> <br />
+						
+						<?php echo $form->labelEx($this->loginForm,'password'); ?>
+						<?php echo $form->passwordField($this->loginForm,'password'); ?>
+						<?php echo $form->error($this->loginForm,'password'); ?>
+						<br /> <br />
+						
+						<?php echo $form->checkBox($this->loginForm,'rememberMe'); ?>
+						<?php echo $form->label($this->loginForm,'rememberMe'); ?>
+						<?php echo $form->error($this->loginForm,'rememberMe'); ?>
+						<br /> <br />
+						
+						<p><?php echo CHtml::submitButton('Prihlásiť', array('class' => 'prihlas')); ?></p>
+						
+		                <?php $this->endWidget(); ?>
+	                </p>
+	                <p class="button"><a href="">zabudli ste heslo?</a></p>
+	            <?php else: ?>
+	            	<?php echo CHtml::button('Odhlásiť', array('submit' => array('site/logout'), 'class' => 'prihlas')); ?>
+                <?php endif; ?>
             </div>
             <div class="clearfloat"></div>
         </div>

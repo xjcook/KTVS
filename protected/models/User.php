@@ -121,11 +121,23 @@ class User extends CActiveRecord
 		return parent::model($className);
 	}
 	
+	/**
+	 * Validates a password against a hash.
+	 * 
+	 * @param string $password The password to validate. If password is empty or not a string, method will return false.
+	 * @return boolean True if the password matches the hash.
+	 */
 	public function validatePassword($password)
 	{
 		return CPasswordHelper::verifyPassword($password,$this->hashed_password);
 	}
 	
+	/**
+	 * Generate a secure hash from a password and a random salt.
+	 * 
+	 * @param string $password
+	 * @return string hashed password
+	 */
 	public function hashPassword($password)
 	{
 		return CPasswordHelper::hashPassword($password);
