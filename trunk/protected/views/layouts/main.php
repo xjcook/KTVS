@@ -5,9 +5,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="keywords" content="pohyb, WOW Slider, Website Slide Show, Web Image Slider" />
-  	<meta name="description" content="pohyb created with WOW Slider, a free wizard program that helps you easily generate beautiful web slideshow" />
-
-  	<link href='http://fonts.googleapis.com/css?family=Alfa+Slab+One|Stoke|Quattrocento+Sans' rel='stylesheet' type='text/css'>
+   	<meta name="description" content="pohyb created with WOW Slider, a free wizard program that helps you easily generate beautiful web slideshow" />
+    <link href='http://fonts.googleapis.com/css?family=Noto+Serif&subset=latin-ext' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/styles.css" />
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/js-image-slider.js" type="text/javascript"></script>
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js"></script>
@@ -65,17 +64,16 @@
     
 </header>
 <div class="logo1">
-    <a href="http://www.fmph.uniba.sk/"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo1.png" alt="FMFI"></a> 
-</div>
-<div class="logo2">
-    <a href="http://www.fmph.uniba.sk/"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo2.png" alt="FMFI"></a> 
-</div>
-
-<div class="wrapper">
-	<div class="logo"><h1><a href=""><?php echo CHtml::encode(Yii::app()->name); ?><br/></a></h1>
+        <a href="http://www.fmph.uniba.sk/"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo1.png" alt="FMFI"></a> 
     </div>
-    <div class="clearfloat"></div>  
-    <div id="sliderFrame">
+    <div class="logo2">
+        <a href="http://www.fmph.uniba.sk/"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo2.png" alt="FMFI"></a> 
+    </div>
+    <div class="logo"><a href=""><?php echo CHtml::encode(Yii::app()->name); ?></a>
+    </div>
+   
+<div class="wrapper">
+     <div id="sliderFrame">
         <div id="slider">
             <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/1.jpg" />
             <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/2.png"  />
