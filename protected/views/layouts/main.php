@@ -85,6 +85,11 @@
         </div>
     </div>  
     <div class="contentBody">
+    	<?php if(isset($this->breadcrumbs)):?>
+			<?php $this->widget('zii.widgets.CBreadcrumbs', array(
+				'links'=>$this->breadcrumbs,
+			)); ?><!-- breadcrumbs -->
+		<?php endif?>
     	<div class="post">
     		<?php echo $content; ?>
         </div>
