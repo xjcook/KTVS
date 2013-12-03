@@ -4,7 +4,7 @@ class m131121_115823_add_sport_fk extends CDbMigration
 {
 	public function safeUp()
 	{
-		$this->addForeignKey('sport_schedule_fk', 'tbl_sport', 'schedule_id', 'tbl_schedule', 'id');
+		//$this->addForeignKey('sport_schedule_fk', 'tbl_sport', 'schedule_id', 'tbl_schedule', 'id', 'NO ACTION', 'NO ACTION');
 	}
 
 	public function safeDown()
