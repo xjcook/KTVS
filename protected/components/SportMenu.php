@@ -13,7 +13,7 @@ class SportMenu extends CMenu
         $sports = Sport::model()->findAll();
 
         foreach ($sports as $sport)
-            $this->items[] = array('label'=>$sport->name);
+            $this->items[] = array('label'=>$sport->name, 'url'=> Yii::app()->request->baseUrl . '/sport/' . $sport->id);
 
         //$items = array(array('name'=>'aerobik'));
         parent::init();
