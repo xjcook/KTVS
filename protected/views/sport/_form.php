@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note"><span class="required">*</span> povinné položky.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -26,19 +26,19 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
+		<?php echo $form->labelEx($model,'Názov'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'description'); ?>
+		<?php echo $form->labelEx($model,'Popis'); ?>
 		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'capacity'); ?>
+		<?php echo $form->labelEx($model,'Kapacita'); ?>
 		<?php echo $form->textField($model,'capacity'); ?>
 		<?php echo $form->error($model,'capacity'); ?>
 	</div>
@@ -50,7 +50,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Pridaj' : 'Save'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
