@@ -196,9 +196,13 @@ header {
 	background-image: url(../images/footerBackground.jpg);
 }
 .required{
-	color: red;
+	
 }
-
+.errorMessage{
+	color: #dea20c;
+	text-decoration: none;
+	text-shadow:none;
+}
 
 
 footer {
