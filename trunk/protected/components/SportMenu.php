@@ -13,7 +13,7 @@ class SportMenu extends CMenu
         $sports = Sport::model()->findAll();
 
         foreach ($sports as $sport)
-            $this->items[] = array('name'=>$sport->name, 'id'=>$sport->id);
+            $this->items[] = array('label'=>$sport->name);
 
         //$items = array(array('name'=>'aerobik'));
         parent::init();
