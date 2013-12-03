@@ -103,7 +103,7 @@
     </div>
     <div class="sidebar">
     	<h2>Športy</h2>
-    	<?php $this->widget('application.components.SportMenu')?>
+    	<?php $this->widget('application.components.SportMenu'); ?>
        <!-- <ul>
             <li><a href="">Aerobik </a></li>
             <li><a href="">Basketbal</a></li>
