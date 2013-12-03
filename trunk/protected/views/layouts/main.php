@@ -104,6 +104,9 @@
     <div class="sidebar">
     	<h2>Športy</h2>
     	<?php $this->widget('application.components.SportMenu'); ?>
+    	<?php if($this->isAdmin()): ?>
+    		<?php echo CHtml::button('Pridať šport', array('submit' => array('sport/create'), 'class' => '')); ?>
+    	<?php endif; ?>
        <!-- <ul>
             <li><a href="">Aerobik </a></li>
             <li><a href="">Basketbal</a></li>

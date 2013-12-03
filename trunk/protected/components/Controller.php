@@ -51,4 +51,20 @@ class Controller extends CController
 	
 		return parent::beforeAction($action);
 	}
+	
+	/**
+	 * Check if user has admin rights
+	 */
+	public function isAdmin() {
+		$user=User::model()->findbyPk(Yii::app()->user->id);
+		
+		if (isset($user) && $user->is_admin == 1) 
+		{
+			return true;
+		} 
+		else 
+		{
+			return false;
+		}
+	}
 }

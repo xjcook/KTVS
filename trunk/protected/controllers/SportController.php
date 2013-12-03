@@ -26,6 +26,29 @@ class SportController extends Controller
 	 */
 	public function accessRules()
 	{
+		/*if(Yii::app()->user->getState('is_admin') == 1)
+		{
+			$arr =array('index','calendar','contact','staff','service');   // give all access to admin
+		} 
+		else if(Yii::app()->user->getState('is_admin') == 0)
+		{
+			$arr =array('index','staff','staffcalendar','update');   // give all access to teacher
+		}
+		else
+		{
+			$arr = array('');          //  no access to other user
+		}
+		
+		return array(
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>$arr,
+				'users'=>array('@'),
+			),
+		
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
+		);*/
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
@@ -37,7 +60,8 @@ class SportController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				//'users'=>array('admin'),
+				'expression'=>'Yii::app()->controller->isAdmin()',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
