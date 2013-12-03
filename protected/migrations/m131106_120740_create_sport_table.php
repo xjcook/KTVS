@@ -18,6 +18,11 @@ class m131106_120740_create_sport_table extends CDbMigration
 			// timestamp
 			'updated_at' => 'timestamp',
 		));
+		
+		$this->execute("SET foreign_key_checks = 0;");
+		$this->insert('tbl_sport', array('name'=>'aerobik'));	
+		$this->insert('tbl_sport', array('name'=>'hopsanie'));
+		$this->execute("SET foreign_key_checks = 1;");
 	}
 
 	public function safeDown()
