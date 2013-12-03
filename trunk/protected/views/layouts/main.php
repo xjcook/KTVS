@@ -103,7 +103,8 @@
     </div>
     <div class="sidebar">
     	<h2>Športy</h2>
-        <ul>
+    	<?php $this->widget('application.components.SportMenu')?>
+       <!-- <ul>
             <li><a href="">Aerobik </a></li>
             <li><a href="">Basketbal</a></li>
             <li><a href="">Bedminton </a></li>
@@ -120,8 +121,9 @@
             <li><a href="">Tenis</a></li>
             <li><a href="">Vodná a pešia turistika</a></li>
             <li><a href="">Volejbal</a></li>
-        </ul>
+        </ul> -->
     </div>
+    
     <div class="clearfloat"></div>   
 </div>
 <footer>
