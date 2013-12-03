@@ -103,28 +103,11 @@
     </div>
     <div class="sidebar">
     	<h2>Športy</h2>
-    	<?php $this->widget('application.components.SportMenu'); ?>
+   			<?php $this->widget('application.components.SportMenu'); ?>
     	<?php if($this->isAdmin()): ?>
     		<?php echo CHtml::button('Pridať šport', array('submit' => array('sport/create'), 'class' => '')); ?>
     	<?php endif; ?>
-       <!-- <ul>
-            <li><a href="">Aerobik </a></li>
-            <li><a href="">Basketbal</a></li>
-            <li><a href="">Bedminton </a></li>
-            <li><a href="">Crossfit </a></li>
-            <li><a href="">Florbal </a></li>
-            <li><a href="">Futsal</a></li>
-            <li><a href="">Horolezectvo</a></li>
-            <li><a href="">Kondičné posilňovanie</a></li>
-            <li><a href="">Lesný beh</a></li>
-            <li><a href="">Netradičné športy </a></li>
-            <li><a href="">Plávanie</a></li>
-            <li><a href="">Skoky na trampolínach</a></li>
-            <li><a href="">Stolný tenis </a></li>
-            <li><a href="">Tenis</a></li>
-            <li><a href="">Vodná a pešia turistika</a></li>
-            <li><a href="">Volejbal</a></li>
-        </ul> -->
+     
     </div>
     
     <div class="clearfloat"></div>   
