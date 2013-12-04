@@ -1,7 +1,5 @@
 <?php
 
-Yii::import('zii.widgets.CMenu', true);
-
 class SportMenu extends CMenu
 {
     public function init()

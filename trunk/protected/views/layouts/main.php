@@ -53,11 +53,11 @@
 				array('label'=>'O Nás', 'url'=>array('/site/index')),
 				array('label'=>'Novinky', 'url'=>array('/news/index')),
 				array('label'=>'Rozvrh', 'url'=>array('/schedule/index')),
-        array('label'=>'Prihlásenie', 'url'=>array('/schedule/index')),
+        		array('label'=>'Prihlásenie', 'url'=>array('/site/login')),
 				array('label'=>'Ligy', 'url'=>array('/league/index')),
 				array('label'=>'Akcie', 'url'=>array('/event/index')),
 				array('label'=>'Kurzy', 'url'=>array('/course/index')),
-        array('label'=>'Galéria', 'url'=>array('/gallery/index')),
+        		array('label'=>'Galéria', 'url'=>array('/gallery/index')),
 			),
 			'activeCssClass'=>'active',
 		)); ?>
@@ -104,7 +104,7 @@
     <div class="sidebar">
     	<h2>Športy</h2>
    			<?php $this->widget('application.components.SportMenu'); ?>
-    	<?php if($this->isAdmin()): ?>
+    	<?php if(Yii::app()->user->checkAccess('createSport')): ?>
     		<?php echo CHtml::button('Pridať šport', array('submit' => array('sport/create'), 'class' => '')); ?>
     	<?php endif; ?>
      
