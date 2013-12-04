@@ -32,8 +32,9 @@ class El extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'required'),
+			array('name, user_id, type', 'required'),
 			array('name', 'length', 'max'=>255),
+			array('type, user_id', 'numerical', 'integerOnly'=>true),
 			array('description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

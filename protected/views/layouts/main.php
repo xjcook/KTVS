@@ -149,6 +149,7 @@
 	                </p>
 	                <p class="button"><a href="">zabudli ste heslo?</a></p>
 	            <?php else: ?>
+	            	<?php echo Yii::app()->user->email; ?>
 	            	<?php echo CHtml::button('Odhlásiť', array('submit' => array('site/logout'), 'class' => 'prihlas')); ?>
                 <?php endif; ?>
             </div>

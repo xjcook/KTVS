@@ -19,10 +19,10 @@ return array(
     ),
 
     'modules'=>array(
-        // uncomment the following to enable the Gii tool
+        // enable the Gii tool
         'gii'=>array(
             'class'=>'system.gii.GiiModule',
-            'password'=>'sominehopohlavia',
+            'password'=>'gii',
             // If removed, Gii defaults to localhost only. Edit carefully to taste.
             'ipFilters'=>array('127.0.0.1','::1'),
         ),
@@ -36,7 +36,7 @@ return array(
             // enable Yii::app()->user->isAdmin()
             'class' => 'WebUser',
         ),
-        // uncomment the following to enable URLs in path-format
+        // clean urls (requires mod_rewrite)
         'urlManager'=>array(
             'urlFormat'=>'path',
             'rules'=>array(
@@ -66,25 +66,27 @@ return array(
             'itemTable'=>'tbl_auth_item',
             'itemChildTable'=>'tbl_auth_item_child',
             'assignmentTable'=>'tbl_auth_assignment',
-            'defaultRoles'=>array('teacher', 'admin'),
+            'defaultRoles'=>array('teacher','admin'),
         ),
         'errorHandler'=>array(
             // use 'site/error' action to display errors
             'errorAction'=>'site/error',
         ),
-        'log'=>array(
-            'class'=>'CLogRouter',
-            'routes'=>array(
+        'log' => array(
+            'class' => 'CLogRouter',
+            'routes' => array(
                 array(
-                    'class'=>'CFileLogRoute',
-                    'levels'=>'error, warning',
+                    'class' => 'CFileLogRoute',
+                    'levels' => 'trace, info, error, warning, vardump',
                 ),
-                // uncomment the following to show log messages on web pages
-                /*
+                // show log messages on web pages
                 array(
-                    'class'=>'CWebLogRoute',
+                    'class' => 'CWebLogRoute',
+                    'enabled' => YII_DEBUG,
+                    'levels' => 'error, warning, trace, notice',
+                    'categories' => 'application',
+                    'showInFireBug' => false,
                 ),
-                */
             ),
         ),
     ),

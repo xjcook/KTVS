@@ -19,11 +19,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_id'); ?>
-		<?php echo $form->textField($model,'user_id'); ?>
-		<?php echo $form->error($model,'user_id'); ?>
-	</div>
+	<?php echo $form->hiddenField($model,'user_id',array('value'=>Yii::app()->user->id)); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'title'); ?>
@@ -35,12 +31,6 @@
 		<?php echo $form->labelEx($model,'content'); ?>
 		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'content'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'updated_at'); ?>
-		<?php echo $form->textField($model,'updated_at'); ?>
-		<?php echo $form->error($model,'updated_at'); ?>
 	</div>
 
 	<div class="row buttons">

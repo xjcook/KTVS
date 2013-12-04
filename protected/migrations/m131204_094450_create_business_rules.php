@@ -95,7 +95,7 @@ class m131204_094450_create_business_rules extends CDbMigration
 		$task->addChild('updateUser');
 		
 		// Roles
-		$role=$auth->createRole('reader', 'reader user');
+		$role=$auth->createRole('student', 'student user');
 		$role->addChild('readCourse');
 		$role->addChild('readEvent');
 		$role->addChild('readLeague');
@@ -108,7 +108,7 @@ class m131204_094450_create_business_rules extends CDbMigration
 		
 		$bizRule='return !Yii::app()->user->isGuest;';
 		$role=$auth->createRole('teacher', 'teacher user', $bizRule);
-		$role->addChild('reader');
+		$role->addChild('student');
 		$role->addChild('readOwnUser');
 		$role->addChild('createEvent');
 		$role->addChild('createNews');

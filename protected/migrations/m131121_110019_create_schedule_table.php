@@ -16,8 +16,8 @@ class m131121_110019_create_schedule_table extends CDbMigration
 			'updated_at' => 'timestamp',
 		));
 		
-		$this->addForeignKey('schedule_page_fk', 'tbl_schedule', 'page_id', 'tbl_page', 'id');
-		$this->addForeignKey('schedule_tvobject_fk', 'tbl_schedule', 'tvobject_id', 'tbl_tvobject', 'id');
+		$this->addForeignKey('schedule_page_fk', 'tbl_schedule', 'page_id', 'tbl_page', 'id', 'CASCADE', 'CASCADE');
+		$this->addForeignKey('schedule_tvobject_fk', 'tbl_schedule', 'tvobject_id', 'tbl_tvobject', 'id', 'CASCADE', 'CASCADE');
 	}
 
 	public function safeDown()

@@ -14,34 +14,7 @@ class UserController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
-		);
-	}
-
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow teacher user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'roles'=>array('teacher'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'roles'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
 		);
 	}
 
@@ -51,9 +24,18 @@ class UserController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+		$model=$this->loadModel($id);
+		
+		if(Yii::app()->user->checkAccess('readOwnUser', array('user'=>$model)))
+		{
+			$this->render('view',array(
+				'model'=>$model,
+			));
+		}
+		else
+		{
+			$this->redirect(array('site/login'));
+		}
 	}
 
 	/**
@@ -62,21 +44,28 @@ class UserController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new User;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['User']))
+		if(Yii::app()->user->checkAccess('createUser'))
 		{
-			$model->attributes=$_POST['User'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$model=new User;
+	
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);
+	
+			if(isset($_POST['User']))
+			{
+				$model->attributes=$_POST['User'];
+				if($model->save())
+					$this->redirect(array('view','id'=>$model->id));
+			}
+	
+			$this->render('create',array(
+				'model'=>$model,
+			));
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		else
+		{
+			$this->redirect(array('site/login'));
+		}
 	}
 
 	/**
@@ -87,20 +76,27 @@ class UserController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['User']))
+		
+		if(Yii::app()->user->checkAccess('updateOwnUser', array('user'=>$model)))
 		{
-			$model->attributes=$_POST['User'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);
+	
+			if(isset($_POST['User']))
+			{
+				$model->attributes=$_POST['User'];
+				if($model->save())
+					$this->redirect(array('view','id'=>$model->id));
+			}
+	
+			$this->render('update',array(
+				'model'=>$model,
+			));
+		} 
+		else 
+		{
+			$this->redirect(array('site/login'));
 		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
 	}
 
 	/**
@@ -110,11 +106,18 @@ class UserController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		if(Yii::app()->user->checkAccess('deleteUser'))
+		{
+			$this->loadModel($id)->delete();
+	
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			if(!isset($_GET['ajax']))
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		} 
+		else 
+		{
+			$this->redirect(array('site/login'));
+		}
 	}
 
 	/**
@@ -122,10 +125,17 @@ class UserController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('User');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		if(Yii::app()->user->checkAccess('readUser'))
+		{
+			$dataProvider=new CActiveDataProvider('User');
+			$this->render('index',array(
+				'dataProvider'=>$dataProvider,
+			));
+		}
+		else
+		{
+			$this->redirect(array('site/login'));
+		}
 	}
 
 	/**
@@ -133,14 +143,21 @@ class UserController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new User('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['User']))
-			$model->attributes=$_GET['User'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+		if(Yii::app()->user->checkAccess('updateUser'))
+		{
+			$model=new User('search');
+			$model->unsetAttributes();  // clear any default values
+			if(isset($_GET['User']))
+				$model->attributes=$_GET['User'];
+	
+			$this->render('admin',array(
+				'model'=>$model,
+			));
+		}
+		else
+		{
+			$this->redirect(array('site/login'));
+		}
 	}
 
 	/**
