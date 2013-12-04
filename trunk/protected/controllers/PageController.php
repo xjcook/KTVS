@@ -14,34 +14,7 @@ class PageController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
 			'postOnly + delete', // we only allow deletion via POST request
-		);
-	}
-
-	/**
-	 * Specifies the access control rules.
-	 * This method is used by the 'accessControl' filter.
-	 * @return array access control rules
-	 */
-	public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow teacher user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'roles'=>array('teacher'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'roles'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
 		);
 	}
 
@@ -51,9 +24,16 @@ class PageController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+		if(Yii::app()->user->checkAccess('readPage'))
+		{
+			$this->render('view',array(
+				'model'=>$this->loadModel($id),
+			));
+		}
+		else
+		{
+			$this->redirect(array('site/login'));
+		}
 	}
 
 	/**
@@ -62,21 +42,28 @@ class PageController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Page;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Page']))
+		if(Yii::app()->user->checkAccess('createPage'))
 		{
-			$model->attributes=$_POST['Page'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$model=new Page;
+	
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);
+	
+			if(isset($_POST['Page']))
+			{
+				$model->attributes=$_POST['Page'];
+				if($model->save())
+					$this->redirect(array('view','id'=>$model->id));
+			}
+	
+			$this->render('create',array(
+				'model'=>$model,
+			));
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		else
+		{
+			$this->redirect(array('site/login'));
+		}
 	}
 
 	/**
@@ -88,19 +75,26 @@ class PageController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Page']))
+		if(Yii::app()->user->checkAccess('updateOwnPage', array('page'=>$model)))
 		{
-			$model->attributes=$_POST['Page'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);
+	
+			if(isset($_POST['Page']))
+			{
+				$model->attributes=$_POST['Page'];
+				if($model->save())
+					$this->redirect(array('view','id'=>$model->id));
+			}
+	
+			$this->render('update',array(
+				'model'=>$model,
+			));
 		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
+		else
+		{
+			$this->redirect(array('site/login'));
+		}
 	}
 
 	/**
@@ -110,11 +104,20 @@ class PageController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		$model=$this->loadModel($id);
+		
+		if(Yii::app()->user->checkAccess('deleteOwnPage', array('page'=>$model)))
+		{
+			$model->delete();
+	
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			if(!isset($_GET['ajax']))
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		} 
+		else 
+		{
+			$this->redirect(array('site/login'));
+		}
 	}
 
 	/**
@@ -122,10 +125,17 @@ class PageController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Page');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		if(Yii::app()->user->checkAccess('readPage'))
+		{
+			$dataProvider=new CActiveDataProvider('Page');
+			$this->render('index',array(
+				'dataProvider'=>$dataProvider,
+			));
+		}
+		else
+		{
+			$this->redirect(array('site/login'));
+		}
 	}
 
 	/**
@@ -133,14 +143,21 @@ class PageController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Page('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Page']))
-			$model->attributes=$_GET['Page'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+		if(Yii::app()->user->checkAccess('updatePage'))
+		{
+			$model=new Page('search');
+			$model->unsetAttributes();  // clear any default values
+			if(isset($_GET['Page']))
+				$model->attributes=$_GET['Page'];
+	
+			$this->render('admin',array(
+				'model'=>$model,
+			));
+		}
+		else
+		{
+			$this->redirect(array('site/login'));
+		}
 	}
 
 	/**

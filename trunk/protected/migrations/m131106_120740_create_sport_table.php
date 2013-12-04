@@ -7,7 +7,7 @@ class m131106_120740_create_sport_table extends CDbMigration
 		$this->createTable('tbl_sport', array(
 			// keys
 			'id' => 'pk',
-			'schedule_id' => 'integer NOT NULL',
+			'schedule_id' => 'integer',
 			/* M:N relation in tbl_user_sport */
 
 			// attributes	
@@ -18,6 +18,10 @@ class m131106_120740_create_sport_table extends CDbMigration
 			// timestamp
 			'updated_at' => 'timestamp',
 		));
+		
+		/* Sample data */
+		$this->insert('tbl_sport', array('name'=>'aerobik'));
+		$this->insert('tbl_sport', array('name'=>'hopsanie'));
 	}
 
 	public function safeDown()

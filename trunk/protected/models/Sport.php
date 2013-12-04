@@ -5,14 +5,17 @@
  *
  * The followings are the available columns in table 'tbl_sport':
  * @property integer $id
+ * @property integer $schedule_id
  * @property string $name
  * @property string $description
  * @property integer $capacity
  * @property string $updated_at
  *
  * The followings are the available model relations:
+ * @property News[] $news
  * @property Student[] $students
  * @property User[] $users
+ * @property Tvobject[] $tvobjects
  */
 class Sport extends CActiveRecord
 {
@@ -33,12 +36,12 @@ class Sport extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('name', 'required'),
-			array('capacity', 'numerical', 'integerOnly'=>true),
+			array('schedule_id, capacity', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			array('description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description, capacity, updated_at', 'safe', 'on'=>'search'),
+			array('id, schedule_id, name, description, capacity, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -50,7 +53,9 @@ class Sport extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'news' => array(self::HAS_MANY, 'News', 'sport_id'),
 			'students' => array(self::MANY_MANY, 'Student', 'tbl_student_sport(student_id, sport_id)'),
+			'tvobjects' => array(self::HAS_MANY, 'Tvobject', 'sport_id'),
 			'users' => array(self::MANY_MANY, 'User', 'tbl_user_sport(user_id, sport_id'),
 		);
 	}
@@ -62,6 +67,7 @@ class Sport extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'schedule_id' => 'Schedule',
 			'name' => 'Name',
 			'description' => 'Description',
 			'capacity' => 'Capacity',
@@ -88,6 +94,7 @@ class Sport extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('schedule_id',$this->schedule_id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('capacity',$this->capacity);

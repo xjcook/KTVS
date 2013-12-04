@@ -17,7 +17,7 @@ class m131106_094235_create_page_table extends CDbMigration
 			'updated_at' => 'timestamp',
 		));
 		
-		$this->addForeignKey('page_user_fk', 'tbl_page', 'user_id', 'tbl_user', 'id');
+		$this->addForeignKey('page_user_fk', 'tbl_page', 'user_id', 'tbl_user', 'id', 'CASCADE', 'CASCADE');
 	}
 
 	public function safeDown()

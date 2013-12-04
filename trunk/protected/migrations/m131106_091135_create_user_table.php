@@ -22,6 +22,7 @@ class m131106_091135_create_user_table extends CDbMigration
 		
 		$this->createIndex('user_email_unique_idx', 'tbl_user', 'email', true);
 		
+		/* Sample data */
 		$this->insert('tbl_user', array(
 			'name' => 'Admin',
 			'email' => 'admin@admin.com',

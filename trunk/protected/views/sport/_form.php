@@ -20,37 +20,25 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'schedule_id'); ?>
-		<?php echo $form->textField($model,'schedule_id'); ?>
-		<?php echo $form->error($model,'schedule_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Názov'); ?>
+		<?php echo $form->labelEx($model,'name'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Popis'); ?>
+		<?php echo $form->labelEx($model,'description'); ?>
 		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Kapacita'); ?>
+		<?php echo $form->labelEx($model,'capacity'); ?>
 		<?php echo $form->textField($model,'capacity'); ?>
 		<?php echo $form->error($model,'capacity'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'updated_at'); ?>
-		<?php echo $form->textField($model,'updated_at'); ?>
-		<?php echo $form->error($model,'updated_at'); ?>
-	</div>
-
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Pridaj' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

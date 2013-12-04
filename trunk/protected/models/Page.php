@@ -31,8 +31,9 @@ class Page extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, content', 'required'),
+			array('title, content, user_id', 'required'),
 			array('title', 'length', 'max'=>255),
+			array('user_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, user_id, title, content, updated_at', 'safe', 'on'=>'search'),
