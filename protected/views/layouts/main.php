@@ -113,49 +113,6 @@
     <div class="clearfloat"></div>   
 </div>
 <footer>
-	<div class="author">
-    	<div class="authorBox">
-        	<div class="authorPic"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/prihlas.png" alt="pic3"></div>
-            <div class="authorDescription">
-            	<?php if(Yii::app()->user->isGuest): ?>
-	                <h2>Prihlásenie učiteľa</h2>
-	                <p>
-		                <?php $form=$this->beginWidget('CActiveForm', array(
-							'id'=>'login-form',
-							'enableClientValidation'=>true,
-							'clientOptions'=>array(
-								'validateOnSubmit'=>true,
-							),
-						)); ?>
-		                
-		                <?php echo $form->labelEx($this->loginForm,'username'); ?>
-						<?php echo $form->textField($this->loginForm,'username'); ?>
-						<?php echo $form->error($this->loginForm,'username'); ?>
-						<br /> <br />
-						
-						<?php echo $form->labelEx($this->loginForm,'password'); ?>
-						<?php echo $form->passwordField($this->loginForm,'password'); ?>
-						<?php echo $form->error($this->loginForm,'password'); ?>
-						<br /> <br />
-						
-						<?php echo $form->checkBox($this->loginForm,'rememberMe'); ?>
-						<?php echo $form->label($this->loginForm,'rememberMe'); ?>
-						<?php echo $form->error($this->loginForm,'rememberMe'); ?>
-						<br /> <br />
-						
-						<p><?php echo CHtml::submitButton('Prihlásiť', array('class' => 'prihlas')); ?></p>
-						
-		                <?php $this->endWidget(); ?>
-	                </p>
-	                <p class="button"><a href="">zabudli ste heslo?</a></p>
-	            <?php else: ?>
-	            	<?php echo Yii::app()->user->email; ?>
-	            	<?php echo CHtml::button('Odhlásiť', array('submit' => array('site/logout'), 'class' => 'prihlas')); ?>
-                <?php endif; ?>
-            </div>
-            <div class="clearfloat"></div>
-        </div>
-    </div> 
     <p class="copyright">
         Copyright &copy; <a href="#">DreamTeam</a> | Designed by <a href="" title="free responsive templates">Matfyzaci</a>
     </p>
