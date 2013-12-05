@@ -28,6 +28,9 @@ return array(
         ),
     ),
 
+    // internationalization
+    'language'=>'sk',
+
     // application components
     'components'=>array(
         'user'=>array(
