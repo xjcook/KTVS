@@ -12,6 +12,7 @@
  * @property string $updated_at
  *
  * The followings are the available model relations:
+ * @property User $user
  * @property Page[] $pages
  */
 class El extends CActiveRecord
@@ -32,9 +33,9 @@ class El extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, user_id, type', 'required'),
+			array('user_id, name, type', 'required'),
+			array('user_id, type', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
-			array('type, user_id', 'numerical', 'integerOnly'=>true),
 			array('description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -50,6 +51,7 @@ class El extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 			'pages' => array(self::MANY_MANY, 'Page', 'tbl_page_el(el_id, page_id)'),
 		);
 	}

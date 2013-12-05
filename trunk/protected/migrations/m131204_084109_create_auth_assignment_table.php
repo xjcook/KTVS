@@ -11,8 +11,8 @@ class m131204_084109_create_auth_assignment_table extends CDbMigration
 			'data' => 'text',
 		));
 		
-		$this->addPrimaryKey('tbl_auth_assignment_pk',  'tbl_auth_assignment', 'itemname, userid');
-		$this->addForeignKey('tbl_auth_assignment_fk1', 'tbl_auth_assignment', 'itemname', 'tbl_auth_item', 'name', 'CASCADE', 'CASCADE');
+		$this->addPrimaryKey('id',  'tbl_auth_assignment', 'itemname, userid');
+		$this->addForeignKey('auth_assignment_fk1', 'tbl_auth_assignment', 'itemname', 'tbl_auth_item', 'name', 'CASCADE', 'CASCADE');
 	}
 
 	public function safeDown()

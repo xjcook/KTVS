@@ -16,8 +16,8 @@ class m131106_152406_create_user_course_table extends CDbMigration
 		));
 		
 		$this->addPrimaryKey('id', 'tbl_user_course', 'user_id, course_id');
-		$this->addForeignKey('course_user_fk', 'tbl_user_course', 'user_id', 'tbl_user', 'id', 'CASCADE', 'CASCADE');
-		$this->addForeignKey('user_course_fk', 'tbl_user_course', 'course_id', 'tbl_course', 'id', 'CASCADE', 'CASCADE');
+		$this->addForeignKey('user_course_fk1', 'tbl_user_course', 'user_id', 'tbl_user', 'id', 'CASCADE', 'CASCADE');
+		$this->addForeignKey('user_course_fk2', 'tbl_user_course', 'course_id', 'tbl_course', 'id', 'CASCADE', 'CASCADE');
 	}
 
 	public function safeDown()

@@ -12,6 +12,8 @@
  *
  * The followings are the available model relations:
  * @property User $user
+ * @property El[] $els
+ * @property Schedule[] $schedules
  */
 class Page extends CActiveRecord
 {
@@ -31,9 +33,9 @@ class Page extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, content, user_id', 'required'),
-			array('title', 'length', 'max'=>255),
+			array('user_id, title, content', 'required'),
 			array('user_id', 'numerical', 'integerOnly'=>true),
+			array('title', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, user_id, title, content, updated_at', 'safe', 'on'=>'search'),
@@ -49,6 +51,8 @@ class Page extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'els' => array(self::MANY_MANY, 'El', 'tbl_page_el(page_id, el_id)'),
+			'schedules' => array(self::HAS_MANY, 'Schedule', 'page_id'),
 		);
 	}
 
