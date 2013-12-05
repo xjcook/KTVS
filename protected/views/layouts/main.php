@@ -63,10 +63,10 @@
 	</nav>
 	<div id="login_link" >
    		<?php if(Yii::app()->user->isGuest): ?>
-			<?php echo CHtml::button('Prihlásiť', array('submit' => array('site/login'), 'class'=>'prihlas')); ?>
+			<?php echo CHtml::button('Prihlásiť', array('submit' => array('site/login'))); ?>
    		<?php else: ?>
   			<?php echo CHtml::link(Yii::app()->user->email, Yii::app()->request->baseUrl.'/user/'.Yii::app()->user->id);  ?>
-   			<?php echo CHtml::button('Odhlásiť', array('submit' => array('site/logout')), array('class'=>'prihlas')); ?>
+   			<?php echo CHtml::button('Odhlásiť', array('submit' => array('site/logout'))); ?>
    	    <?php endif; ?>
 	</div>
     <div class="clearfloat"></div>
