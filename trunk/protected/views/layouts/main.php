@@ -111,11 +111,10 @@
     </div>
     <div class="sidebar">
     	<h2>Športy</h2>
-   			<?php $this->widget('application.components.SportMenu'); ?>
+		<?php $this->widget('application.components.SportMenu'); ?>
     	<?php if(Yii::app()->user->checkAccess('createSport')): ?>
-    		<?php echo CHtml::button('Pridať šport', array('submit' => array('sport/create'), 'class' => '')); ?>
+    		<?php echo CHtml::button('Pridať šport', array('submit' => array('sport/create'))); ?>
     	<?php endif; ?>
-     
     </div>
 
     <div class="clearfloat"></div>   
