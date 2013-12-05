@@ -74,6 +74,7 @@ p {
 .wrapper, .authorBox, nav { 
 	width:75%;
 	margin:0 auto;
+	text-shadow:none;
 }
 header {
 	background:url(../images/footerBackground.jpg) repeat;
