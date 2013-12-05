@@ -18,10 +18,6 @@ class m131106_120740_create_sport_table extends CDbMigration
 			// timestamp
 			'updated_at' => 'timestamp',
 		));
-		
-		/* Sample data */
-		$this->insert('tbl_sport', array('name'=>'aerobik'));
-		$this->insert('tbl_sport', array('name'=>'hopsanie'));
 	}
 
 	public function safeDown()
