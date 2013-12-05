@@ -53,7 +53,6 @@
 				array('label'=>'O Nás', 'url'=>array('/site/index')),
 				array('label'=>'Novinky', 'url'=>array('/news/index')),
 				array('label'=>'Rozvrh', 'url'=>array('/schedule/index')),
-        		array('label'=>'Prihlásenie', 'url'=>array('/site/login')),
 				array('label'=>'Ligy', 'url'=>array('/league/index')),
 				array('label'=>'Akcie', 'url'=>array('/event/index')),
 				array('label'=>'Kurzy', 'url'=>array('/course/index')),
@@ -61,6 +60,15 @@
 			),
 			'activeCssClass'=>'active',
 		)); ?>
+	</nav>
+	<div id="login_link" >
+   		<?php if(Yii::app()->user->isGuest): ?>
+			<?php echo CHtml::button('Prihlásiť', array('submit' => array('site/login'), 'class'=>'prihlas')); ?>
+   		<?php else: ?>
+  			<?php echo CHtml::link(Yii::app()->user->email, Yii::app()->request->baseUrl.'/user/'.Yii::app()->user->id);  ?>
+   			<?php echo CHtml::button('Odhlásiť', array('submit' => array('site/logout')), array('class'=>'prihlas')); ?>
+   	    <?php endif; ?>
+	</div>
     <div class="clearfloat"></div>
     
 </header>
@@ -109,7 +117,7 @@
     	<?php endif; ?>
      
     </div>
-    
+
     <div class="clearfloat"></div>   
 </div>
 <footer>

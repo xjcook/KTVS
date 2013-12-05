@@ -230,6 +230,18 @@ footer .copyright {
 	height:0;
 	line-height: 0px;
 }
+#login_link {
+	float: right;
+	margin-top: -23px;
+	color: white;
+	text-shadow: none;
+	font-size: 80%;
+}
+
+#login_link a{
+	color: white;
+}
+
 /**************************/
 /*********************************Begin main menu****************************************/
 /**************************/
