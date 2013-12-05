@@ -106,22 +106,12 @@ header {
 	text-transform: uppercase;	
 	font-size: x-large;
 }
-.contentBody .post {
-
-	padding:5%;
-}
-
 .sidebar h2 {
 	padding:10% 5% 0 5%;
 }
 .sidebar ul {
 	padding:0 5%;
 }
-.contentBody .post img, .author img {
-	box-shadow: 0 0px 6px rgba(76, 21, 20, 0.8);
-
-}
-
 .contentBody {
 	margin: 10px;
 	width:74%;
@@ -131,7 +121,17 @@ header {
 	top:100px;
 	box-shadow: 0 0px 6px rgba(76, 21, 20, 0.8);
 }
+.contentBody .post {
 
+	padding:5%;
+}
+.contentBody .post img, .author img {
+	box-shadow: 0 0px 6px rgba(76, 21, 20, 0.8);
+
+}
+.contentBody .breadcrumbs {
+	margin:5px 0 0 10px;
+}
 .contentBody li {
 	margin-left: 10px;
 }
