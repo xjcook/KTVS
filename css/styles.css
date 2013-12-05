@@ -164,6 +164,12 @@ header {
 	color:#dea20c;
 	text-shadow:0 0px, 1px 1px #000000;
 }
+.sidebar input[type="button"] {
+	position: relative;
+    display: block;
+    margin:-3% 0 10% 5%;
+    padding:0 5%;
+}
 .author {
 	background:url(../images/authorBackground.jpg) repeat;
 	padding:1%;
