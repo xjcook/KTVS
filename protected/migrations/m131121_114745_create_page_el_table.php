@@ -16,8 +16,8 @@ class m131121_114745_create_page_el_table extends CDbMigration
 		));
 		
 		$this->addPrimaryKey('id', 'tbl_page_el', 'page_id, el_id');
-		$this->addForeignKey('el_page_fk', 'tbl_page_el', 'page_id', 'tbl_page', 'id', 'CASCADE', 'CASCADE');
-		$this->addForeignKey('page_el_fk', 'tbl_page_el', 'el_id', 'tbl_el', 'id', 'CASCADE', 'CASCADE');
+		$this->addForeignKey('page_el_fk1', 'tbl_page_el', 'page_id', 'tbl_page', 'id', 'CASCADE', 'CASCADE');
+		$this->addForeignKey('page_el_fk2', 'tbl_page_el', 'el_id', 'tbl_el', 'id', 'CASCADE', 'CASCADE');
 	}
 
 	public function safeDown()

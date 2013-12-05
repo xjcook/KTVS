@@ -13,9 +13,10 @@
  *
  * The followings are the available model relations:
  * @property News[] $news
+ * @property Schedule $schedule
  * @property Student[] $students
- * @property User[] $users
  * @property Tvobject[] $tvobjects
+ * @property User[] $users
  */
 class Sport extends CActiveRecord
 {
@@ -54,9 +55,10 @@ class Sport extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'news' => array(self::HAS_MANY, 'News', 'sport_id'),
-			'students' => array(self::MANY_MANY, 'Student', 'tbl_student_sport(student_id, sport_id)'),
+			'schedule' => array(self::BELONGS_TO, 'Schedule', 'schedule_id'),
+			'students' => array(self::MANY_MANY, 'Student', 'tbl_student_sport(sport_id, student_id)'),
 			'tvobjects' => array(self::HAS_MANY, 'Tvobject', 'sport_id'),
-			'users' => array(self::MANY_MANY, 'User', 'tbl_user_sport(user_id, sport_id'),
+			'users' => array(self::MANY_MANY, 'User', 'tbl_user_sport(sport_id, user_id)'),
 		);
 	}
 

@@ -11,8 +11,8 @@
  *
  * The followings are the available model relations:
  * @property Page $page
- * @property Tvobject $tvobject
  * @property Sport[] $sports
+ * @property Tvobject $tvobject
  */
 class Schedule extends CActiveRecord
 {
@@ -32,8 +32,8 @@ class Schedule extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('tvobject_id', 'required'),
-			array('tvobject_id', 'numerical', 'integerOnly'=>true),
+			array('page_id, tvobject_id', 'required'),
+			array('page_id, tvobject_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, page_id, tvobject_id, updated_at', 'safe', 'on'=>'search'),
@@ -49,8 +49,8 @@ class Schedule extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'page' => array(self::BELONGS_TO, 'Page', 'page_id'),
-			'tvobject' => array(self::BELONGS_TO, 'Tvobject', 'tvobject_id'),
 			'sports' => array(self::HAS_MANY, 'Sport', 'schedule_id'),
+			'tvobject' => array(self::BELONGS_TO, 'Tvobject', 'tvobject_id'),
 		);
 	}
 

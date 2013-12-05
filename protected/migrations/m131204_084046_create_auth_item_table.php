@@ -12,7 +12,7 @@ class m131204_084046_create_auth_item_table extends CDbMigration
 			'data' => 'text',
 		));
 		
-		$this->addPrimaryKey('tbl_auth_item_pk', 'tbl_auth_item', 'name');
+		$this->addPrimaryKey('id', 'tbl_auth_item', 'name');
 	}
 
 	public function safeDown()

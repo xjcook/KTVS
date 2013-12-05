@@ -19,7 +19,7 @@ class m131121_103633_create_tvobject_table extends CDbMigration
 			'updated_at' => 'timestamp',
 		));
 		
-		$this->addForeignKey('tvobject_sport_fk', 'tbl_tvobject', 'sport_id', 'tbl_sport', 'id', 'CASCADE', 'CASCADE');
+		$this->addForeignKey('tvobject_fk1', 'tbl_tvobject', 'sport_id', 'tbl_sport', 'id', 'CASCADE', 'CASCADE');
 	}
 
 	public function safeDown()

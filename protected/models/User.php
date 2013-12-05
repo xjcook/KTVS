@@ -8,12 +8,13 @@
  * @property string $name
  * @property string $email
  * @property string $hashed_password
+ * @property string $description
+ * @property string $consultation
  * @property integer $is_admin
  * @property string $updated_at
  *
  * The followings are the available model relations:
- * @property Event[] $events
- * @property League[] $leagues
+ * @property El[] $els
  * @property News[] $news
  * @property Page[] $pages
  * @property Course[] $courses
@@ -43,9 +44,10 @@ class User extends CActiveRecord
 			array('email', 'unique'),
 			array('is_admin', 'numerical', 'integerOnly'=>true),
 			array('name, email, password', 'length', 'max'=>255),
+			array('description, consultation', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, email, is_admin, updated_at', 'safe', 'on'=>'search'),
+			array('id, name, email, description, consultation, is_admin, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,8 +59,7 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'events' => array(self::HAS_MANY, 'Event', 'user_id'),
-			'leagues' => array(self::HAS_MANY, 'League', 'user_id'),
+			'els' => array(self::HAS_MANY, 'El', 'user_id'),
 			'news' => array(self::HAS_MANY, 'News', 'user_id'),
 			'pages' => array(self::HAS_MANY, 'Page', 'user_id'),
 			'courses' => array(self::MANY_MANY, 'Course', 'tbl_user_course(user_id, course_id)'),
@@ -73,9 +74,11 @@ class User extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
+			'name' => 'Meno',
 			'email' => 'Email',
-			'password' => 'Password',
+			'password' => 'Heslo',
+			'description' => 'Popis',
+			'consultation' => 'Konzultácie',
 			'is_admin' => 'Is Admin',
 			'updated_at' => 'Updated At',
 		);
@@ -102,6 +105,8 @@ class User extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('email',$this->email,true);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('consultation',$this->consultation,true);
 		$criteria->compare('is_admin',$this->is_admin);
 		$criteria->compare('updated_at',$this->updated_at,true);
 
