@@ -68,7 +68,8 @@ class LeagueController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(Yii::app()->user->checkAccess('updateOwnPage', array('page'=>$model)))
+		if(Yii::app()->user->checkAccess('updateOwnLeague', array('league'=>$model)) ||
+		   Yii::app()->user->checkAccess('updateLeague'))
 		{
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);

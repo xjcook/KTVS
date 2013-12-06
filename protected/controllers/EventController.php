@@ -68,7 +68,8 @@ class EventController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(Yii::app()->user->checkAccess('updateOwnEvent', array('event'=>$model)))
+		if(Yii::app()->user->checkAccess('updateOwnEvent', array('event'=>$model)) ||
+		   Yii::app()->user->checkAccess('updateEvent'))
 		{
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
@@ -99,7 +100,8 @@ class EventController extends Controller
 	{
 		$model=$this->loadModel($id);
 		
-		if(Yii::app()->user->checkAccess('deleteOwnPage', array('page'=>$model)))
+		if(Yii::app()->user->checkAccess('deleteOwnEvent', array('event'=>$model)) ||
+		   Yii::app()->user->checkAccess('deleteEvent'))
 		{
 			$model->delete();
 

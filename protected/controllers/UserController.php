@@ -26,7 +26,8 @@ class UserController extends Controller
 	{
 		$model=$this->loadModel($id);
 		
-		if(Yii::app()->user->checkAccess('readOwnUser', array('user'=>$model)))
+		if(Yii::app()->user->checkAccess('readOwnUser', array('user'=>$model)) ||
+		   Yii::app()->user->checkAccess('readUser'))
 		{
 			$this->render('view',array(
 				'model'=>$model,
@@ -77,7 +78,8 @@ class UserController extends Controller
 	{
 		$model=$this->loadModel($id);
 		
-		if(Yii::app()->user->checkAccess('updateOwnUser', array('user'=>$model)))
+		if(Yii::app()->user->checkAccess('updateOwnUser', array('user'=>$model)) ||
+		   Yii::app()->user->checkAccess('updateUser'))
 		{
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
