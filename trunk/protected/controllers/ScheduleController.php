@@ -24,16 +24,9 @@ class ScheduleController extends Controller
 	 */
 	public function actionView($id)
 	{
-		if(Yii::app()->user->checkAccess('readSchedule'))
-		{
-			$this->render('view',array(
-				'model'=>$this->loadModel($id),
-			));
-		}
-		else
-		{
-			$this->redirect(array('site/login'));
-		}
+		$this->render('view',array(
+			'model'=>$this->loadModel($id),
+		));
 	}
 
 	/**
@@ -123,17 +116,10 @@ class ScheduleController extends Controller
 	 */
 	public function actionIndex()
 	{
-		if(Yii::app()->user->checkAccess('readSchedule'))
-		{
-			$dataProvider=new CActiveDataProvider('Schedule');
-			$this->render('index',array(
-				'dataProvider'=>$dataProvider,
-			));
-		}
-		else
-		{
-			$this->redirect(array('site/login'));
-		}
+		$dataProvider=new CActiveDataProvider('Schedule');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
 	}
 
 	/**
