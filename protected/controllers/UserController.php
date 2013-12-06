@@ -35,7 +35,7 @@ class UserController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -65,7 +65,7 @@ class UserController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -97,7 +97,7 @@ class UserController extends Controller
 		} 
 		else 
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -118,7 +118,7 @@ class UserController extends Controller
 		} 
 		else 
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -136,7 +136,7 @@ class UserController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -158,7 +158,7 @@ class UserController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
