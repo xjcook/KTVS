@@ -41,88 +41,85 @@
 		 
 		 });
 	</script>
-
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
-
 <body>
-<header>
-	<nav>
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'O Nás', 'url'=>array('/site/index')),
-				array('label'=>'Novinky', 'url'=>array('/news/index')),
-				array('label'=>'Rozvrh', 'url'=>array('/schedule/index')),
-				array('label'=>'Ligy', 'url'=>array('/league/index')),
-				array('label'=>'Akcie', 'url'=>array('/event/index')),
-				array('label'=>'Kurzy', 'url'=>array('/course/index')),
-        		array('label'=>'Galéria', 'url'=>array('/gallery/index')),
-			),
-			'activeCssClass'=>'active',
-		)); ?>
-	</nav>
-	<div id="login_link" >
-   		<?php if(Yii::app()->user->isGuest): ?>
-			<?php echo CHtml::button('Prihlásiť', array('submit' => array('site/login'))); ?>
-   		<?php else: ?>
-  			<?php echo CHtml::link(Yii::app()->user->email, Yii::app()->request->baseUrl.'/user/'.Yii::app()->user->id);  ?>
-   			<?php echo CHtml::button('Odhlásiť', array('submit' => array('site/logout'))); ?>
-   	    <?php endif; ?>
-	</div>
-    <div class="clearfloat"></div>
-    
-</header>
-<div class="logo1">
+	<header>
+		<nav>
+			<?php $this->widget('zii.widgets.CMenu',array(
+				'items'=>array(
+					array('label'=>'O Nás', 'url'=>array('/site/index')),
+					array('label'=>'Novinky', 'url'=>array('/news/index')),
+					array('label'=>'Rozvrh', 'url'=>array('/schedule/index')),
+					array('label'=>'Ligy', 'url'=>array('/league/index')),
+					array('label'=>'Akcie', 'url'=>array('/event/index')),
+					array('label'=>'Kurzy', 'url'=>array('/course/index')),
+	        		array('label'=>'Galéria', 'url'=>array('/gallery/index')),
+				),
+				'activeCssClass'=>'active',
+			)); ?>
+		</nav>
+		
+		<div id="login_link" >
+	   		<?php if(Yii::app()->user->isGuest): ?>
+				<?php echo CHtml::button('Prihlásiť', array('submit' => array('site/login'))); ?>
+	   		<?php else: ?>
+	  			<?php echo CHtml::link(Yii::app()->user->email, Yii::app()->createUrl('user/'.Yii::app()->user->id)); ?>
+	   			<?php echo CHtml::button('Odhlásiť', array('submit' => array('site/logout'))); ?>
+	   	    <?php endif; ?>
+		</div>
+		
+	    <div class="clearfloat"></div>
+	</header>
+	
+	<div class="logo1">
         <a href="http://www.fmph.uniba.sk/"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo1.png" alt="FMFI"></a> 
     </div>
     <div class="logo2">
         <a href="http://www.fmph.uniba.sk/"><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo2.png" alt="FMFI"></a> 
     </div>
-    <div class="logo"><a href=""><?php echo CHtml::encode(Yii::app()->name); ?></a>
+    <div class="logo">
+    	<a href=""><?php echo CHtml::encode(Yii::app()->name); ?></a>
     </div>
    
-<div class="wrapper">
-     <div id="sliderFrame">
-        <div id="slider">
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/1.jpg" />
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/2.png"  />
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/3.jpg" />
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/5.png" />
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/9.png" />
-        </div>
-    </div>  
-    <div class="contentBody">
-    	<?php if(isset($this->breadcrumbs)):?>
-			<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-				'links'=>$this->breadcrumbs,
-			)); ?><!-- breadcrumbs -->
-		<?php endif?>
-    	<div class="post">
-    		<?php echo $content; ?>
-        </div>
-        <div class="post">
-        	<h2>Lorem Ipsum is simply</h2>
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/4.jpg" alt="pic2">
-            <p>
-            	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
-            </p>
-            <p class="button"><a href="">Details...</a></p>
-        </div>
-    </div>
-    <div class="sidebar">
-    	<h2>Športy</h2>
-		<?php $this->widget('application.components.SportMenu'); ?>
-    	<?php if(Yii::app()->user->checkAccess('createSport')): ?>
-    		<?php echo CHtml::button('Pridať šport', array('submit' => array('sport/create'))); ?>
-    	<?php endif; ?>
-    </div>
-
-    <div class="clearfloat"></div>   
-</div>
-<footer>
-    <p class="copyright">
-        Copyright &copy; <a href="#">DreamTeam</a> | Designed by <a href="" title="free responsive templates">Matfyzaci</a>
-    </p>
-</footer>
+	<div class="wrapper">
+	     <div id="sliderFrame">
+	        <div id="slider">
+	            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/1.jpg" />
+	            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/2.png"  />
+	            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/3.jpg" />
+	            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/5.png" />
+	            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/9.png" />
+	        </div>
+	    </div>  
+	    
+	    <div class="contentBody">
+	    	<?php if(isset($this->breadcrumbs)):?>
+				<?php $this->widget('zii.widgets.CBreadcrumbs', array(
+					'links'=>$this->breadcrumbs,
+				)); ?><!-- breadcrumbs -->
+			<?php endif?>
+			
+	    	<div class="post">
+	    		<?php echo $content; ?>
+	        </div>
+	    </div>
+	    
+	    <div class="sidebar">
+	    	<h2>Športy</h2>
+			<?php $this->widget('application.components.SportMenu'); ?>
+	    	<?php if(Yii::app()->user->checkAccess('createSport')): ?>
+	    		<?php echo CHtml::button('Pridať šport', array('submit' => array('sport/create'))); ?>
+	    	<?php endif; ?>
+	    </div>
+	
+	    <div class="clearfloat"></div>   
+	</div>
+	
+	<footer>
+	    <p class="copyright">
+	        Copyright &copy; <a href="#">DreamTeam</a> | Designed by <a href="" title="free responsive templates">Matfyzaci</a>
+	    </p>
+	</footer>
 </body>
 </html>
