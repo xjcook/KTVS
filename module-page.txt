@@ -1,6 +1,6 @@
 ---Module---
 Name:   Page
-Author: 
+Author: Mario Racek
 
 Migrations:
 protected/migrations/m131106_094235_create_page_table.php
