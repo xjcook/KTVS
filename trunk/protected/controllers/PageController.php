@@ -68,7 +68,8 @@ class PageController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(Yii::app()->user->checkAccess('updateOwnPage', array('page'=>$model)))
+		if(Yii::app()->user->checkAccess('updateOwnPage', array('page'=>$model)) ||
+		   Yii::app()->user->checkAccess('updatePage'))
 		{
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
@@ -99,7 +100,8 @@ class PageController extends Controller
 	{
 		$model=$this->loadModel($id);
 		
-		if(Yii::app()->user->checkAccess('deleteOwnPage', array('page'=>$model)))
+		if(Yii::app()->user->checkAccess('deleteOwnPage', array('page'=>$model)) ||
+		   Yii::app()->user->checkAccess('deletePage'))
 		{
 			$model->delete();
 	

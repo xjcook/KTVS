@@ -68,7 +68,8 @@ class NewsController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(Yii::app()->user->checkAccess('updateOwnNews', array('news'=>$model)))
+		if(Yii::app()->user->checkAccess('updateOwnNews', array('news'=>$model)) ||
+		   Yii::app()->user->checkAccess('updateNews'))
 		{
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
@@ -99,7 +100,8 @@ class NewsController extends Controller
 	{
 		$model=$this->loadModel($id);
 		
-		if(Yii::app()->user->checkAccess('deleteOwnNews', array('news'=>$model)))
+		if(Yii::app()->user->checkAccess('deleteOwnNews', array('news'=>$model)) ||
+		   Yii::app()->user->checkAccess('deleteNews'))
 		{
 			$model->delete();
 
