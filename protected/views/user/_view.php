@@ -17,10 +17,6 @@
 	<?php echo CHtml::encode($data->email); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('password')); ?>:</b>
-	<?php echo CHtml::encode($data->password); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('is_admin')); ?>:</b>
 	<?php echo CHtml::encode($data->is_admin); ?>
 	<br />

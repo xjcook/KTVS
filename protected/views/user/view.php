@@ -24,7 +24,6 @@ $this->menu=array(
 		'id',
 		'name',
 		'email',
-		'password',
 		'is_admin',
 		'updated_at',
 	),
