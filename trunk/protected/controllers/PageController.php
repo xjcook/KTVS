@@ -55,7 +55,7 @@ class PageController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -87,7 +87,7 @@ class PageController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -111,7 +111,7 @@ class PageController extends Controller
 		} 
 		else 
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -144,7 +144,7 @@ class PageController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 

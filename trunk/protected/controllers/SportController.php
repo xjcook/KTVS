@@ -55,7 +55,7 @@ class SportController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -86,7 +86,7 @@ class SportController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -108,7 +108,7 @@ class SportController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -141,7 +141,7 @@ class SportController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 

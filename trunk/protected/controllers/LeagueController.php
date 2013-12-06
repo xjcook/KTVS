@@ -55,7 +55,7 @@ class LeagueController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -87,7 +87,7 @@ class LeagueController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -108,7 +108,7 @@ class LeagueController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -141,7 +141,7 @@ class LeagueController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 

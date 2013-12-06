@@ -32,7 +32,7 @@ class StudentController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -86,7 +86,7 @@ class StudentController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -107,7 +107,7 @@ class StudentController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -125,7 +125,7 @@ class StudentController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
@@ -147,7 +147,7 @@ class StudentController extends Controller
 		}
 		else
 		{
-			$this->redirect(array('site/login'));
+			Yii::app()->user->loginRequired();
 		}
 	}
 
