@@ -12,7 +12,7 @@ class SportMenu extends CMenu
         foreach ($sports as $sport)
         {
             $this->items[] = array('label'=>$sport->name, 
-            	                   'url'=>Yii::app()->request->baseUrl.'/sport/'.$sport->id);
+            	                   'url'=>Yii::app()->createUrl('sport/'.$sport->id));
         }
 
         parent::init();
