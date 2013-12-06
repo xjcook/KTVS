@@ -24,16 +24,9 @@ class SportController extends Controller
 	 */
 	public function actionView($id)
 	{
-		if(Yii::app()->user->checkAccess('readSport'))
-		{
-			$this->render('view',array(
-				'model'=>$this->loadModel($id),
-			));
-		}
-		else
-		{
-			$this->redirect(array('site/login'));
-		}
+		$this->render('view',array(
+			'model'=>$this->loadModel($id),
+		));
 	}
 
 	/**
@@ -124,17 +117,10 @@ class SportController extends Controller
 	 */
 	public function actionIndex()
 	{
-		if(Yii::app()->user->checkAccess('readSport'))
-		{
-			$dataProvider=new CActiveDataProvider('Sport');
-			$this->render('index',array(
-				'dataProvider'=>$dataProvider,
-			));
-		}
-		else
-		{
-			$this->redirect(array('site/login'));
-		}
+		$dataProvider=new CActiveDataProvider('Sport');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
 	}
 
 	/**

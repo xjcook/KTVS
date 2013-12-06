@@ -14,7 +14,7 @@ class NewsController extends Controller
 	public function filters()
 	{
 		return array(
-			'accessControl', // perform access control for CRUD operations
+			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -24,16 +24,9 @@ class NewsController extends Controller
 	 */
 	public function actionView($id)
 	{
-		if(Yii::app()->user->checkAccess('readNews'))
-		{
-			$this->render('view',array(
-				'model'=>$this->loadModel($id),
-			));
-		}
-		else
-		{
-			$this->redirect(array('site/login'));
-		}
+		$this->render('view',array(
+			'model'=>$this->loadModel($id),
+		));
 	}
 
 	/**
@@ -125,17 +118,10 @@ class NewsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		if(Yii::app()->user->checkAccess('readNews'))
-		{
-			$dataProvider=new CActiveDataProvider('News');
-			$this->render('index',array(
-				'dataProvider'=>$dataProvider,
-			));
-		}
-		else
-		{
-			$this->redirect(array('site/login'));
-		}
+		$dataProvider=new CActiveDataProvider('News');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
 	}
 
 	/**

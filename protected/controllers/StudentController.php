@@ -42,28 +42,21 @@ class StudentController extends Controller
 	 */
 	public function actionCreate()
 	{
-		if(Yii::app()->user->checkAccess('createStudent'))
+		$model=new Student;
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Student']))
 		{
-			$model=new Student;
-	
-			// Uncomment the following line if AJAX validation is needed
-			// $this->performAjaxValidation($model);
-	
-			if(isset($_POST['Student']))
-			{
-				$model->attributes=$_POST['Student'];
-				if($model->save())
-					$this->redirect(array('view','id'=>$model->id));
-			}
-	
-			$this->render('create',array(
-				'model'=>$model,
-			));
+			$model->attributes=$_POST['Student'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->id));
 		}
-		else
-		{
-			$this->redirect(array('site/login'));
-		}
+
+		$this->render('create',array(
+			'model'=>$model,
+		));
 	}
 
 	/**
