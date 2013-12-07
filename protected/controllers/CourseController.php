@@ -66,10 +66,11 @@ class CourseController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		if(Yii::app()->user->checkAccess('updateCourse'))
+		$model=$this->loadModel($id);
+
+		if(Yii::app()->user->checkAccess('updateOwnCourse', array('course'=>$model)) ||
+		   Yii::app()->user->checkAccess('updateCourse'))
 		{
-			$model=$this->loadModel($id);
-	
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
 	

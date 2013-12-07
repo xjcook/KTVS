@@ -12,6 +12,10 @@ class m131204_094450_create_business_rules extends CDbMigration
 		$auth->createOperation('updateCourse', 'update a course');
 		$auth->createOperation('deleteCourse', 'delete a course');
 		
+		$bizRule='return Yii::app()->user->checkUserAccess($params["course"]);';
+		$task=$auth->createTask('updateOwnCourse','update a course by author himself',$bizRule);
+		$task->addChild('updateCourse');
+		
 		// Event
 		$auth->createOperation('createEvent', 'create a event');
 		$auth->createOperation('readEvent', 'read a event');
@@ -113,6 +117,7 @@ class m131204_094450_create_business_rules extends CDbMigration
 		$role->addChild('createEvent');
 		$role->addChild('createNews');
 		$role->addChild('createPage');
+		$role->addChild('updateOwnCourse');
 		$role->addChild('updateOwnEvent');
 		$role->addChild('updateOwnLeague');
 		$role->addChild('updateOwnNews');
