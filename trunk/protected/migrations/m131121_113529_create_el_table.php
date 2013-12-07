@@ -8,6 +8,7 @@ class m131121_113529_create_el_table extends CDbMigration
 			// keys
 			'id' => 'pk',
 			'user_id' => 'integer NOT NULL',
+			/* M:N relation in tbl_student_el */
 			
 			// attributes		
 			'name' => 'string NOT NULL',

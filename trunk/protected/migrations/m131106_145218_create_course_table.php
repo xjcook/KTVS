@@ -8,6 +8,7 @@ class m131106_145218_create_course_table extends CDbMigration
 			// keys
 			'id' => 'pk',
 			/* M:N relation in tbl_user_course */
+			/* M:N relation in tbl_student_course */
 
 			// attributes
 			'name' => 'string NOT NULL',
