@@ -12,6 +12,16 @@ class WebUser extends CWebUser {
     $user = $this->loadUser(Yii::app()->user->id);
     return intval($user->is_admin) == 1;
   }
+  
+  function checkUserAccess($model) {
+  	return $model->with(array(
+  		'users'=>array(
+  			'select'=>'users.id',
+  			'condition'=>'users.id=:id',
+  			'params'=>array(':id'=>Yii::app()->user->id),
+  		),
+  	))->exists();
+  }
  
   // Load user model.
   protected function loadUser($id=null)
