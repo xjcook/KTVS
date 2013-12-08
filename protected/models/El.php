@@ -53,8 +53,8 @@ class El extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-			'pages' => array(self::MANY_MANY, 'Page', 'tbl_page_el(page_id, el_id)'),
-			'students' => array(self::MANY_MANY, 'Student', 'tbl_student_el(student_id, el_id)'),
+			'pages' => array(self::MANY_MANY, 'Page', 'tbl_page_el(el_id, page_id)'),
+			'students' => array(self::MANY_MANY, 'Student', 'tbl_student_el(el_id, student_id)'),
 		);
 	}
 
