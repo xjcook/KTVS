@@ -19,11 +19,7 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_id'); ?>
-		<?php echo $form->textField($model,'user_id'); ?>
-		<?php echo $form->error($model,'user_id'); ?>
-	</div>
+	<?php echo $form->hiddenField($model,'user_id', array('value'=>Yii::app()->user->id)); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'sport_id'); ?>
