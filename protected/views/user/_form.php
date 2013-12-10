@@ -37,7 +37,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'is_admin'); ?>
-		<?php echo $form->textField($model,'is_admin'); ?>
+		<?php echo $form->checkBox($model,'is_admin'); ?>
 		<?php echo $form->error($model,'is_admin'); ?>
 	</div>
 
