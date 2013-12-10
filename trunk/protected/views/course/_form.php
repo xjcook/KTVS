@@ -36,6 +36,13 @@
 		<?php echo $form->textField($model,'type'); ?>
 		<?php echo $form->error($model,'type'); ?>
 	</div>
+<!--
+	<div class="row">
+		<?php /*echo $form->labelEx($model,'haha'); ?>
+		<?php $type_list=CHtml::listData($model->search(),'id'); ?>
+		<?php echo $form->checkBoxList($model,'haha', $type_list); ?>
+		<?php echo $form->error($model,'type');*/ ?>
+	</div> --> 
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
