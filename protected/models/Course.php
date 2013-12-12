@@ -62,10 +62,10 @@ class Course extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'description' => 'Description',
-			'type' => 'Type',
-			'updated_at' => 'Updated At',
+			'name' => 'Názov   ',
+			'description' => 'Popis',
+			'type' => 'Typ',
+			'updated_at' => 'Čas úpravy',
 		);
 	}
 

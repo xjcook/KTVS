@@ -11,7 +11,7 @@ $this->menu=array(
 	array('label'=>'List Sport', 'url'=>array('index')),
 	array('label'=>'Create Sport', 'url'=>array('create')),
 	array('label'=>'Update Sport', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Sport', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Delete Sport', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Si si isty, že chceš zmazať šport?')),
 	array('label'=>'Manage Sport', 'url'=>array('admin')),
 );
 ?>

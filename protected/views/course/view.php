@@ -3,20 +3,20 @@
 /* @var $model Course */
 
 $this->breadcrumbs=array(
-	'Courses'=>array('index'),
+	'Kurzy'=>array('index'),
 	$model->name,
 );
 
 $this->menu=array(
-	array('label'=>'List Course', 'url'=>array('index')),
-	array('label'=>'Create Course', 'url'=>array('create')),
-	array('label'=>'Update Course', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Course', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Course', 'url'=>array('admin')),
+	array('label'=>'Zoznam kurzov', 'url'=>array('index')),
+	array('label'=>'Vytvorť kurz', 'url'=>array('create')),
+	array('label'=>'Upraviť kurz', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Odstráňiť kurz', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Určite chceš odstrániť túto položku?')),
+	array('label'=>'Spravovať kurzy', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Course #<?php echo $model->id; ?></h1>
+<h1><?php echo $model->name; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

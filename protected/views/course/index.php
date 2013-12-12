@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Course', 'url'=>array('create')),
-	array('label'=>'Manage Course', 'url'=>array('admin')),
+	array('label'=>'Vytvoriť kurz', 'url'=>array('create')),
+	array('label'=>'Spravovať kurzy', 'url'=>array('admin')),
 );
 ?>
 

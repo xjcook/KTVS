@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Sport <?php echo $model->id; ?></h1>
+<h1>Uprav <?php echo $model->name; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
