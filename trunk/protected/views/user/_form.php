@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">*<span class="required"></span> povinné položky</p>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'name'); ?>
@@ -42,7 +42,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Vytvor' : 'Ulož'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

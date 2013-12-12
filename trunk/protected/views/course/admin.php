@@ -3,13 +3,13 @@
 /* @var $model Course */
 
 $this->breadcrumbs=array(
-	'Courses'=>array('index'),
-	'Manage',
+	'Kurzy'=>array('index'),
+	'Správa',
 );
 
 $this->menu=array(
-	array('label'=>'List Course', 'url'=>array('index')),
-	array('label'=>'Create Course', 'url'=>array('create')),
+	array('label'=>'Zoznam kurzov', 'url'=>array('index')),
+	array('label'=>'Vytvorenie kurzu', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Courses</h1>
+<h1>Správa kurzov</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>

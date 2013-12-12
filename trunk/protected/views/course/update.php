@@ -3,19 +3,19 @@
 /* @var $model Course */
 
 $this->breadcrumbs=array(
-	'Courses'=>array('index'),
+	'Kurzy'=>array('index'),
 	$model->name=>array('view','id'=>$model->id),
-	'Update',
+	'Úprava',
 );
 
 $this->menu=array(
-	array('label'=>'List Course', 'url'=>array('index')),
-	array('label'=>'Create Course', 'url'=>array('create')),
-	array('label'=>'View Course', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Course', 'url'=>array('admin')),
+	array('label'=>'Zoznam kurzov', 'url'=>array('index')),
+	array('label'=>'Vytvoriť kurz', 'url'=>array('create')),
+	array('label'=>'Detail kurzu', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Správať kurzy', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Course <?php echo $model->id; ?></h1>
+<h1>Úprava <?php echo $model->name; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

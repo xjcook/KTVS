@@ -3,16 +3,16 @@
 /* @var $model Course */
 
 $this->breadcrumbs=array(
-	'Courses'=>array('index'),
-	'Create',
+	'Kurzy'=>array('index'),
+	'Vytvorenie',
 );
 
 $this->menu=array(
-	array('label'=>'List Course', 'url'=>array('index')),
-	array('label'=>'Manage Course', 'url'=>array('admin')),
+	array('label'=>'Zoznam kurzov', 'url'=>array('index')),
+	array('label'=>'Spravovať kurzy', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Course</h1>
+<h1>Vytvorenie kurzu</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
