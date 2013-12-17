@@ -44,7 +44,7 @@ class User extends CActiveRecord
 			array('email', 'unique'),
 			array('is_admin', 'numerical', 'integerOnly'=>true),
 			array('name, email, password', 'length', 'max'=>255),
-			array('description, consultation', 'safe'),
+			array('id, description, consultation', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, email, description, consultation, is_admin, updated_at', 'safe', 'on'=>'search'),
