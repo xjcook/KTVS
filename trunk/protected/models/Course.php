@@ -17,30 +17,15 @@
 class Course extends CActiveRecord
 {
 	/**
+	 * @property typeString
+	 */
+	public $typeString = '';
+	
+	/**
 	 * @property userIds
 	 */
-	public $_userIds = null;
-	
-	public function getUserIds() 
-	{
-	    if($this->_userIds===null) 
-	    {
-	        $this->_userIds=array();
-	        
-	        if(!$this->isNewRecord) 
-	        {
-	            foreach($this->users as $user)
-	                $this->_userIds[]=$user->id;
-	        }
-	    }
-	    return $this->_userIds;
-	}
-	
-	public function setUserIds($value) 
-	{
-	    $this->_userIds = $value;
-	}
-	
+	public $userIds = array();
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -90,6 +75,7 @@ class Course extends CActiveRecord
 			'name' => 'Názov   ',
 			'description' => 'Popis',
 			'type' => 'Typ',
+			'typeString' => 'Typ',
 			'updated_at' => 'Čas úpravy',
 			'users' => 'Učitelia',
 		);
@@ -162,5 +148,27 @@ class Course extends CActiveRecord
         		'class'=>'application.components.ESaveRelatedBehavior',
         	),
         );
+	}
+	
+	/**
+	 * Override afterFind()
+	 * @see CActiveRecord::afterFind()
+	 */
+	protected function afterFind()
+	{
+		// set typeString
+		if($this->type==0)
+			$this->typeString = 'Zimný';
+		else
+			$this->typeString = 'Letný';
+		
+		// set userIds[]
+		if(!empty($this->users))
+		{
+			foreach ($this->users as $n => $user)
+				$this->userIds[] = $user->id;
+		}
+		
+		parent::beforeSave();
 	}
 }
