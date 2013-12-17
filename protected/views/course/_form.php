@@ -33,9 +33,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'type'); ?>
-		<?php echo $form->textField($model,'type'); ?>
-		<?php echo $form->error($model,'type'); ?>
+		<?php echo CHtml::label('Typ',''); ?><br />
+		<?php $accountStatus = array('0'=>'Zimný','1'=>'Letný');?>
+        <?php echo $form->radioButtonList($model,'type',$accountStatus); ?>
 	</div>
 
 	<div class="row">
