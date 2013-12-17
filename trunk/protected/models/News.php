@@ -63,12 +63,12 @@ class News extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'user_id' => 'User',
-			'sport_id' => 'Sport',
-			'title' => 'Title',
-			'content' => 'Content',
-			'valid_to' => 'Valid To',
-			'updated_at' => 'Updated At',
+			'user_id' => 'Používateľ',
+			'sport_id' => 'Šport',
+			'title' => 'Nadpis',
+			'content' => 'Popis',
+			'valid_to' => 'Zobraziť do',
+			'updated_at' => 'Posledná úprava',
 		);
 	}
 

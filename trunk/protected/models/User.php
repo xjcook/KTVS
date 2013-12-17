@@ -79,8 +79,8 @@ class User extends CActiveRecord
 			'password' => 'Heslo',
 			'description' => 'Popis',
 			'consultation' => 'Konzultácie',
-			'is_admin' => 'Is Admin',
-			'updated_at' => 'Updated At',
+			'is_admin' => 'Je Admin',
+			'updated_at' => 'Čas úpravy',
 		);
 	}
 
