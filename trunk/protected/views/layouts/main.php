@@ -9,7 +9,6 @@
     <link href='http://fonts.googleapis.com/css?family=Noto+Serif&subset=latin-ext' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/styles.css" />
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/js-image-slider.js" type="text/javascript"></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script>
 		 // DOM ready
@@ -40,6 +39,16 @@
 	      });
 		 
 		 });
+
+		 $(document).ready(function(){
+	$('#login-trigger').click(function(){
+		$(this).next('#login-content').slideToggle();
+		$(this).toggleClass('active');					
+		
+		if ($(this).hasClass('active')) $(this).find('span').html('&#x25B2;')
+			else $(this).find('span').html('&#x25BC;')
+		})
+});
 	</script>
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -60,13 +69,53 @@
 			)); ?>
 		</nav>
 		
-		<div id="login_link" >
-	   		<?php if(Yii::app()->user->isGuest): ?>
-				<?php echo CHtml::button('Prihlásiť', array('submit' => array('site/login'))); ?>
-	   		<?php else: ?>
-	  			<?php echo CHtml::link(Yii::app()->user->email, Yii::app()->createUrl('user/'.Yii::app()->user->id)); ?>
-	   			<?php echo CHtml::button('Odhlásiť', array('submit' => array('site/logout'))); ?>
-	   	    <?php endif; ?>
+		<div  id ="login_link">
+			<ul>
+				<li id="login">
+					<a id="login-trigger" href="#">Prihlásenie
+						<span>▼</span>
+					</a>
+					<div id="login-content">
+		   				<?php if(Yii::app()->user->isGuest): ?>
+							<?php $form=$this->beginWidget('CActiveForm', array(
+								'id'=>'login-form',
+								'enableClientValidation'=>true,
+								'clientOptions'=>array(
+									'validateOnSubmit'=>true,
+								),
+							)); ?>
+
+							
+
+							<fieldset id="inputs">
+								<?php echo $form->labelEx($this->loginForm,'username'); ?>
+								<?php echo $form->textField($this->loginForm,'username', array('placeholder'=>'email@email.com')); ?>
+								<?php echo $form->error($this->loginForm,'username'); ?>
+
+								<?php echo $form->labelEx($this->loginForm,'password'); ?>
+								<?php echo $form->passwordField($this->loginForm,'password', array('placeholder'=>'Heslo')); ?>
+								<?php echo $form->error($this->loginForm,'password'); ?>
+								<!--<p class="hint">
+									Nápoveda: môžeš sa prihlásiť s <kbd>admin@admin.com</kbd>/<kbd>admin</kbd> alebo <kbd>user@user.com</kbd>/<kbd>user</kbd>.
+								</p>-->
+							</fieldset>
+
+							<fieldset id="actions">
+								<?php echo $form->checkBox($this->loginForm,'rememberMe'); ?>
+								<?php echo $form->label($this->loginForm,'rememberMe'); ?>
+								<?php echo $form->error($this->loginForm,'rememberMe'); ?>
+							
+								<?php echo CHtml::submitButton('Login', array('class' => 'prihlas')); ?>
+							</fieldset>
+						<?php $this->endWidget(); ?>
+				 	
+		   				<?php else: ?>
+		  					<?php echo CHtml::link(Yii::app()->user->email, Yii::app()->createUrl('user/'.Yii::app()->user->id)); ?>
+		   					<?php echo CHtml::button('Odhlásiť', array('submit' => array('site/logout'))); ?>
+		   	    		<?php endif; ?>
+	   	    		</div> 
+	   	   		</li>
+	   	    </ul>
 		</div>
 		
 	    <div class="clearfloat"></div>
@@ -89,7 +138,7 @@
 	            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/2.png"  />
 	            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/3.jpg" />
 	            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/5.png" />
-	            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/9.png" />
+	            <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/9.jpg" />
 	        </div>
 	    </div>  
 	    
