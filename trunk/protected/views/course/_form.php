@@ -15,8 +15,6 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note"><span class="required">*</span>povinné položky</p>
-
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">

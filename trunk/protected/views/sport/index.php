@@ -3,12 +3,12 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Sports',
+	'Športy',
 );
 
 $this->menu=array(
-	array('label'=>'Create Sport', 'url'=>array('create')),
-	array('label'=>'Manage Sport', 'url'=>array('admin')),
+	array('label'=>'Vytvoriť šport', 'url'=>array('create')),
+	array('label'=>'Správa športov', 'url'=>array('admin')),
 );
 ?>
 

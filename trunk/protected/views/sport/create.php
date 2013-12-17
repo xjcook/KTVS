@@ -3,16 +3,16 @@
 /* @var $model Sport */
 
 $this->breadcrumbs=array(
-	'Sports'=>array('index'),
-	'Create',
+	'Športy'=>array('index'),
+	'Vytvorenie',
 );
 
 $this->menu=array(
-	array('label'=>'List Sport', 'url'=>array('index')),
-	array('label'=>'Manage Sport', 'url'=>array('admin')),
+	array('label'=>'Zoznam športov ', 'url'=>array('index')),
+	array('label'=>'Spravovať športy', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Vytvor nový šport</h1>
+<h1>Vytvorenie športu</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

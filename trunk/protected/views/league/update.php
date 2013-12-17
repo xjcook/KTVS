@@ -3,19 +3,19 @@
 /* @var $model El */
 
 $this->breadcrumbs=array(
-	'Els'=>array('index'),
+	'Lig'=>array('inydex'),
 	$model->name=>array('view','id'=>$model->id),
-	'Update',
+	'Úprava',
 );
 
 $this->menu=array(
-	array('label'=>'List El', 'url'=>array('index')),
-	array('label'=>'Create El', 'url'=>array('create')),
-	array('label'=>'View El', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage El', 'url'=>array('admin')),
+	array('label'=>'Zoznam líg', 'url'=>array('index')),
+	array('label'=>'Vytvoriť ligu', 'url'=>array('create')),
+	array('label'=>'Detail ligy', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Spravovať ligy', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update El <?php echo $model->id; ?></h1>
+<h1>Úprava <?php echo $model->name; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

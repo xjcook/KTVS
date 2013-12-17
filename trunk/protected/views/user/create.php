@@ -9,10 +9,10 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Zoznam používateľov', 'url'=>array('index')),
-	array('label'=>'Manage User', 'url'=>array('admin')),
+	array('label'=>'Spravovať používateľov', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Vytvor používateľa</h1>
+<h1>Vytvorenie používateľa</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
