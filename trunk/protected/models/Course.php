@@ -16,7 +16,9 @@
  */
 class Course extends CActiveRecord
 {
-	// userIds property
+	/**
+	 * @property userIds
+	 */
 	public $_userIds = null;
 	
 	public function getUserIds() 
