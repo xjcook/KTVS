@@ -137,33 +137,4 @@ class Course extends CActiveRecord
             ),
 		);
 	}
-	
-	/**
-	 * Add users of the Course
-	 * @param array $users
-	 */
-	public function addUsers(array $users)
-	{
-		foreach($users as $userId)
-		{
-			Yii::app()->db->createCommand(
-				'INSERT INTO tbl_user_course(user_id,course_id) '.
-				'VALUES (:user_id,:course_id)')
-			->bindValues(array(':user_id'=>$userId,':course_id'=>$this->id))
-			->query();
-		}
-	}
-	
-	/**
-	 * Update users of the Course
-	 * @param array $users
-	 */
-	public function updateUsers(array $users)
-	{
-		Yii::app()->db->createCommand(
-			'DELETE FROM tbl_user_course WHERE course_id=:course_id')
-		->bindValue(':course_id',$this->id)->query();
-		
-		$this->addUsers($users);
-	}
 }

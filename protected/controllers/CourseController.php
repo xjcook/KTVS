@@ -39,17 +39,18 @@ class CourseController extends Controller
 		{
 			$model=new Course;
 			$userModel=User::model();
-	
+			
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
 	
 			if(isset($_POST['Course']) && isset($_POST['User']))
 			{
+				$criteria = new CDbCriteria();
+				$criteria->addInCondition('id', $_POST['User']['id']);
 				$model->attributes=$_POST['Course'];
-				if($model->save()) {
-					$model->addUsers($_POST['User']['id']);
+				$model->users=$userModel->findAll($criteria);
+				if($model->save())
 					$this->redirect(array('view','id'=>$model->id));
-				}
 			}
 			$this->render('create',array(
 				'model'=>$model,
@@ -87,11 +88,12 @@ class CourseController extends Controller
 	
 			if(isset($_POST['Course']) && isset($_POST['User']))
 			{
+				$criteria = new CDbCriteria();
+				$criteria->addInCondition('id', $_POST['User']['id']);
 				$model->attributes=$_POST['Course'];
-				if($model->save()) {
-					$model->updateUsers($_POST['User']['id']);
+				$model->users=$userModel->findAll($criteria);
+				if($model->save())
 					$this->redirect(array('view','id'=>$model->id));
-				}
 			}
 	
 			$this->render('update',array(
