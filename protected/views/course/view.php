@@ -24,7 +24,7 @@ $this->menu=array(
 		'id',
 		'name',
 		'description',
-		'type',
+		'typeString',
 		'updated_at',
 	),
 )); ?>

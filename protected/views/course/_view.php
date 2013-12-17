@@ -18,7 +18,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:</b>
-	<?php echo CHtml::encode($data->type); ?>
+	<?php echo CHtml::encode($data->typeString); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('updated_at')); ?>:</b>

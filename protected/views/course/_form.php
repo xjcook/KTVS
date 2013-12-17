@@ -32,9 +32,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo CHtml::label('Typ',''); ?><br />
-		<?php $accountStatus = array('0'=>'Zimný','1'=>'Letný');?>
-        <?php echo $form->radioButtonList($model,'type',$accountStatus); ?>
+		<?php echo $form->labelEx($model,'type'); ?><br />
+        <?php echo $form->radioButtonList($model,'type',array('0'=>'Zimný','1'=>'Letný')); ?>
+        <?php echo $form->error($model,'type'); ?>
 	</div>
 
 	<div class="row">
