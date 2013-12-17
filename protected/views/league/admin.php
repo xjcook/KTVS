@@ -3,13 +3,13 @@
 /* @var $model El */
 
 $this->breadcrumbs=array(
-	'Els'=>array('index'),
-	'Manage',
+	'Ligy'=>array('index'),
+	'Spravovať',
 );
 
 $this->menu=array(
-	array('label'=>'List El', 'url'=>array('index')),
-	array('label'=>'Create El', 'url'=>array('create')),
+	array('label'=>'Zoznam líg', 'url'=>array('index')),
+	array('label'=>'Vytvoriť ligu', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Els</h1>
+<h1>Spravovať ligy</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>

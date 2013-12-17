@@ -4,12 +4,12 @@
 
 $this->breadcrumbs=array(
 	'Používateľia'=>array('index'),
-	'Manage',
+	'Spravovať',
 );
 
 $this->menu=array(
 	array('label'=>'Zoznam používateľov', 'url'=>array('index')),
-	array('label'=>'Vytvor používateľa', 'url'=>array('create')),
+	array('label'=>'Vytvoriť používateľa', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Users</h1>
+<h1>Sprava používateľov </h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>

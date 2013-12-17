@@ -15,8 +15,6 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note"><span class="required">*</span> povinné položky.</p>
-
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
@@ -38,7 +36,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Vytvor' : 'Ulož'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Vytvoriť' : 'Uložiť'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

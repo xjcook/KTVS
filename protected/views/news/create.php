@@ -3,16 +3,16 @@
 /* @var $model News */
 
 $this->breadcrumbs=array(
-	'News'=>array('index'),
-	'Create',
+	'Novinky'=>array('index'),
+	'Vytvorenie',
 );
 
 $this->menu=array(
-	array('label'=>'List News', 'url'=>array('index')),
-	array('label'=>'Manage News', 'url'=>array('admin')),
+	array('label'=>'Zoznam noviniek', 'url'=>array('index')),
+	array('label'=>'Spravovať novinky', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create News</h1>
+<h1>Vytvorenie novinky</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

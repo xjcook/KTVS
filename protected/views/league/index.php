@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create El', 'url'=>array('create')),
-	array('label'=>'Manage El', 'url'=>array('admin')),
+	array('label'=>'Vyvtvoriť ligu', 'url'=>array('create')),
+	array('label'=>'Spravovať ligy', 'url'=>array('admin')),
 );
 ?>
 

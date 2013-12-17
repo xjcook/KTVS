@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Vytvor používateľa', 'url'=>array('create')),
-	array('label'=>'Manage User', 'url'=>array('admin')),
+	array('label'=>'Vytvoriť používateľa', 'url'=>array('create')),
+	array('label'=>'Spraovať používateľov', 'url'=>array('admin')),
 );
 ?>
 

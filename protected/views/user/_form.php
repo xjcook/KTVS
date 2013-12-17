@@ -15,8 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">*<span class="required"></span> povinné položky</p>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'name'); ?>
 		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); ?>
@@ -42,7 +41,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Vytvor' : 'Ulož'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Vytvoriť' : 'Uložiť'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
