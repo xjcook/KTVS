@@ -65,11 +65,11 @@ class El extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'user_id' => 'User',
-			'name' => 'Name',
-			'description' => 'Description',
-			'type' => 'Type',
-			'updated_at' => 'Updated At',
+			'user_id' => 'Používateľ',
+			'name' => 'Názov',
+			'description' => 'Popis',
+			'type' => 'Typ',
+			'updated_at' => 'Posledná úprava',
 		);
 	}
 

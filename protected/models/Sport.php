@@ -70,10 +70,10 @@ class Sport extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'schedule_id' => 'Schedule',
-			'name' => 'Name',
-			'description' => 'Description',
-			'capacity' => 'Capacity',
-			'updated_at' => 'Updated At',
+			'name' => 'Názov',
+			'description' => 'Popis',
+			'capacity' => 'Kapacita',
+			'updated_at' => 'Posledná úprava',
 		);
 	}
 
