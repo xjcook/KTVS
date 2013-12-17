@@ -1,6 +1,7 @@
 <?php
 /* @var $this CourseController */
 /* @var $model Course */
+/* @var $userModel User */
 
 $this->breadcrumbs=array(
 	'Kurzy'=>array('index'),
@@ -15,4 +16,4 @@ $this->menu=array(
 
 <h1>Vytvorenie kurzu</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model, 'userModel'=>$userModel)); ?>

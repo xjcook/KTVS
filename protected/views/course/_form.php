@@ -1,6 +1,7 @@
 <?php
 /* @var $this CourseController */
 /* @var $model Course */
+/* @var $userModel User */
 /* @var $form CActiveForm */
 ?>
 
@@ -36,13 +37,12 @@
 		<?php echo $form->textField($model,'type'); ?>
 		<?php echo $form->error($model,'type'); ?>
 	</div>
-<!--
+
 	<div class="row">
-		<?php /*echo $form->labelEx($model,'haha'); ?>
-		<?php $type_list=CHtml::listData($model->search(),'id'); ?>
-		<?php echo $form->checkBoxList($model,'haha', $type_list); ?>
-		<?php echo $form->error($model,'type');*/ ?>
-	</div> --> 
+		<?php echo CHtml::label('Učiteľ','ytUser_id'); ?><br />
+		<?php echo $form->checkBoxList($userModel,'id',CHtml::listData($userModel->findAll(),'id','name')); ?>
+		<?php echo $form->error($userModel,'name'); ?>
+	</div> 
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Vytvoriť' : 'Uložiť'); ?>
