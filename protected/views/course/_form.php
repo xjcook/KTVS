@@ -1,7 +1,6 @@
 <?php
 /* @var $this CourseController */
 /* @var $model Course */
-/* @var $userModel User */
 /* @var $form CActiveForm */
 ?>
 
@@ -39,9 +38,10 @@
 	</div>
 
 	<div class="row">
-		<?php echo CHtml::label('Učiteľ','ytUser_id'); ?><br />
-		<?php echo $form->checkBoxList($userModel,'id',CHtml::listData($userModel->findAll(),'id','name')); ?>
-		<?php echo $form->error($userModel,'name'); ?>
+		<?php echo $form->labelEx($model,'users'); ?><br/>
+		<?php echo $form->checkBoxList($model,'userIds',
+				CHtml::listData(User::model()->findAll(),'id','name')); ?>
+		<?php echo $form->error($model, 'users'); ?>
 	</div> 
 
 	<div class="row buttons">

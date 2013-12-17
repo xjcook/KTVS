@@ -38,23 +38,20 @@ class CourseController extends Controller
 		if(Yii::app()->user->checkAccess('createCourse'))
 		{
 			$model=new Course;
-			$userModel=User::model();
 			
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
 	
-			if(isset($_POST['Course']) && isset($_POST['User']))
+			if(isset($_POST['Course']))
 			{
-				$criteria = new CDbCriteria();
-				$criteria->addInCondition('id', $_POST['User']['id']);
 				$model->attributes=$_POST['Course'];
-				$model->users=$userModel->findAll($criteria);
-				if($model->save())
+				$model->users=$model->userIds;
+				if($model->saveWithRelated('users'))
 					$this->redirect(array('view','id'=>$model->id));
 			}
+			
 			$this->render('create',array(
 				'model'=>$model,
-				'userModel'=>$userModel,
 			));
 		}
 		else
@@ -75,30 +72,19 @@ class CourseController extends Controller
 		if(Yii::app()->user->checkAccess('updateOwnCourse', array('course'=>$model)) ||
 		   Yii::app()->user->checkAccess('updateCourse'))
 		{
-			$userModel=User::model();
-			/*$userModel=User::model()->with(array(
-				'courses'=>array(
-					'condition'=>'course_id=:course_id',
-					'params'=>array(':course_id'=>$model->id),
-				),
-			));*/
-
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
 	
-			if(isset($_POST['Course']) && isset($_POST['User']))
+			if(isset($_POST['Course']))
 			{
-				$criteria = new CDbCriteria();
-				$criteria->addInCondition('id', $_POST['User']['id']);
 				$model->attributes=$_POST['Course'];
-				$model->users=$userModel->findAll($criteria);
-				if($model->save())
+				$model->users=$model->userIds;
+				if($model->saveWithRelated('users'))
 					$this->redirect(array('view','id'=>$model->id));
 			}
 	
 			$this->render('update',array(
 				'model'=>$model,
-				'userModel'=>$userModel,
 			));
 		}
 		else
