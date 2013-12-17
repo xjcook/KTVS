@@ -128,10 +128,10 @@ class Schedule extends CActiveRecord
 	 */
 	public function behaviors()
 	{
-		return array(
-			'EAdvancedArBehavior'=>array(
-                'class'=>'application.extensions.EAdvancedArBehavior',
-            ),
-		);
+        return array(
+        	'ESaveRelatedBehavior'=>array(
+        		'class'=>'application.components.ESaveRelatedBehavior',
+        	),
+        );
 	}
 }

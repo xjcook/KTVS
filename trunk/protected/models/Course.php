@@ -16,6 +16,29 @@
  */
 class Course extends CActiveRecord
 {
+	// userIds property
+	public $_userIds = null;
+	
+	public function getUserIds() 
+	{
+	    if($this->_userIds===null) 
+	    {
+	        $this->_userIds=array();
+	        
+	        if(!$this->isNewRecord) 
+	        {
+	            foreach($this->users as $user)
+	                $this->_userIds[]=$user->id;
+	        }
+	    }
+	    return $this->_userIds;
+	}
+	
+	public function setUserIds($value) 
+	{
+	    $this->_userIds = $value;
+	}
+	
 	/**
 	 * @return string the associated database table name
 	 */
@@ -35,7 +58,7 @@ class Course extends CActiveRecord
 			array('name, type', 'required'),
 			array('type', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
-			array('description', 'safe'),
+			array('description, userIds', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, description, type, updated_at', 'safe', 'on'=>'search'),
@@ -66,6 +89,7 @@ class Course extends CActiveRecord
 			'description' => 'Popis',
 			'type' => 'Typ',
 			'updated_at' => 'Čas úpravy',
+			'users' => 'Učitelia',
 		);
 	}
 
@@ -131,10 +155,10 @@ class Course extends CActiveRecord
 	 */
 	public function behaviors()
 	{
-		return array(
-			'EAdvancedArBehavior'=>array(
-                'class'=>'application.extensions.EAdvancedArBehavior',
-            ),
-		);
+        return array(
+        	'ESaveRelatedBehavior'=>array(
+        		'class'=>'application.components.ESaveRelatedBehavior',
+        	),
+        );
 	}
 }

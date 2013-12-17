@@ -19,4 +19,4 @@ $this->menu=array(
 
 <h1>Úprava <?php echo $model->name; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model, 'userModel'=>$userModel)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -44,7 +44,7 @@ class User extends CActiveRecord
 			array('email', 'unique'),
 			array('is_admin', 'numerical', 'integerOnly'=>true),
 			array('name, email, password', 'length', 'max'=>255),
-			array('id, description, consultation', 'safe'),
+			array('description, consultation', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, email, description, consultation, is_admin, updated_at', 'safe', 'on'=>'search'),
@@ -170,24 +170,23 @@ class User extends CActiveRecord
 	 */
 	public function behaviors()
 	{
-		return array(
-			'EAdvancedArBehavior'=>array(
-                'class'=>'application.extensions.EAdvancedArBehavior',
-            ),
-		);
+        return array(
+        	'ESaveRelatedBehavior'=>array(
+        		'class'=>'application.components.ESaveRelatedBehavior',
+        	),
+        );
 	}
 	
+	/**
+	 * Override beforeSave() to hash password
+	 * @see CActiveRecord::beforeSave()
+	 */
 	protected function beforeSave()
 	{
 		if (parent::beforeSave()) {
 			if (!empty($this->password)) {
 				$this->hashed_password = $this->hashPassword($this->password);
 			}
-				
-			/*if ($this->isNewRecord) {
-			
-			}*/
-				
 			return true;
 		} else {
 			return false;
