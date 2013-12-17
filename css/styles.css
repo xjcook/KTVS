@@ -140,7 +140,7 @@ header {
 	width:19%;
 	margin: 1%;
 	float:left;
-	background:initial;
+	background:rgba(241, 234, 232, 0.8);
 	border-radius:20px;
 	box-shadow: 0 0px 6px rgba(76, 21, 20, 0.8);
 }
