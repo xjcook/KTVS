@@ -16,11 +16,12 @@
  * @property Course[] $courses
  * @property El[] $els
  * @property Sport[] $sports
+ * @property Tvobject[] $tvobjects
  */
 class Student extends CActiveRecord
 {
 	/**
-	 * @property userIds
+	 * @property sportIds
 	 */
 	public $sportIds = array();
 	
@@ -62,6 +63,7 @@ class Student extends CActiveRecord
 			'courses' => array(self::MANY_MANY, 'Course', 'tbl_student_course(student_id, course_id)'),
 			'els' => array(self::MANY_MANY, 'El', 'tbl_student_el(student_id, el_id)'),
 			'sports' => array(self::MANY_MANY, 'Sport', 'tbl_student_sport(student_id, sport_id)'),
+			'tvobjects' => array(self::MANY_MANY, 'Tvobject', 'tbl_sport_tvobject(sport_id, tvobject_id)'),
 		);
 	}
 

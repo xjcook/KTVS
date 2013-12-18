@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table 'tbl_tvobject':
  * @property integer $id
- * @property integer $sport_id
  * @property string $name
  * @property string $description
  * @property string $image
@@ -14,10 +13,15 @@
  *
  * The followings are the available model relations:
  * @property Schedule[] $schedules
- * @property Sport $sport
+ * @property Sport[] $sports
  */
 class Tvobject extends CActiveRecord
 {
+	/**
+	 * @property sportIds
+	 */
+	public $sportIds = array();
+	
 	/**
 	 * @return string the associated database table name
 	 */
@@ -34,13 +38,12 @@ class Tvobject extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('sport_id, name', 'required'),
-			array('sport_id', 'numerical', 'integerOnly'=>true),
+			array('sports, name', 'required'),
 			array('name, image', 'length', 'max'=>255),
-			array('description, map', 'safe'),
+			array('description, map, sportIds', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, sport_id, name, description, image, map, updated_at', 'safe', 'on'=>'search'),
+			array('id, name, description, image, map, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,7 +56,7 @@ class Tvobject extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'schedules' => array(self::HAS_MANY, 'Schedule', 'tvobject_id'),
-			'sport' => array(self::BELONGS_TO, 'Sport', 'sport_id'),
+			'sports' => array(self::MANY_MANY, 'Sport', 'tbl_sport_tvobject(tvobject_id, sport_id)'),
 		);
 	}
 
@@ -64,7 +67,7 @@ class Tvobject extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'sport_id' => 'Sport',
+			'sports' => 'Sports',
 			'name' => 'Name',
 			'description' => 'Description',
 			'image' => 'Image',
@@ -92,7 +95,6 @@ class Tvobject extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('sport_id',$this->sport_id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('image',$this->image,true);
@@ -142,5 +144,21 @@ class Tvobject extends CActiveRecord
 				'class'=>'ext.yiiext.behaviors.activerecord-relation.EActiveRecordRelationBehavior',
 			),
 		);
+	}
+	
+	/**
+	 * Override afterFind()
+	 * @see CActiveRecord::afterFind()
+	 */
+	protected function afterFind()
+	{
+		// set sportIds[]
+		if(!empty($this->sports))
+		{
+			foreach ($this->sports as $n=>$sport)
+				$this->sportIds[] = $sport->id;
+		}
+	
+		parent::afterFind();
 	}
 }
