@@ -140,10 +140,20 @@ class Sport extends CActiveRecord
 	 */
 	public function behaviors()
 	{
-        return array(
-        	'ESaveRelatedBehavior'=>array(
-        		'class'=>'application.components.ESaveRelatedBehavior',
-        	),
-        );
+//         return array(
+//         	'ESaveRelatedBehavior'=>array(
+//         		'class'=>'application.components.ESaveRelatedBehavior',
+//         	),
+//         );
+// 		return array(
+// 			'CAdvancedArBehavior' => array(
+// 				'class' => 'application.components.CAdvancedArBehavior',
+// 			),
+// 		);
+		return array(
+			'activerecord-relation'=>array(
+				'class'=>'ext.yiiext.behaviors.activerecord-relation.EActiveRecordRelationBehavior',
+			),
+		);
 	}
 }

@@ -137,10 +137,10 @@ class Tvobject extends CActiveRecord
 	 */
 	public function behaviors()
 	{
-        return array(
-        	'ESaveRelatedBehavior'=>array(
-        		'class'=>'application.components.ESaveRelatedBehavior',
-        	),
-        );
+		return array(
+			'activerecord-relation'=>array(
+				'class'=>'ext.yiiext.behaviors.activerecord-relation.EActiveRecordRelationBehavior',
+			),
+		);
 	}
 }

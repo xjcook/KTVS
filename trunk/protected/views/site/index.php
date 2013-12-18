@@ -24,3 +24,5 @@ should you have any questions.</p>
 <?php echo CHtml::link('Users',array('user/index')); ?><br/>
 
 <?php echo CHtml::link('Pages',array('page/index')); ?><br/>
+
+<?php echo CHtml::link('Prihlásenie na šport',array('student/create')); ?><br/>
