@@ -348,6 +348,33 @@ footer .copyright {
   width: 250px;  
 }
 
+/* TOTO URCITE NEPOUZIVAT!!! yw4 sa moze zmenit na hocico, radsej to urob ako to je nizsie
+#yw4{
+    {padding-left: 7px; font: small/1.7 Verdana, Arial, lucida, helvetica, sans-serif; overflow: hidden;}
+}*/
+/*#vyskakovacie_menu ul {
+	padding-left: 7px; 
+	font: small/1.7 Verdana, Arial, lucida, helvetica, sans-serif; 
+	overflow: hidden;
+}*/
+
+#vyskakovacie_menu {display: table; width: 650px; border:none;}
+#vyskakovacie_menu ul {list-style-type: none;padding-bottom: 0;}
+#vyskakovacie_menu li {float: left; position: relative;z-index: 10;}
+#vyskakovacie_menu li a {display: block; font-weight: bold; text-align: center; background: transparent;  line-height: 2em; border:none; text-decoration: none;}
+#vyskakovacie_menu li a.select {color: #000; background: #f8f8f8;}
+#vyskakovacie_menu li ul {position: absolute; display: none; width: 140px; left: 0; }
+
+#vyskakovacie_menu li li {width: 100%;}
+#vyskakovacie_menu li li a {padding: 2px 3px 2px 7px; line-height: 1.4em; font-weight: normal; text-align: left; background: #ddd; border:none;}
+
+/* Hover efekty pre prehliadace okrem IE 5.x a IE 6 */
+
+#vyskakovacie_menu li:hover a {border:1px dotted #dea20c;}
+#vyskakovacie_menu li:hover ul {display: block;}
+#vyskakovacie_menu li:hover li a {background: #ddd;}
+#vyskakovacie_menu li:hover li a:hover {color: #000;background-color: #f8f8f8;}
+
 #inputs{
 	border-style: none;
 }
