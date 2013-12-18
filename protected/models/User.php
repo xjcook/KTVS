@@ -22,8 +22,11 @@
  */
 class User extends CActiveRecord
 {
+	/**
+	 * @property password
+	 */
 	public $password;
-		
+	
 	/**
 	 * @return string the associated database table name
 	 */
@@ -79,7 +82,7 @@ class User extends CActiveRecord
 			'password' => 'Heslo',
 			'description' => 'Popis',
 			'consultation' => 'Konzultácie',
-			'is_admin' => 'Je Admin',
+			'is_admin' => 'Administrátor',
 			'updated_at' => 'Čas úpravy',
 		);
 	}
