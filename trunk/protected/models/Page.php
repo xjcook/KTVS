@@ -63,10 +63,10 @@ class Page extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'user_id' => 'User',
-			'title' => 'Title',
-			'content' => 'Content',
-			'updated_at' => 'Updated At',
+			'user_id' => 'Používateľ',
+			'title' => 'Naspis',
+			'content' => 'Obsah',
+			'updated_at' => 'Dátum vytvorenia',
 		);
 	}
 
