@@ -46,7 +46,7 @@ class CourseController extends Controller
 			{
 				$model->attributes=$_POST['Course'];
 				$model->users=$model->userIds;
-				if($model->saveWithRelated('users'))
+				if($model->save())
 					$this->redirect(array('view','id'=>$model->id));
 			}
 			
@@ -79,7 +79,7 @@ class CourseController extends Controller
 			{
 				$model->attributes=$_POST['Course'];
 				$model->users=$model->userIds;
-				if($model->saveWithRelated('users'))
+				if($model->save())
 					$this->redirect(array('view','id'=>$model->id));
 			}
 	

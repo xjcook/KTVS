@@ -20,6 +20,11 @@
 class Student extends CActiveRecord
 {
 	/**
+	 * @property userIds
+	 */
+	public $sportIds = array();
+	
+	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -35,9 +40,10 @@ class Student extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name, email, class, phone, skills', 'required'),
+			array('sports, name, email, class, phone, skills', 'required'),
 			array('class', 'numerical', 'integerOnly'=>true),
 			array('name, email, phone, skills', 'length', 'max'=>255),
+			array('sportIds', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, email, class, phone, skills, updated_at', 'safe', 'on'=>'search'),
@@ -138,10 +144,26 @@ class Student extends CActiveRecord
 	 */
 	public function behaviors()
 	{
-        return array(
-        	'ESaveRelatedBehavior'=>array(
-        		'class'=>'application.components.ESaveRelatedBehavior',
-        	),
-        );
+		return array(
+			'activerecord-relation'=>array(
+				'class'=>'ext.yiiext.behaviors.activerecord-relation.EActiveRecordRelationBehavior',
+			),
+		);
+	}
+	
+	/**
+	 * Override afterFind()
+	 * @see CActiveRecord::afterFind()
+	 */
+	protected function afterFind()
+	{	
+		// set sportIds[]
+		if(!empty($this->sports))
+		{
+			foreach ($this->sports as $n => $sport)
+				$this->sportIds[] = $sport->id;
+		}
+	
+		parent::afterFind();
 	}
 }

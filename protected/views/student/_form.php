@@ -16,6 +16,13 @@
 )); ?>
 
 	<?php echo $form->errorSummary($model); ?>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'sports'); ?><br/>
+		<?php echo $form->checkBoxList($model,'sportIds',
+				CHtml::listData(Sport::model()->findAll(),'id','name')); ?>
+		<?php echo $form->error($model,'sports'); ?>
+	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'name'); ?>

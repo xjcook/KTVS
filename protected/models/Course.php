@@ -72,7 +72,7 @@ class Course extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Názov   ',
+			'name' => 'Názov',
 			'description' => 'Popis',
 			'type' => 'Typ',
 			'typeString' => 'Typ',
@@ -143,11 +143,11 @@ class Course extends CActiveRecord
 	 */
 	public function behaviors()
 	{
-        return array(
-        	'ESaveRelatedBehavior'=>array(
-        		'class'=>'application.components.ESaveRelatedBehavior',
-        	),
-        );
+		return array(
+			'activerecord-relation'=>array(
+				'class'=>'ext.yiiext.behaviors.activerecord-relation.EActiveRecordRelationBehavior',
+			),
+		);
 	}
 	
 	/**
@@ -169,6 +169,6 @@ class Course extends CActiveRecord
 				$this->userIds[] = $user->id;
 		}
 		
-		parent::beforeSave();
+		parent::afterFind();
 	}
 }
