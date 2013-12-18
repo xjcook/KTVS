@@ -20,15 +20,16 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'tvobject_id'); ?><br/>
+		<?php echo $form->listBox($model,'tvobject_id',
+				CHtml::listData(Tvobject::model()->findAll(),'id','name')); ?>
+		<?php echo $form->error($model,'tvobject_id'); ?>
+	</div>
+	
+	<div class="row">
 		<?php echo $form->labelEx($model,'page_id'); ?>
 		<?php echo $form->textField($model,'page_id'); ?>
 		<?php echo $form->error($model,'page_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'tvobject_id'); ?>
-		<?php echo $form->textField($model,'tvobject_id'); ?>
-		<?php echo $form->error($model,'tvobject_id'); ?>
 	</div>
 
 	<div class="row buttons">
