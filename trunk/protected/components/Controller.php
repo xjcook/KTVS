@@ -27,28 +27,40 @@ class Controller extends CController
     public $loginForm;
     
     /**
+     * Initialize
+     * @see CController::init()
+     */
+    public function init()
+    {
+    	if(Yii::app()->detectMobileBrowser->showMobile)
+    	{
+    		Yii::app()->theme = 'mobile';
+    	}
+    	
+    	parent::init();
+    }
+    
+    /**
      * Overrides beforeAction() to set loginForm on every page
      * @see CController::beforeAction()
      */
     protected function beforeAction($action) {
-            $this->loginForm=new LoginForm;
-    
-            // if it is ajax validation request
-            if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
-            {
-                    echo CActiveForm::validate($model);
-                    Yii::app()->end();
-            }
-    
-            // collect user input data
-            if(isset($_POST['LoginForm']))
-            {
-                    $this->loginForm->attributes=$_POST['LoginForm'];
-                    // validate user input and redirect to the previous page if valid
-                    if($this->loginForm->validate() && $this->loginForm->login())
-                            $this->redirect(Yii::app()->user->returnUrl);
-            }
-    
-            return parent::beforeAction($action);
+		$this->loginForm=new LoginForm;
+			
+		// if it is ajax validation request
+		if (isset ( $_POST ['ajax'] ) && $_POST ['ajax'] === 'login-form') {
+			echo CActiveForm::validate ( $model );
+			Yii::app ()->end ();
+		}
+		
+		// collect user input data
+		if (isset ( $_POST ['LoginForm'] )) {
+			$this->loginForm->attributes = $_POST ['LoginForm'];
+			// validate user input and redirect to the previous page if valid
+			if ($this->loginForm->validate () && $this->loginForm->login ())
+				; // TODO Change text to 'Prihlaseny'
+		}
+		
+		return parent::beforeAction ( $action );
     }
 }

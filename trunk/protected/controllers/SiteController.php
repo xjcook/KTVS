@@ -106,4 +106,14 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+	
+	/**
+	 * Show mobile optimized page
+	 */
+	public function actionMobile()
+	{
+		Yii::app()->detectMobileBrowser->showMobile = true;
+		$this->redirect(array('/site/index'));
+	}
+	
 }

@@ -3,6 +3,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="HandheldFriendly" content="true"/>  
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="keywords" content="pohyb, WOW Slider, Website Slide Show, Web Image Slider" />
    	<meta name="description" content="pohyb created with WOW Slider, a free wizard program that helps you easily generate beautiful web slideshow" />
@@ -54,6 +55,9 @@
 					$(this).find('span').html('&#x25BC;');
 			})
 		});
+
+		// Mobile menu
+				
 	</script>
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
