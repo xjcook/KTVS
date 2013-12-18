@@ -3,19 +3,19 @@
 /* @var $model Student */
 
 $this->breadcrumbs=array(
-	'Students'=>array('index'),
+	'Študenti'=>array('index'),
 	$model->name=>array('view','id'=>$model->id),
-	'Update',
+	'¸Uprava',
 );
 
 $this->menu=array(
-	array('label'=>'List Student', 'url'=>array('index')),
-	array('label'=>'Create Student', 'url'=>array('create')),
-	array('label'=>'View Student', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Student', 'url'=>array('admin')),
+	array('label'=>'Zoznam študentov', 'url'=>array('index')),
+	array('label'=>'Vytvoriť študenta', 'url'=>array('create')),
+	array('label'=>'Detail študenta', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Spravovať študenta', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Student <?php echo $model->id; ?></h1>
+<h1>Uprava <?php echo $model->name; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -3,16 +3,16 @@
 /* @var $model Student */
 
 $this->breadcrumbs=array(
-	'Students'=>array('index'),
-	'Create',
+	'Študenti'=>array('index'),
+	'Vytvorienie',
 );
 
 $this->menu=array(
-	array('label'=>'List Student', 'url'=>array('index')),
-	array('label'=>'Manage Student', 'url'=>array('admin')),
+	array('label'=>'Zoznam študentov', 'url'=>array('index')),
+	array('label'=>'Spravovať študentov', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Student</h1>
+<h1>Vytvorenie študenta</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -65,12 +65,12 @@ class Student extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
+			'name' => 'Meno',
 			'email' => 'Email',
-			'class' => 'Class',
-			'phone' => 'Phone',
-			'skills' => 'Skills',
-			'updated_at' => 'Updated At',
+			'class' => 'Trieda/premenujem/',
+			'phone' => 'Mobil',
+			'skills' => 'Skúsenosti',
+			'updated_at' => 'upravene dnat',
 		);
 	}
 

@@ -3,13 +3,13 @@
 /* @var $model Tvobject */
 
 $this->breadcrumbs=array(
-	'Tvobjects'=>array('index'),
-	'Manage',
+	'Objekty'=>array('index'),
+	'Spravovať',
 );
 
 $this->menu=array(
-	array('label'=>'List Tvobject', 'url'=>array('index')),
-	array('label'=>'Create Tvobject', 'url'=>array('create')),
+	array('label'=>'Zoznam objektov', 'url'=>array('index')),
+	array('label'=>'Vytvoriť objekt', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Tvobjects</h1>
+<h1>Spravovať objekty</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>

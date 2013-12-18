@@ -3,19 +3,19 @@
 /* @var $model Tvobject */
 
 $this->breadcrumbs=array(
-	'Tvobjects'=>array('index'),
+	'Objekty'=>array('index'),
 	$model->name=>array('view','id'=>$model->id),
-	'Update',
+	'Uprava',
 );
 
 $this->menu=array(
-	array('label'=>'List Tvobject', 'url'=>array('index')),
-	array('label'=>'Create Tvobject', 'url'=>array('create')),
-	array('label'=>'View Tvobject', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Tvobject', 'url'=>array('admin')),
+	array('label'=>'Zoznam objektov ', 'url'=>array('index')),
+	array('label'=>'Vytvoriť objekt', 'url'=>array('create')),
+	array('label'=>'Detail objektu', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Spraovať objekty', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Tvobject <?php echo $model->id; ?></h1>
+<h1>Uprava objektu <?php echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

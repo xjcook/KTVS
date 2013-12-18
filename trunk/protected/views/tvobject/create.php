@@ -3,16 +3,16 @@
 /* @var $model Tvobject */
 
 $this->breadcrumbs=array(
-	'Tvobjects'=>array('index'),
-	'Create',
+	'Objekty'=>array('index'),
+	'Vytvorenie',
 );
 
 $this->menu=array(
-	array('label'=>'List Tvobject', 'url'=>array('index')),
-	array('label'=>'Manage Tvobject', 'url'=>array('admin')),
+	array('labelZoznam objektov', 'url'=>array('index')),
+	array('label'=>'Spravovať objekty ', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Tvobject</h1>
+<h1>Vytvorenie objektu</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
