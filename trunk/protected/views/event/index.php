@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create El', 'url'=>array('create')),
-	array('label'=>'Manage El', 'url'=>array('admin')),
+	array('label'=>'Vytvoriť akciu', 'url'=>array('create')),
+	array('label'=>'Spravovať akcie', 'url'=>array('admin')),
 );
 ?>
 
