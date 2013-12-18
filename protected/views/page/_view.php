@@ -4,13 +4,12 @@
 ?>
 
 <div class="view">
-	
-	<b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
+	<div id="element">	
+   
 	<?php echo CHtml::link(CHtml::encode($data->title),  array('view', 'id'=>$data->id)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('content')); ?>:</b>
 	<?php echo CHtml::decode($data->content); ?>
 	<br />
-
+	</div>
 </div>
