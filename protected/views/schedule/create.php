@@ -1,6 +1,7 @@
 <?php
 /* @var $this ScheduleController */
-/* @var $model Schedule */
+/* @var $scheduleModel Schedule */
+/* @var $pageModel Page */
 
 $this->breadcrumbs=array(
 	'Schedules'=>array('index'),
@@ -15,4 +16,4 @@ $this->menu=array(
 
 <h1>Create Schedule</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('scheduleModel'=>$scheduleModel,'pageModel'=>$pageModel)); ?>
