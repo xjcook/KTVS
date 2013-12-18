@@ -3,19 +3,19 @@
 /* @var $model El */
 
 $this->breadcrumbs=array(
-	'Els'=>array('index'),
+	'Akcie'=>array('index'),
 	$model->name=>array('view','id'=>$model->id),
-	'Update',
+	'Upraviť',
 );
 
 $this->menu=array(
-	array('label'=>'List El', 'url'=>array('index')),
-	array('label'=>'Create El', 'url'=>array('create')),
-	array('label'=>'View El', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage El', 'url'=>array('admin')),
+	array('label'=>'Zoznam akcií', 'url'=>array('index')),
+	array('label'=>'Vytvoriť akciu', 'url'=>array('create')),
+	array('label'=>'Detail akcie', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Spravovať akcie', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update El <?php echo $model->id; ?></h1>
+<h1>Detail <?php echo $model->name; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

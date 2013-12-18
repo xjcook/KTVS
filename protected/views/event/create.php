@@ -3,16 +3,16 @@
 /* @var $model El */
 
 $this->breadcrumbs=array(
-	'Els'=>array('index'),
-	'Create',
+	'Akcie'=>array('index'),
+	'Vytvorenie',
 );
 
 $this->menu=array(
-	array('label'=>'List El', 'url'=>array('index')),
-	array('label'=>'Manage El', 'url'=>array('admin')),
+	array('label'=>'Zoznam akcií ', 'url'=>array('index')),
+	array('label'=>'Spravovať akcie', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create El</h1>
+<h1>Vytvorenie akcie</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

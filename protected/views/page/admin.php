@@ -3,13 +3,13 @@
 /* @var $model Page */
 
 $this->breadcrumbs=array(
-	'Pages'=>array('index'),
-	'Manage',
+	'Stránky'=>array('index'),
+	'Spravovať',
 );
 
 $this->menu=array(
-	array('label'=>'List Page', 'url'=>array('index')),
-	array('label'=>'Create Page', 'url'=>array('create')),
+	array('label'=>'Zoznam stránok ', 'url'=>array('index')),
+	array('label'=>'Vytvoriť stránku', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Pages</h1>
+<h1>Spravovať stránky</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
