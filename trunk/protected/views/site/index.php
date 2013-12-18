@@ -6,6 +6,8 @@ $this->pageTitle=Yii::app()->name;
 
 <h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
+<p>Tu bude "O nás"</p>
+
 <?php echo CHtml::link('Gii Code Generator (password: gii)',array('gii/default/index')); ?><br/>
 
 <?php echo CHtml::link('Users',array('user/index')); ?><br/>
