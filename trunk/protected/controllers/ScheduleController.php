@@ -37,20 +37,32 @@ class ScheduleController extends Controller
 	{
 		if(Yii::app()->user->checkAccess('createSchedule'))
 		{
-			$model=new Schedule;
-	
+			$scheduleModel=new Schedule;
+			$pageModel=new Page;
+			
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
 	
-			if(isset($_POST['Schedule']))
+			if(isset($_POST['Schedule'], $_POST['Page']))
 			{
-				$model->attributes=$_POST['Schedule'];
-				if($model->save())
-					$this->redirect(array('view','id'=>$model->id));
+				$scheduleModel->attributes=$_POST['Schedule'];
+				$pageModel->attributes=$_POST['Page'];
+				
+				$valid=$scheduleModel->validate();
+				$valid=$pageModel->validate() && $valid;
+				
+				if($valid)
+				{
+					$pageModel->save(false);
+					$scheduleModel->page_id=$pageModel->id;
+					$scheduleModel->save(false);
+					$this->redirect(array('view','id'=>$scheduleModel->id));
+				}
 			}
 	
 			$this->render('create',array(
-				'model'=>$model,
+				'scheduleModel'=>$scheduleModel,
+				'pageModel'=>$pageModel,
 			));
 		}
 		else
@@ -68,20 +80,31 @@ class ScheduleController extends Controller
 	{
 		if(Yii::app()->user->checkAccess('updateSchedule'))
 		{
-			$model=$this->loadModel($id);
+			$scheduleModel=$this->loadModel($id);
+			$pageModel=Page::model()->findByPk($scheduleModel->page->id);
 	
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
 	
-			if(isset($_POST['Schedule']))
+			if(isset($_POST['Schedule'], $_POST['Page']))
 			{
-				$model->attributes=$_POST['Schedule'];
-				if($model->save())
-					$this->redirect(array('view','id'=>$model->id));
+				$scheduleModel->attributes=$_POST['Schedule'];
+				$pageModel->attributes=$_POST['Page'];
+				
+				$valid=$scheduleModel->validate();
+				$valid=$pageModel->validate() && $valid;
+				
+				if($valid)
+				{
+					$pageModel->save(false);
+					$scheduleModel->save(false);
+					$this->redirect(array('view','id'=>$scheduleModel->id));
+				}
 			}
 	
 			$this->render('update',array(
-				'model'=>$model,
+				'scheduleModel'=>$scheduleModel,
+				'pageModel'=>$pageModel,
 			));
 		}
 		else

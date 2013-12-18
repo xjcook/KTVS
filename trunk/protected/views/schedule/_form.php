@@ -1,6 +1,7 @@
 <?php
 /* @var $this ScheduleController */
 /* @var $model Schedule */
+/* @var $pageModel Page */
 /* @var $form CActiveForm */
 ?>
 
@@ -17,25 +18,22 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($scheduleModel); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'tvobject_id'); ?><br/>
-		<?php echo $form->listBox($model,'tvobject_id',
+		<?php echo $form->labelEx($scheduleModel,'tvobject_id'); ?><br/>
+		<?php echo $form->listBox($scheduleModel,'tvobject_id',
 				CHtml::listData(Tvobject::model()->findAll(),'id','name')); ?>
-		<?php echo $form->error($model,'tvobject_id'); ?>
+		<?php echo $form->error($scheduleModel,'tvobject_id'); ?>
 	</div>
 	
-	<div class="row">
-		<?php echo $form->labelEx($model,'page_id'); ?>
-		<?php echo $form->textField($model,'page_id'); ?>
-		<?php echo $form->error($model,'page_id'); ?>
-	</div>
+	<?php $this->widget('application.components.PageWidget', array('model'=>$pageModel,'form'=>$form)); ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($scheduleModel->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+

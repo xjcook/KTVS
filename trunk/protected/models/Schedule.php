@@ -32,8 +32,8 @@ class Schedule extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('page_id, tvobject_id', 'required'),
-			array('page_id, tvobject_id', 'numerical', 'integerOnly'=>true),
+			array('tvobject_id', 'required'),
+			array('tvobject_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, page_id, tvobject_id, updated_at', 'safe', 'on'=>'search'),
