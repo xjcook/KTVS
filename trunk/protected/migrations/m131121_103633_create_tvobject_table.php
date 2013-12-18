@@ -7,7 +7,6 @@ class m131121_103633_create_tvobject_table extends CDbMigration
 		$this->createTable('tbl_tvobject', array(
 			// keys
 			'id' => 'pk',
-			'sport_id' => 'integer NOT NULL',
 
 			// attributes		
 			'name' => 'string NOT NULL',
