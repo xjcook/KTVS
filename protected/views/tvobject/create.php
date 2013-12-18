@@ -8,8 +8,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('labelZoznam objektov', 'url'=>array('index')),
-	array('label'=>'Spravovať objekty ', 'url'=>array('admin')),
+	array('label'=>'Zoznam objektov', 'url'=>array('index')),
+	array('label'=>'Spravovať objekty', 'url'=>array('admin')),
 );
 ?>
 

@@ -45,6 +45,7 @@ class TvobjectController extends Controller
 			if(isset($_POST['Tvobject']))
 			{
 				$model->attributes=$_POST['Tvobject'];
+				$model->sports=$model->sportIds;
 				if($model->save())
 					$this->redirect(array('view','id'=>$model->id));
 			}
@@ -76,6 +77,7 @@ class TvobjectController extends Controller
 			if(isset($_POST['Tvobject']))
 			{
 				$model->attributes=$_POST['Tvobject'];
+				$model->sports=$model->sportIds;
 				if($model->save())
 					$this->redirect(array('view','id'=>$model->id));
 			}
