@@ -43,6 +43,7 @@ class Student extends CActiveRecord
 			array('sports, name, email, class, phone, skills', 'required'),
 			array('class', 'numerical', 'integerOnly'=>true),
 			array('name, email, phone, skills', 'length', 'max'=>255),
+// 			array('sports', 'checkCapacity'),
 			array('sportIds', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -160,10 +161,24 @@ class Student extends CActiveRecord
 		// set sportIds[]
 		if(!empty($this->sports))
 		{
-			foreach ($this->sports as $n => $sport)
+			foreach ($this->sports as $n=>$sport)
 				$this->sportIds[] = $sport->id;
 		}
 	
 		parent::afterFind();
+	}
+	
+	public function checkCapacity($attribute)
+	{
+		if (!empty($this->sports))
+		{
+			foreach ($this->getRelated('sports',true) as $sport)
+			{
+				if(count($sport->getRelated('students',true)) >= $sport->capacity)
+				{
+					$this->addError($attribute, 'Je naplnená kapacita športu: '.$sport->name);
+				}
+			}
+		}
 	}
 }
