@@ -8,8 +8,14 @@
    
 	<?php echo CHtml::link(CHtml::encode($data->title),  array('view', 'id'=>$data->id)); ?>
 	<br />
-
-	<?php echo CHtml::decode($data->content); ?>
-	<br />
+	<?php
+    $this->widget('ext.XReadMore.XReadMore', array(
+         'showLink'=>true,
+                 'model'=>$data,
+          'linkText' => 'Čítaj viac',
+         'attribute'=>'content',
+         'maxChar'=>100,
+       ));
+    ?>
 	</div>
 </div>
