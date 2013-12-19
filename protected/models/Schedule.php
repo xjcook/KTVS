@@ -62,7 +62,7 @@ class Schedule extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'page_id' => 'Page',
-			'tvobject_id' => 'Tvobject',
+			'tvobject_id' => 'Športovisko',
 			'updated_at' => 'Updated At',
 		);
 	}
