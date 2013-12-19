@@ -18,12 +18,14 @@ $this->menu=array(
 
 <h1>View Schedule #<?php echo $model->id; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id',
-		'page_id',
-		'tvobject_id',
-		'updated_at',
-	),
-)); ?>
+<b><?php echo CHtml::encode($model->page->getAttributeLabel('title')); ?>:</b>
+<?php echo CHtml::encode($model->page->title); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->page->getAttributeLabel('content')); ?>:</b>
+<?php echo CHtml::decode($model->page->content); ?>
+<br />
+
+<b><?php echo CHtml::encode($model->getAttributeLabel('tvobject_id')); ?>:</b>
+<?php echo CHtml::encode($model->tvobject->name); ?>
+<br />
