@@ -7,7 +7,10 @@ class MainMenu extends CMenu
     public function init()
     {
     	// News
-    	$model = News::model()->findAll();
+    	$model = News::model()->findAll(array(
+    		'order'=>'id DESC',
+    		'limit'=>10,
+    	));
     	$newses = array();
     	foreach ($model as $news)
     	{
