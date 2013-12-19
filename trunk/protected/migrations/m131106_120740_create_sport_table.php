@@ -13,7 +13,7 @@ class m131106_120740_create_sport_table extends CDbMigration
 			// attributes	
 			'name' => 'string NOT NULL',	
 			'description' => 'text',
-			'capacity' => 'integer',
+			'capacity' => 'integer DEFAULT 0',
 			
 			// timestamp
 			'updated_at' => 'timestamp',
