@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Schedule', 'url'=>array('create')),
-	array('label'=>'Manage Schedule', 'url'=>array('admin')),
+	array('label'=>'Vytvoriť rozvrh', 'url'=>array('create')),
+	array('label'=>'Spravovať rozvrh', 'url'=>array('admin')),
 );
 ?>
 
