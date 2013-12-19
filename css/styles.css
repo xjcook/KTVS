@@ -113,6 +113,16 @@ header {
 	text-transform: uppercase;	
 	font-size: x-large;
 }
+
+.logo a {
+	color: #0f253a;
+	text-decoration: none; 
+}
+
+.logo a:hover { 
+	color: #aa7900;
+	text-decoration: underline;
+}
 .sidebar h2 {
 	padding:10% 5% 0 5%;
 }
