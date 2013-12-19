@@ -260,7 +260,7 @@ footer .copyright {
 #login_link {
 	position: relative;
 	float: right;
-	margin-top: -23px;
+	margin-top: -38px;
 	margin-right: 15%;
 	text-shadow: none;
 	font-size: 80%;
@@ -318,7 +318,7 @@ footer .copyright {
   color:white;
   line-height: 25px;
   font-weight: bold;
-  padding: 0 8px;
+  padding: 5px 20px;
   text-decoration: none;
   background-image: url(../images/footerBackground.jpg);
   border-radius:20px;

@@ -68,7 +68,9 @@ class MainMenu extends CMenu
         	array('label'=>'Akcie', 'url'=>array('/event/index')),
         	array('label'=>'Kurzy', 'url'=>array('/course/index'), 'items'=>$courses),
         	array('label'=>'Galéria', 'url'=>array('/gallery/index')),
+
         );
+        $this->submenuHtmlOptions= array('class' => 'submenu');
 
         parent::init();
     }
