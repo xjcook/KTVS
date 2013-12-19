@@ -18,6 +18,6 @@ class m131219_013125_add_schedules extends CDbMigration
 
 	public function safeDown()
 	{
-		$this->dropTable('tbl_schedule');
+		$this->delete('tbl_schedule');
 	}
 }
