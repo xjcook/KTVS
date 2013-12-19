@@ -18,6 +18,11 @@
 class Page extends CActiveRecord
 {
 	/**
+	 * @property event_id
+	 */
+	public $event_id;
+	
+	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()

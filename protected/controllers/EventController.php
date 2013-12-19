@@ -147,6 +147,90 @@ class EventController extends Controller
 			Yii::app()->user->loginRequired();
 		}
 	}
+	
+	/**
+	 * Create subpage
+	 * @param id Id of the Event
+	 */
+	public function actionCreatePage() 
+	{
+		$pageModel = new Page;
+		
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+			
+		if(isset($_POST['Page']))
+		{
+			$pageModel->attributes=$_POST['Page'];
+		
+			if ($pageModel->validate())
+			{
+				$pageModel->save();
+				$elModel=El::model()->findByPk($_POST['Page']['event_id']);
+				$elModel->pages=array_merge($elModel->pages, array($pageModel->id));
+				$elModel->save();
+				$this->redirect(array('view','id'=>$elModel->id));
+			}
+		}
+			
+		$this->render('createPage',array(
+			'pageModel'=>$pageModel,
+		));
+		
+		/*if(Yii::app()->user->checkAccess('updateOwnEvent', array('event'=>$eventModel)) ||
+		   Yii::app()->user->checkAccess('updateEvent'))
+		{
+			
+			
+			
+		}
+		else
+		{
+			Yii::app()->user->loginRequired();
+		}*/
+	}
+	
+	/**
+	 * Update subpage
+	 * @param id Id of the Event
+	 */
+	public function actionUpdatePage($id) 
+	{
+		$pageModel = Page::model()->findByPk($id);
+		
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+			
+		if(isset($_POST['Page']))
+		{
+			$pageModel->attributes=$_POST['Page'];
+		
+			if ($pageModel->validate())
+			{
+				$pageModel->save();
+				$elModel=El::model()->findByPk($_POST['Page']['event_id']);
+				$elModel->pages=array_merge($elModel->pages, array($pageModel->id));
+				$elModel->save();
+				$this->redirect(array('view','id'=>$elModel->id));
+			}
+		}
+			
+		$this->render('createPage',array(
+			'pageModel'=>$pageModel,
+		));
+	}
+	
+	/**
+	 * Delete subpage
+	 * @param id Id of the Event
+	 */
+	public function actionDeletePage($id)
+	{
+		$model=Page::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

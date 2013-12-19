@@ -37,7 +37,7 @@ class El extends CActiveRecord
 			array('user_id, name, type', 'required'),
 			array('user_id, type', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
-			array('description', 'safe'),
+			array('description, pageIds', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, user_id, name, description, type, updated_at', 'safe', 'on'=>'search'),

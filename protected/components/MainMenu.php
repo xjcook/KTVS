@@ -31,6 +31,17 @@ class MainMenu extends CMenu
     		);
     	}
     	
+//     	// Events
+//     	$model = El::model()->findByAttributes(array('type'=>0));
+//     	$events = array();
+//     	foreach ($model as $event)
+//     	{
+//     		$events[] = array(
+//     			'label'=>'<b>'.$event->name.'</b>',
+//     			'url'=>array('event/view', 'id'=>$event->id),
+//     		);
+//     	}
+    	
     	// Courses
     	$model = Course::model()->findAll();
     	$courses = array();
