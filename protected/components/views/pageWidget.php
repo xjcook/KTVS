@@ -22,8 +22,8 @@
 				'htmlOptions'=>array('rows'=>6, 'cols'=>50, 'class'=>'tinymce'),
                 'options' => array(
                 	'theme_advanced_buttons1' =>
-                    	'undo,redo,|,bold,italic,underline,|,justifyleft,justifycenter,justifyright,justifyfull,|,outdent, indent,|,advhr,|,sub,sup,|,bullist,numlist,|,formatselect,fontselect,fontsizeselect,',
-                    'theme_advanced_buttons2' => 'tablecontrols,|,removeformat,visualaid,cut,copy,paste,pastetext,pasteword,|,search,replace,',
+                    	'undo,redo,|,bold,italic,underline,|,outdent, indent,|,advhr,|,sub,sup,|,bullist,numlist,|,fontsizeselect,',
+                    'theme_advanced_buttons2' => 'tablecontrols,|,cut,copy,paste',
                     'theme_advanced_buttons3' => '',
                     'theme_advanced_buttons4' => '',
                     'theme_advanced_toolbar_location' => 'top',
