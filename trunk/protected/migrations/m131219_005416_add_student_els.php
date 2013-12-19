@@ -24,6 +24,6 @@ class m131219_005416_add_student_els extends CDbMigration
 
 	public function safeDown()
 	{
-		$this->dropTable('tbl_student_el');
+		$this->delete('tbl_student_el');
 	}
 }

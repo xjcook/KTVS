@@ -33,6 +33,6 @@ class m131219_004453_add_els extends CDbMigration
 
 	public function safeDown()
 	{
-		$this->dropTable('tbl_el');
+		$this->delete('tbl_el');
 	}
 }

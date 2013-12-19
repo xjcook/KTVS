@@ -23,6 +23,6 @@ class m131219_005811_add_tvobjects extends CDbMigration
 
 	public function safeDown()
 	{
-		$this->dropTable('tbl_tvobject');
+		$this->delete('tbl_tvobject');
 	}
 }

@@ -19,6 +19,6 @@ class m131219_011933_add_news extends CDbMigration
 
 	public function safeDown()
 	{
-		$this->dropTable('tbl_news');
+		$this->delete('tbl_news');
 	}
 }
