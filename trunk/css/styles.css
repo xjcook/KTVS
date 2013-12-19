@@ -377,9 +377,9 @@ footer .copyright {
 
 /* Hover efekty pre prehliadace okrem IE 5.x a IE 6 */
 
-#vyskakovacie_menu li:hover a {border:1px dotted #dea20c;}
+#vyskakovacie_menu li:hover a {border:1px; }
 #vyskakovacie_menu li:hover ul {display: block;}
-#vyskakovacie_menu li:hover li a {background: #ddd;}
+#vyskakovacie_menu li:hover li a {background: #9e5560;}
 #vyskakovacie_menu li:hover li a:hover {color: #000;background-color: #f8f8f8;}
 
 #inputs{
