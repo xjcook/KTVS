@@ -7,7 +7,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Vyvtvoriť ligu', 'url'=>array('create')),
+	array('label'=>'Vytvoriť ligu', 'url'=>array('create')),
 	array('label'=>'Spravovať ligy', 'url'=>array('admin')),
 );
 ?>

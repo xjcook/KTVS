@@ -69,7 +69,7 @@ class Sport extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'schedule_id' => 'Schedule',
+			'schedule_id' => 'Rozvrh',
 			'name' => 'Názov',
 			'description' => 'Popis',
 			'capacity' => 'Kapacita',
