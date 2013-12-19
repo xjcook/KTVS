@@ -6,23 +6,36 @@ class MainMenu extends CMenu
 {
     public function init()
     {
+    	// News
+    	$model = News::model()->findAll();
+    	$newses = array();
+    	foreach ($model as $news)
+    	{
+    		$newses[] = array(
+    			'label'=>$news->title,
+    			'url'=>array('news/view', 'id'=>$news->id),
+    		);
+    	}
+    	
     	// Schedules
     	$model = Schedule::model()->findAll();
+    	$schedules = array();
     	foreach ($model as $schedule)
     	{
     		$schedules[] = array(
     			'label'=>$schedule->page->title,
-    			'url'=>Yii::app()->createUrl('schedule/'.$schedule->id),
+    			'url'=>array('schedule/view', 'id'=>$schedule->id),
     		);
     	}
     	
     	// Courses
     	$model = Course::model()->findAll();
+    	$courses = array();
     	foreach ($model as $course)
     	{
     		$courses[] = array(
     			'label'=>$course->name, 
-    			'url'=>Yii::app()->createUrl('course/'.$course->id),
+    			'url'=>array('course/view', 'id'=>$course->id),
     		);
     	}
         
@@ -33,7 +46,7 @@ class MainMenu extends CMenu
         		'items'=>array(
         			array(
         				'label'=>'Učitelia',
-        				'url'=>'#',
+        				'url'=>array('user/index'),
         			),
         			array(
         				'label'=>'Konzultačné hodiny',
@@ -41,11 +54,11 @@ class MainMenu extends CMenu
         			),
         			array(
         				'label'=>'Športoviská',
-        				'url'=>'#',
+        				'url'=>array('tvobject/index'),
         			),
         		),
         	),
-        	array('label'=>'Novinky', 'url'=>array('/news/index')),
+        	array('label'=>'Novinky', 'url'=>array('/news/index'), 'items'=>$newses),
         	array('label'=>'Rozvrh', 'url'=>array('/schedule/index'), 'items'=>$schedules),
         	array('label'=>'Prihlasovanie', 'url'=>'#'),
         	array('label'=>'Ligy', 'url'=>array('/league/index')),
