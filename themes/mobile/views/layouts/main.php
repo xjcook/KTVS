@@ -3,12 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="HandheldFriendly" content="true"/>  
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="keywords" content="pohyb, WOW Slider, Website Slide Show, Web Image Slider" />
    	<meta name="description" content="pohyb created with WOW Slider, a free wizard program that helps you easily generate beautiful web slideshow" />
     <link href='http://fonts.googleapis.com/css?family=Noto+Serif&subset=latin-ext' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/styles.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/mobile.css" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/js-image-slider.js" type="text/javascript"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.mmenu.min.js" type="text/javascript"></script>
@@ -64,64 +64,62 @@
 <body>
 	<header>
 		<nav>
-			<div id="vyskakovacie_menu">
-				<?php $this->widget('zii.widgets.CMenu',array(
-					'items'=>array(
-						array(
-							'label'=>'O Nás', 
-							'url'=>array('/site/index'),
-							/*'linkOptions'=> array(
-								'class' => 'dropdown-toggle',
-								'data-toggle' => 'dropdown',
+			<?php $this->widget('zii.widgets.CMenu',array(
+				'items'=>array(
+					array(
+						'label'=>'O Nás', 
+						'url'=>array('/site/index'),
+						/*'linkOptions'=> array(
+							'class' => 'dropdown-toggle',
+							'data-toggle' => 'dropdown',
+						),*/
+						/*'itemOptions' => array('
+							class'=>'dropdown user',
+						),*/
+						'items'=>array(
+							array(
+								'label'=>'Submenu1',
+								'url'=>'#',
+							),
+							array(
+								'label'=>'Submenu2',
+								'url'=>'#',
+							),
+							/*array(
+								'label' => '',
+								array(
+									'class' => 'divider',
+								)
 							),*/
-							/*'itemOptions' => array('
-								class'=>'dropdown user',
+							/*array(
+								'label'=>'<i>nieco</i>',
+								'url'=>'#',
 							),*/
-							'items'=>array(
-								array(
-									'label'=>'Submenu1',
-									'url'=>'#',
-								),
-								array(
-									'label'=>'Submenu2',
-									'url'=>'#',
-								),
-								/*array(
-									'label' => '',
-									array(
-										'class' => 'divider',
-									)
-								),*/
-								/*array(
-									'label'=>'<i>nieco</i>',
-									'url'=>'#',
-								),*/
-								array(
-									'label'=>'Submenu3',
-									'url'=>'#',
-								),
+							array(
+								'label'=>'Submenu3',
+								'url'=>'#',
 							),
 						),
-						array('label'=>'Novinky', 'url'=>array('/news/index')),
-						array('label'=>'Rozvrh', 'url'=>array('/schedule/index')),
-						array('label'=>'Ligy', 'url'=>array('/league/index')),
-						array('label'=>'Akcie', 'url'=>array('/event/index')),
-						array('label'=>'Kurzy', 'url'=>array('/course/index')),
-		        		array('label'=>'Galéria', 'url'=>array('/gallery/index')),
 					),
-					//'encodeLabel'=>false,
-					//'activeCssClass'=>'active',
-					/*'htmlOptions'=>array(
-						'id'=>'yw4',
-						'class'=>'blbost',
-					),*/
-					/*'submenuHtmlOptions'=>array(
-						'nieco'=>'hodnota',
-						'id'=>'blbost',
-						'class'=>'class1 class2',
-					),*/
-				)); ?>
-			</div>
+					array('label'=>'Novinky', 'url'=>array('/news/index')),
+					array('label'=>'Rozvrh', 'url'=>array('/schedule/index')),
+					array('label'=>'Ligy', 'url'=>array('/league/index')),
+					array('label'=>'Akcie', 'url'=>array('/event/index')),
+					array('label'=>'Kurzy', 'url'=>array('/course/index')),
+	        		array('label'=>'Galéria', 'url'=>array('/gallery/index')),
+				),
+				//'encodeLabel'=>false,
+				//'activeCssClass'=>'active',
+				/*'htmlOptions'=>array(
+					'id'=>'yw4',
+					'class'=>'blbost',
+				),*/
+				/*'submenuHtmlOptions'=>array(
+					'nieco'=>'hodnota',
+					'id'=>'blbost',
+					'class'=>'class1 class2',
+				),*/
+			)); ?>
 		</nav>
 		
 		<div  id ="login_link">
