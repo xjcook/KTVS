@@ -23,6 +23,6 @@ class m131219_012845_add_page_els extends CDbMigration
 
 	public function safeDown()
 	{
-		$this->dropTable('tbl_page_el');
+		$this->delete('tbl_page_el');
 	}
 }

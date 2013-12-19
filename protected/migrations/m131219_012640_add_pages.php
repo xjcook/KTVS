@@ -15,6 +15,6 @@ class m131219_012640_add_pages extends CDbMigration
 
 	public function safeDown()
 	{
-		$this->dropTable('tbl_page');
+		$this->delete('tbl_page');
 	}
 }

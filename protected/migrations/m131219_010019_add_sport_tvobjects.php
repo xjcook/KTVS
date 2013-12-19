@@ -32,6 +32,6 @@ class m131219_010019_add_sport_tvobjects extends CDbMigration
 
 	public function safeDown()
 	{
-		$this->dropTable('tbl_sport_tvobject');
+		$this->delete('tbl_sport_tvobject');
 	}
 }

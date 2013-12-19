@@ -17,6 +17,6 @@ class m131219_004225_add_student_sports extends CDbMigration
 
 	public function safeDown()
 	{
-		$this->dropTable('tbl_student_sport');
+		$this->delete('tbl_student_sport');
 	}
 }
