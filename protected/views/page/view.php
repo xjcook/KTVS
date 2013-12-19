@@ -19,7 +19,7 @@ $this->menu=array(
 <h1><?php echo $model->title; ?></h1>
 
 	<b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($model->title),  array('view', 'id'=>$model->id)); ?>
+	<?php echo CHtml::encode($model->title); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($model->getAttributeLabel('content')); ?>:</b>
