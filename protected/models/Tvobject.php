@@ -68,11 +68,11 @@ class Tvobject extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'sports' => 'Sports',
-			'name' => 'Name',
-			'description' => 'Description',
-			'image' => 'Image',
-			'map' => 'Map',
-			'updated_at' => 'Updated At',
+			'name' => 'Názov',
+			'description' => 'Popis',
+			'image' => 'Obrázok',
+			'map' => 'Mapa',
+			'updated_at' => 'Čas úpravy',
 		);
 	}
 
