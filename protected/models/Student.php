@@ -76,10 +76,10 @@ class Student extends CActiveRecord
 			'id' => 'ID',
 			'name' => 'Meno',
 			'email' => 'Email',
-			'class' => 'Trieda/premenujem/',
+			'class' => 'Ročník',
 			'phone' => 'Mobil',
 			'skills' => 'Skúsenosti',
-			'updated_at' => 'upravene dnat',
+			'updated_at' => 'upravene dna',
 		);
 	}
 

@@ -6,7 +6,10 @@ $this->breadcrumbs=array(
 	'Študenti'=>array('index'),
 	$model->name,
 );
-
+if(Yii::app()->user->isGuest):
+$this->menu=array(
+	array('label'=>'Zoznam študentov', 'url'=>array('index')));
+else:
 $this->menu=array(
 	array('label'=>'Zoznam študentov', 'url'=>array('index')),
 	array('label'=>'Vytvoriť študenta', 'url'=>array('create')),
@@ -14,6 +17,7 @@ $this->menu=array(
 	array('label'=>'Odstrániť študenta', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Spravovať študentov', 'url'=>array('admin')),
 );
+endif;
 ?>
 
 <h1><?php echo $model->name; ?></h1>

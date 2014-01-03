@@ -68,8 +68,11 @@
 		<div  id ="login_link">
 			<ul>
 				<li id="login">
-					<a id="login-trigger" href="#">Prihlásenie
-						<span>▼</span>
+					<?php if(Yii::app()->user->isGuest): ?>
+						<a id="login-trigger" href="#">Prihlásenie<span>▼</span></a>
+					<?php else: ?>
+						<a id="login-trigger" href="#">Odhlásenie<span>▼</span></a>
+						<?php endif; ?>
 					</a>
 					<div id="login-content">
 		   				<?php if(Yii::app()->user->isGuest): ?>
@@ -149,11 +152,12 @@
 	    </div>
 	    
 	    <div class="sidebar">
-	    	<h2>Športy</h2>
-			<?php $this->widget('application.components.SportMenu'); ?>
+	    	<h2>Športy</h2><br />
 	    	<?php if(Yii::app()->user->checkAccess('createSport')): ?>
 	    		<?php echo CHtml::button('Pridať šport', array('submit' => array('sport/create'))); ?>
 	    	<?php endif; ?>
+			<?php $this->widget('application.components.SportMenu'); ?>
+	    
 	    </div>
 	
 	    <div class="clearfloat"></div>   

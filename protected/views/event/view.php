@@ -6,7 +6,10 @@ $this->breadcrumbs=array(
 	'Akcie'=>array('index'),
 	$model->name,
 );
-
+if(Yii::app()->user->isGuest): 
+$this->menu=array(
+	array('label'=>'Zoznam akcií', 'url'=>array('index')));
+else:
 $this->menu=array(
 	array('label'=>'Zoznam akcií', 'url'=>array('index')),
 	array('label'=>'Vytvoriť akciu', 'url'=>array('create')),
@@ -16,6 +19,7 @@ $this->menu=array(
 	array('label'=>'Vytvoriť podstránku', 'url'=>array('event/createPage')),
 	/*array('label'=>'Upraviť podstránku', 'url'=>array('event/updatePage', 'id'=>$model->id)),*/
 );
+endif;
 ?>
 
 <h1><?php echo $model->name; ?></h1>

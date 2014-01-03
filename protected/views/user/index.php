@@ -5,11 +5,14 @@
 $this->breadcrumbs=array(
 	'Používateľia',
 );
+if(Yii::app()->user->isGuest): 
 
+else:
 $this->menu=array(
 	array('label'=>'Vytvoriť používateľa', 'url'=>array('create')),
 	array('label'=>'Spraovať používateľov', 'url'=>array('admin')),
 );
+endif;
 ?>
 
 <h1>Používatelia</h1>
