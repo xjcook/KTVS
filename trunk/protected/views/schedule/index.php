@@ -5,11 +5,15 @@
 $this->breadcrumbs=array(
 	'Rozvrh',
 );
+if(Yii::app()->user->isGuest): 
 
+else:
 $this->menu=array(
 	array('label'=>'Vytvoriť rozvrh', 'url'=>array('create')),
 	array('label'=>'Spravovať rozvrh', 'url'=>array('admin')),
 );
+endif;
+
 ?>
 
 <h1>Rozvrh</h1>

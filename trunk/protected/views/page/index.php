@@ -5,11 +5,14 @@
 $this->breadcrumbs=array(
 	'Stránky',
 );
+if(Yii::app()->user->isGuest): 
 
+else:
 $this->menu=array(
 	array('label'=>'Vytvoriť stránku', 'url'=>array('create')),
 	array('label'=>'Spravovať stránky', 'url'=>array('admin')),
 );
+endif;
 ?>
 
 <h1>Stránky</h1>

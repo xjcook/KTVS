@@ -6,7 +6,10 @@ $this->breadcrumbs=array(
 	'Ligy'=>array('index'),
 	$model->name,
 );
-
+if(Yii::app()->user->isGuest):
+$this->menu=array(
+	array('label'=>'Zoznam líg', 'url'=>array('index')));
+else:
 $this->menu=array(
 	array('label'=>'Zoznam líg', 'url'=>array('index')),
 	array('label'=>'Vytvoriť ligu', 'url'=>array('create')),
@@ -14,6 +17,7 @@ $this->menu=array(
 	array('label'=>'Odstrániť ligu', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Spravovať ligy', 'url'=>array('admin')),
 );
+endif;
 ?>
 
 <h1><?php echo $model->name; ?></h1>
