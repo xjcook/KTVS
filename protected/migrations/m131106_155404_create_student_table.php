@@ -7,7 +7,7 @@ class m131106_155404_create_student_table extends CDbMigration
 		$this->createTable('tbl_student', array(
 			// keys
 			'id' => 'pk',
-			/* M:N relation in tbl_student_sport */
+			'sport_id' => 'integer NOT NULL',
 
 			// attributes	
 			'name' => 'string NOT NULL',

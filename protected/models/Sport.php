@@ -21,6 +21,11 @@
 class Sport extends CActiveRecord
 {
 	/**
+	 * @property userIds
+	 */
+	public $userIds = array();
+
+	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -39,7 +44,7 @@ class Sport extends CActiveRecord
 			array('name', 'required'),
 			array('schedule_id, capacity', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
-			array('description', 'safe'),
+			array('description, userIds', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, schedule_id, name, description, capacity, updated_at', 'safe', 'on'=>'search'),
@@ -56,7 +61,7 @@ class Sport extends CActiveRecord
 		return array(
 			'news' => array(self::HAS_MANY, 'News', 'sport_id'),
 			'schedule' => array(self::BELONGS_TO, 'Schedule', 'schedule_id'),
-			'students' => array(self::MANY_MANY, 'Student', 'tbl_student_sport(sport_id, student_id)'),
+			'students' => array(self::HAS_MANY, 'Student', 'sport_id'),
 			'tvobjects' => array(self::HAS_MANY, 'Tvobject', 'sport_id'),
 			'users' => array(self::MANY_MANY, 'User', 'tbl_user_sport(sport_id, user_id)'),
 		);
@@ -145,5 +150,21 @@ class Sport extends CActiveRecord
 				'class'=>'ext.yiiext.behaviors.activerecord-relation.EActiveRecordRelationBehavior',
 			),
 		);
+	}
+
+	/**
+	 * Override afterFind()
+	 * @see CActiveRecord::afterFind()
+	 */
+	protected function afterFind()
+	{
+		// set userIds[]
+		if(!empty($this->users))
+		{
+			foreach ($this->users as $n => $user)
+				$this->userIds[] = $user->id;
+		}
+		
+		parent::afterFind();
 	}
 }

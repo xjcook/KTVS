@@ -50,7 +50,6 @@ class StudentController extends Controller
 		if(isset($_POST['Student']))
 		{
 			$model->attributes=$_POST['Student'];
-			$model->sports=$model->sportIds;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
