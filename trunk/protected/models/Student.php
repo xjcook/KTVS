@@ -15,7 +15,7 @@
  * The followings are the available model relations:
  * @property Course[] $courses
  * @property El[] $els
- * @property Sport[] $sports
+ * @property Sport $sport_id
  * @property Tvobject[] $tvobjects
  */
 class Student extends CActiveRecord
@@ -41,11 +41,10 @@ class Student extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('sports, name, email, class, phone, skills', 'required'),
+			array('sport_id, name, email, class, phone, skills', 'required'),
 			array('class', 'numerical', 'integerOnly'=>true),
 			array('name, email, phone, skills', 'length', 'max'=>255),
 // 			array('sports', 'checkCapacity'),
-			array('sportIds', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, email, class, phone, skills, updated_at', 'safe', 'on'=>'search'),
@@ -62,7 +61,7 @@ class Student extends CActiveRecord
 		return array(
 			'courses' => array(self::MANY_MANY, 'Course', 'tbl_student_course(student_id, course_id)'),
 			'els' => array(self::MANY_MANY, 'El', 'tbl_student_el(student_id, el_id)'),
-			'sports' => array(self::MANY_MANY, 'Sport', 'tbl_student_sport(student_id, sport_id)'),
+			'sport' => array(self::BELONGS_TO, 'Sport', 'sport_id'),
 			'tvobjects' => array(self::MANY_MANY, 'Tvobject', 'tbl_sport_tvobject(sport_id, tvobject_id)'),
 		);
 	}
@@ -74,6 +73,8 @@ class Student extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'sport_id' => 'Šport',
+			'sport.name' => 'Šport',
 			'name' => 'Meno',
 			'email' => 'Email',
 			'class' => 'Ročník',

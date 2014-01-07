@@ -26,6 +26,7 @@ endif;
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
+		'users.name',
 		'schedule_id',
 		'name',
 		'description',

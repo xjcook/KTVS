@@ -18,10 +18,10 @@
 	<?php echo $form->errorSummary($model); ?>
 	
 	<div class="row">
-		<?php echo $form->labelEx($model,'sports'); ?><br/>
-		<?php echo $form->checkBoxList($model,'sportIds',
+		<?php echo $form->labelEx($model,'sport_id'); ?><br/>
+		<?php echo $form->dropDownList($model,'sport_id',
 				CHtml::listData(Sport::model()->findAll(),'id','name')); ?>
-		<?php echo $form->error($model,'sports'); ?>
+		<?php echo $form->error($model,'sport_id'); ?>
 	</div>
 
 	<div class="row">
@@ -38,8 +38,10 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'class'); ?>
-		<?php echo $form->textField($model,'class'); ?>
-		<?php echo $form->error($model,'class'); ?>
+		<?php echo $form->dropDownList($model,'class', 
+              array('1' => '1.ročník', '2' => '2.ročník', '3' => '3.ročník', '4' => '4.ročník', '5' => '5.ročník'),
+              array('empty' => 'Vyberte ročník')); ?>
+        <?php echo $form->error($model,'class'); ?>
 	</div>
 
 	<div class="row">
@@ -50,8 +52,10 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'skills'); ?>
-		<?php echo $form->textField($model,'skills',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'skills'); ?>
+		<?php echo $form->dropDownList($model,'skills', 
+              array('začiatočník' => 'začiatočník', 'mierne pokročilý' => 'mierne pokročilý', 'pokročilý' => 'pokročilý'),
+              array('empty' => 'Vyberte skúsenosti')); ?>
+        <?php echo $form->error($model,'skills'); ?>
 	</div>
 
 	<div class="row buttons">

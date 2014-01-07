@@ -10,6 +10,8 @@ $this->pageTitle=Yii::app()->name;
 
 <?php echo CHtml::link('Gii Code Generator (password: gii)',array('gii/default/index')); ?><br/>
 
+<?php echo CHtml::link('Študenti',array('student/index')); ?><br/>
+
 <?php echo CHtml::link('Users',array('user/index')); ?><br/>
 
 <?php echo CHtml::link('Pages',array('page/index')); ?><br/>

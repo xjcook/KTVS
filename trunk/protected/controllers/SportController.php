@@ -45,6 +45,7 @@ class SportController extends Controller
 			if(isset($_POST['Sport']))
 			{
 				$model->attributes=$_POST['Sport'];
+				$model->users=$model->userIds;
 				if($model->save())
 					$this->redirect(array('view','id'=>$model->id));
 			}
@@ -76,6 +77,7 @@ class SportController extends Controller
 			if(isset($_POST['Sport']))
 			{
 				$model->attributes=$_POST['Sport'];
+				$model->users=$model->userIds;
 				if($model->save())
 					$this->redirect(array('view','id'=>$model->id));
 			}

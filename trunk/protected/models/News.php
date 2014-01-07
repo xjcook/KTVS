@@ -53,6 +53,7 @@ class News extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'sport' => array(self::BELONGS_TO, 'Sport', 'sport_id'),
 		);
 	}
 
@@ -63,8 +64,8 @@ class News extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'user_id' => 'Používateľ',
-			'sport_id' => 'Šport',
+			'user.name' => 'Používateľ',
+			'sport.name' => 'Šport',
 			'title' => 'Nadpis',
 			'content' => 'Popis',
 			'valid_to' => 'Zobraziť do',
