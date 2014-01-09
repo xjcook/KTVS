@@ -45,7 +45,7 @@ class El extends CActiveRecord
 			array('description, userIds', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description, type, updated_at', 'safe', 'on'=>'search'),
+			array('name, description, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -96,12 +96,13 @@ class El extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('type',$this->type);
 		$criteria->compare('updated_at',$this->updated_at,true);
+		if (Yii::app()->controller->id == 'event')
+			$criteria->compare('type','0',true);
+		else 
+			$criteria->compare('type','1',true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

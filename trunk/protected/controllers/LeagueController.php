@@ -119,7 +119,9 @@ class LeagueController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('El');
+		$dataProvider=new CActiveDataProvider('El', array(
+			'criteria' => array('condition' => 'type=1'),
+		));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

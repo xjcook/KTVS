@@ -122,7 +122,9 @@ class EventController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('El');
+		$dataProvider=new CActiveDataProvider('El', array(
+			'criteria' => array('condition' => 'type=0'),
+		));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
