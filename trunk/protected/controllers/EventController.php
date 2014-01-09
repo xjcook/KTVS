@@ -153,6 +153,17 @@ class EventController extends Controller
 	}
 	
 	/**
+	 * Displays a particular model.
+	 * @param integer $id the ID of the model to be displayed
+	 */
+	public function actionViewSubPage($id,$id2)
+	{
+		$this->render('/page/view',array(
+			'model'=>Page::model()->findByPk($id2),
+		));
+	}
+	
+	/**
 	 * Create subpage
 	 * @param id Id of the Event
 	 */
