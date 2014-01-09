@@ -24,7 +24,15 @@ class EventController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$dataProvider=new CActiveDataProvider('Page');
+		$dataProvider=new CActiveDataProvider('Page', array(
+			'criteria'=>array(
+				'with'=>array('els'=>array(
+					'on'=>'els.id=' .$id,
+					'together'=>true,
+					'joinType'=>'INNER JOIN',
+				)),
+			),
+		));
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 			'dataProvider'=>$dataProvider,
