@@ -11,7 +11,7 @@ else:
 $this->menu=array(
 	array('label'=>'Vytvoriť akciu', 'url'=>array('create')),
 	array('label'=>'Spravovať akcie', 'url'=>array('admin')),
-	array('label'=>'Vytvoriť podstránku', 'url'=>array('event/createPage')),
+	array('label'=>'Vytvoriť podstránku', 'url'=>array('event/createSubPage')),
 	);
 endif;
 
