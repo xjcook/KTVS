@@ -10,7 +10,15 @@
 	<b><?php echo CHtml::link(CHtml::encode($data->title),  array('view', 'id'=>$data->id)); ?></b>
         <br />
 	
-	<?php echo CHtml::encode($data->content); ?>
+		<?php $this->widget('ext.XReadMore.XReadMore', array(
+         'showLink'=>true,
+         'model'=>$data,
+         'linkText' => 'Čítaj viac',
+         'attribute'=>'content',
+         'maxChar'=>100,
+       ));
+    ?>
+	<?php //echo CHtml::encode($data->content); ?>
 	<br />
 
 	

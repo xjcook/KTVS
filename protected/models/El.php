@@ -17,7 +17,7 @@
  * @property Student[] $students
  */
 class El extends CActiveRecord
-{
+{	
 	/**
 	 * @property userIds
 	 */
@@ -75,6 +75,8 @@ class El extends CActiveRecord
 			'description' => 'Popis',
 			'type' => 'Typ',
 			'updated_at' => 'Posledná úprava',
+			'event' => 'Akcia',
+			'league' => 'Liga',
 		);
 	}
 

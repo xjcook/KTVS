@@ -1,6 +1,6 @@
 <?php
 /* @var $this ScheduleController */
-/* @var $model Schedule */
+/* @var $scheduleModel Schedule */
 /* @var $pageModel Page */
 /* @var $form CActiveForm */
 ?>
@@ -18,7 +18,7 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($scheduleModel); ?>
+	<?php echo $form->errorSummary($scheduleModel, $pageModel); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($scheduleModel,'tvobject_id'); ?><br/>

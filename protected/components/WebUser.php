@@ -38,6 +38,22 @@ class WebUser extends CWebUser {
 			),
 		))->exists();
   }
+  
+  /**
+   * Return events main categories
+   * if user is admin then return all else return only events which belongs to user
+   */
+  function getEventsListData()
+  {
+  	$events = array();
+  	
+	if($this->isAdmin())
+  		$events = CHtml::listData(El::model()->findAllByAttributes(array('type'=>0)),'id','name');
+	else
+		$events = CHtml::listData(El::model()->findAllByAttributes(array('type'=>0,'user_id'=>Yii::app()->user->id)),'id','name');
+  	
+	return $events;
+  }
  
   // Load user model.
   protected function loadUser($id=null)

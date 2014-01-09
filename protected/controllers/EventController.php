@@ -14,7 +14,7 @@ class EventController extends Controller
 	public function filters()
 	{
 		return array(
-			'postOnly + delete', // we only allow deletion via POST request
+			'postOnly + delete, deleteSubPage', // we only allow deletion via POST request
 		);
 	}
 
@@ -156,84 +156,117 @@ class EventController extends Controller
 	 * Create subpage
 	 * @param id Id of the Event
 	 */
-	public function actionCreatePage() 
+	public function actionCreateSubPage() 
 	{
-		$pageModel = new Page;
-		
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		if(!Yii::app()->user->isGuest) {
+			$pageElModel = new PageEl;
+			$pageModel = new Page;
 			
-		if(isset($_POST['Page']))
-		{
-			$pageModel->attributes=$_POST['Page'];
-		
-			if ($pageModel->validate())
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);
+				
+			if(isset($_POST['PageEl'], $_POST['Page']))
 			{
-				$pageModel->save();
-				$elModel=El::model()->findByPk($_POST['Page']['event_id']);
-				$elModel->pages=array_merge($elModel->pages, array($pageModel->id));
-				$elModel->save();
-				$this->redirect(array('view','id'=>$elModel->id));
+				$pageElModel->attributes=$_POST['PageEl'];
+				$pageModel->attributes=$_POST['Page'];
+				
+				$valid=$pageElModel->validate();
+				$valid=$pageModel->validate() && $valid;
+			
+				if($valid)
+				{
+					if(Yii::app()->user->checkAccess('updateOwnEvent', 
+							array('event'=>El::model()->findByPk($pageElModel->el_id))) ||
+					   Yii::app()->user->checkAccess('updateEvent'))
+					{
+						$pageModel->save(false);
+						$pageElModel->page_id=$pageModel->id;
+						
+						$pageElModel->save(false);
+						$this->redirect(array('view','id'=>$pageElModel->el_id));
+					}
+					else
+					{
+						throw new CHttpException(401, 'Nemáte dostatočné práva');
+					}
+				}
 			}
-		}
-			
-		$this->render('createPage',array(
-			'pageModel'=>$pageModel,
-		));
-		
-		/*if(Yii::app()->user->checkAccess('updateOwnEvent', array('event'=>$eventModel)) ||
-		   Yii::app()->user->checkAccess('updateEvent'))
-		{
-			
-			
-			
-		}
-		else
-		{
+				
+			$this->render('createSubPage',array(
+				'pageElModel'=>$pageElModel,
+				'pageModel'=>$pageModel, 
+			));
+		} else {
 			Yii::app()->user->loginRequired();
-		}*/
-	}
+		}
+	} 
 	
 	/**
 	 * Update subpage
 	 * @param id Id of the Event
 	 */
-	public function actionUpdatePage($id) 
+	public function actionUpdateSubPage($id, $id2) 
 	{
-		$pageModel = Page::model()->findByPk($id);
-		
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-			
-		if(isset($_POST['Page']))
+		$model=$this->loadModel($id);
+
+		if(Yii::app()->user->checkAccess('updateOwnEvent', array('event'=>$model)) ||
+		   Yii::app()->user->checkAccess('updateEvent'))
 		{
-			$pageModel->attributes=$_POST['Page'];
-		
-			if ($pageModel->validate())
-			{
-				$pageModel->save();
-				$elModel=El::model()->findByPk($_POST['Page']['event_id']);
-				$elModel->pages=array_merge($elModel->pages, array($pageModel->id));
-				$elModel->save();
-				$this->redirect(array('view','id'=>$elModel->id));
-			}
-		}
+			$pageElModel = $this->loadPageElModel($id, $id2);
+			$pageModel = $this->loadPageModel($id2);
 			
-		$this->render('createPage',array(
-			'pageModel'=>$pageModel,
-		));
-	}
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);
+				
+			if(isset($_POST['PageEl'], $_POST['Page']))
+			{
+				$pageElModel->attributes=$_POST['PageEl'];
+				$pageModel->attributes=$_POST['Page'];
+				
+				$valid=$pageElModel->validate();
+				$valid=$pageModel->validate() && $valid;
+			
+				if($valid)
+				{
+					$pageModel->save(false);
+					$pageElModel->page_id=$pageModel->id;
+					
+					$pageElModel->save(false);
+					$this->redirect(array('view','id'=>$pageElModel->el_id));
+				}
+			}
+				
+			$this->render('updateSubPage',array(
+				'pageElModel'=>$pageElModel,
+				'pageModel'=>$pageModel, 
+			));
+		} else {
+			Yii::app()->user->loginRequired();
+		}
+	} 
 	
 	/**
 	 * Delete subpage
 	 * @param id Id of the Event
 	 */
-	public function actionDeletePage($id)
+	public function actionDeleteSubPage($id, $id2)
 	{
-		$model=Page::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
+		$model=$this->loadModel($id);
+		
+		if(Yii::app()->user->checkAccess('deleteOwnEvent', array('event'=>$model)) ||
+		   Yii::app()->user->checkAccess('deleteEvent'))
+		{
+			PageEl::model()->findByAttributes(array('el_id'=>$id,'page_id'=>$id2))->delete();
+			Page::model()->findByPk($id2)->delete();
+
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			if(!isset($_GET['ajax']))
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}
+		else
+		{
+			Yii::app()->user->loginRequired();
+		}
 	}
 
 	/**
@@ -246,6 +279,36 @@ class EventController extends Controller
 	public function loadModel($id)
 	{
 		$model=El::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+	
+	/**
+	 * Returns the data model based on the primary key given in the GET variable.
+	 * If the data model is not found, an HTTP exception will be raised.
+	 * @param integer $id the ID of the model to be loaded
+	 * @return El the loaded model
+	 * @throws CHttpException
+	 */
+	public function loadPageElModel($eventId,$pageId)
+	{
+		$model=PageEl::model()->findByAttributes(array('el_id'=>$eventId,'page_id'=>$pageId));
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+	
+	/**
+	 * Returns the data model based on the primary key given in the GET variable.
+	 * If the data model is not found, an HTTP exception will be raised.
+	 * @param integer $id the ID of the model to be loaded
+	 * @return El the loaded model
+	 * @throws CHttpException
+	 */
+	public function loadPageModel($id)
+	{
+		$model=Page::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

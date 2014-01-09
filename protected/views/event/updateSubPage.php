@@ -1,11 +1,11 @@
 <?php
 /* @var $this EventController */
-/* @var $eventModel El */
+/* @var $pageElModel PageEl */
 /* @var $pageModel Page */
 
 $this->breadcrumbs=array(
 	'Akcie'=>array('index'),
-	'Vytvorenie',
+	'Upravenie',
 );
 
 $this->menu=array(
@@ -14,7 +14,7 @@ $this->menu=array(
 );
 ?>
 
-<h1>Vytvorenie podstránky Akcie</h1>
+<h1>Upravenie podstránky Akcie</h1>
 
 <div class="form">
 
@@ -27,17 +27,18 @@ $this->menu=array(
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<?php echo $form->errorSummary($pageModel); ?>
+	<?php echo $form->errorSummary(array($pageElModel, $pageModel)); ?>
 
-	<?php //echo $form->labelEx($pageModel,'events'); ?><br/>
-	<?php echo $form->dropDownList($pageModel,'event_id',
-			CHtml::listData(El::model()->findAll(),'id','name')); ?>
-	<?php //echo $form->error($pageModel,'events'); ?>
+	<?php echo $form->labelEx($pageElModel,'el_id', array('label'=>'Akcia')); ?>
+	<?php echo $form->dropDownList($pageElModel,'el_id',
+			Yii::app()->user->getEventsListData(),
+			array('empty'=>'Vyberte akciu')); ?>
+	<?php echo $form->error($pageElModel,'el_id'); ?>
 	
 	<?php $this->widget('application.components.PageWidget', array('model'=>$pageModel,'form'=>$form)); ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($pageModel->isNewRecord ? 'Vytvoriť' : 'Uložiť'); ?>
+		<?php echo CHtml::submitButton($pageElModel->isNewRecord ? 'Vytvoriť' : 'Uložiť'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
