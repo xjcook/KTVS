@@ -32,8 +32,12 @@ endif;
             'type'=>'raw',
             'value'=>implode(',', CHtml::listData($model->users,'id','name')),
 		),
-		'name',
 		'description',
-		'updated_at',
 	),
+)); 
+?>
+
+<?php $this->widget('zii.widgets.CListView', array(
+	'dataProvider'=>$dataProvider,
+	'itemView'=>'_viewSubPage',
 )); ?>
