@@ -7,7 +7,7 @@ class m131121_113529_create_el_table extends CDbMigration
 		$this->createTable('tbl_el', array(
 			// keys
 			'id' => 'pk',
-			'user_id' => 'integer NOT NULL',
+			/* M:N relation in tbl_user_el */
 			/* M:N relation in tbl_student_el */
 			/* M:N relation in tbl_page_el */
 			

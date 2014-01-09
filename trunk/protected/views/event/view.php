@@ -27,8 +27,11 @@ endif;
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
-		'user_id',
+		array(
+			'label'=>'Učitelia',
+            'type'=>'raw',
+            'value'=>implode(',', CHtml::listData($model->users,'id','name')),
+		),
 		'name',
 		'description',
 		'type',

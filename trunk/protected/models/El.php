@@ -12,12 +12,17 @@
  * @property string $updated_at
  *
  * The followings are the available model relations:
- * @property User $user
+ * @property User[] $users
  * @property Page[] $pages
  * @property Student[] $students
  */
 class El extends CActiveRecord
 {
+	/**
+	 * @property userIds
+	 */
+	public $userIds = array();
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -34,13 +39,13 @@ class El extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, name, type', 'required'),
-			array('user_id, type', 'numerical', 'integerOnly'=>true),
+			array('name, type, users', 'required'),
+			array('type', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
-			array('description, pageIds', 'safe'),
+			array('description, userIds', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, name, description, type, updated_at', 'safe', 'on'=>'search'),
+			array('id, name, description, type, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,7 +57,7 @@ class El extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
+			'users' => array(self::MANY_MANY, 'User', 'tbl_user_el(el_id, user_id)'),
 			'pages' => array(self::MANY_MANY, 'Page', 'tbl_page_el(el_id, page_id)'),
 			'students' => array(self::MANY_MANY, 'Student', 'tbl_student_el(el_id, student_id)'),
 		);
@@ -65,7 +70,7 @@ class El extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'user_id' => 'Používateľ',
+			'users' => 'Používatelia',
 			'name' => 'Názov',
 			'description' => 'Popis',
 			'type' => 'Typ',
@@ -141,5 +146,21 @@ class El extends CActiveRecord
 				'class'=>'ext.yiiext.behaviors.activerecord-relation.EActiveRecordRelationBehavior',
 			),
 		);
+	}
+
+	/**
+	 * Override afterFind()
+	 * @see CActiveRecord::afterFind()
+	 */
+	protected function afterFind()
+	{
+		// set userIds[]
+		if(!empty($this->users))
+		{
+			foreach ($this->users as $n => $user)
+				$this->userIds[] = $user->id;
+		}
+		
+		parent::afterFind();
 	}
 }

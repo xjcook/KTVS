@@ -29,7 +29,7 @@ endif;
 		array(
 			'label'=>'Učitelia',
             'type'=>'raw',
-            'value'=>implode(',', CHtml::listData(User::model()->findAll(),'id','name')),
+            'value'=>implode(',', CHtml::listData($model->users,'id','name')),
 		),
 		'schedule_id',
 		'name',

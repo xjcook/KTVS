@@ -22,7 +22,7 @@ class m131204_094450_create_business_rules extends CDbMigration
 		$auth->createOperation('updateEvent', 'update a event');
 		$auth->createOperation('deleteEvent', 'delete a event');
 		
-		$bizRule='return Yii::app()->user->id==$params["event"]->user_id;';
+		$bizRule='return Yii::app()->user->checkUserAccess($params["event"]);';
 		$task=$auth->createTask('updateOwnEvent','update a event by author himself',$bizRule);
 		$task->addChild('updateEvent');
 		$task=$auth->createTask('deleteOwnEvent','delete a event by author himself',$bizRule);
@@ -34,7 +34,7 @@ class m131204_094450_create_business_rules extends CDbMigration
 		$auth->createOperation('updateLeague', 'update a league');
 		$auth->createOperation('deleteLeague', 'delete a league');
 		
-		$bizRule='return Yii::app()->user->id==$params["league"]->user_id;';
+		$bizRule='return Yii::app()->user->checkUserAccess($params["league"]);';
 		$task=$auth->createTask('updateOwnLeague','update a league by author himself',$bizRule);
 		$task->addChild('updateLeague');
 		

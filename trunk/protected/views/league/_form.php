@@ -32,6 +32,13 @@
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'users'); ?><br/>
+		<?php echo $form->checkBoxList($model,'userIds',
+				CHtml::listData(User::model()->findAll(),'id','name')); ?>
+		<?php echo $form->error($model, 'users'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Vytvoriť' : 'Uložiť'); ?>
 	</div>
