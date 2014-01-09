@@ -48,7 +48,7 @@ class Course extends CActiveRecord
 			array('description, userIds', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description, type, updated_at', 'safe', 'on'=>'search'),
+			array('name, description', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -99,11 +99,8 @@ class Course extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('description',$this->description,true);
-		$criteria->compare('type',$this->type);
-		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

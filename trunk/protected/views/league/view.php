@@ -30,8 +30,6 @@ endif;
             'type'=>'raw',
             'value'=>implode(',', CHtml::listData($model->users,'id','name')),
 		),
-		'name',
 		'description',
-		'updated_at',
 	),
 )); ?>

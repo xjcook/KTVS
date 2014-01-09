@@ -11,10 +11,6 @@
 	'method'=>'get',
 )); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'schedule_id'); ?>
@@ -34,11 +30,6 @@
 	<div class="row">
 		<?php echo $form->label($model,'capacity'); ?>
 		<?php echo $form->textField($model,'capacity'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'updated_at'); ?>
-		<?php echo $form->textField($model,'updated_at'); ?>
 	</div>
 
 	<div class="row buttons">
