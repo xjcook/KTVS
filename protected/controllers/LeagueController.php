@@ -45,6 +45,7 @@ class LeagueController extends Controller
 			if(isset($_POST['El']))
 			{
 				$model->attributes=$_POST['El'];
+				$model->users=$model->userIds;
 				if($model->save())
 					$this->redirect(array('view','id'=>$model->id));
 			}
@@ -77,6 +78,7 @@ class LeagueController extends Controller
 			if(isset($_POST['El']))
 			{
 				$model->attributes=$_POST['El'];
+				$model->users=$model->userIds;
 				if($model->save())
 					$this->redirect(array('view','id'=>$model->id));
 			}
