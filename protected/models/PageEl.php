@@ -77,7 +77,6 @@ class PageEl extends CActiveRecord
 
 		$criteria->compare('page_id',$this->page_id);
 		$criteria->compare('el_id',$this->el_id);
-		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

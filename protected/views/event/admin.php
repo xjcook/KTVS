@@ -42,7 +42,6 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'name',
 		'description',
-		'updated_at',
 		array(
 			'class'=>'CButtonColumn',
 		),

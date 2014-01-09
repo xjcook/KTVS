@@ -40,12 +40,10 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
 		'schedule_id',
 		'name',
 		'description',
 		'capacity',
-		'updated_at',
 		array(
 			'class'=>'CButtonColumn',
 		),
