@@ -34,7 +34,6 @@ endif;
 		),
 		'name',
 		'description',
-		'type',
 		'updated_at',
 	),
 )); ?>
