@@ -12,9 +12,7 @@ $this->pageTitle=Yii::app()->name;
 
 <?php echo CHtml::link('Študenti',array('student/index')); ?><br/>
 
-<?php echo CHtml::link('Users',array('user/index')); ?><br/>
-
-<?php echo CHtml::link('Pages',array('page/index')); ?><br/>
+<?php echo CHtml::link('Učitelia',array('user/index')); ?><br/>
 
 <?php echo CHtml::link('Prihlásenie na šport',array('student/create')); ?><br/>
 

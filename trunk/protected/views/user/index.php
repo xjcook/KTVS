@@ -3,19 +3,19 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Používateľia',
+	'Učitelia',
 );
 if(Yii::app()->user->isGuest): 
 
 else:
 $this->menu=array(
-	array('label'=>'Vytvoriť používateľa', 'url'=>array('create')),
-	array('label'=>'Spraovať používateľov', 'url'=>array('admin')),
+	array('label'=>'Vytvoriť učiteľa', 'url'=>array('create')),
+	array('label'=>'Spravovať učiteľov', 'url'=>array('admin')),
 );
 endif;
 ?>
 
-<h1>Používatelia</h1>
+<h1>Učitelia</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

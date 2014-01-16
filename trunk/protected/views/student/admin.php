@@ -45,9 +45,6 @@ $('.search-form form').submit(function(){
 		'class',
 		'phone',
 		'skills',
-		/*
-		'updated_at',
-		*/
 		array(
 			'class'=>'CButtonColumn',
 		),

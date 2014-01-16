@@ -3,13 +3,13 @@
 /* @var $model Schedule */
 
 $this->breadcrumbs=array(
-	'Schedules'=>array('index'),
-	'Manage',
+	'Rozvrhy'=>array('index'),
+	'Upraviť',
 );
 
 $this->menu=array(
-	array('label'=>'List Schedule', 'url'=>array('index')),
-	array('label'=>'Create Schedule', 'url'=>array('create')),
+	array('label'=>'Zoznam rozvrhov', 'url'=>array('index')),
+	array('label'=>'Vytvoriť rozvrh', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Schedules</h1>
+<h1>Spravovať rozvrhy</h1>
 
 <?php echo CHtml::link('Pokročilé vyhľadávanie','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
@@ -40,10 +40,8 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
 		'page_id',
 		'tvobject_id',
-		'updated_at',
 		array(
 			'class'=>'CButtonColumn',
 		),

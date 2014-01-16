@@ -35,6 +35,5 @@ endif;
 		'name',
 		'description',
 		'capacity',
-		'updated_at',
 	),
 )); ?>

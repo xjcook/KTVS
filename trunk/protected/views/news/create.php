@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Novinky'=>array('index'),
-	'Vytvorenie',
+	'Vytvorenie novinky',
 );
 
 $this->menu=array(

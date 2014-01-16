@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Študenti'=>array('index'),
-	'Vytvorienie',
+	'Prihlásenie',
 );
 
 $this->menu=array(
@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Vytvorenie študenta</h1>
+<h1>Prihlásenie študenta</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -4,16 +4,16 @@
 /* @var $pageModel Page */
 
 $this->breadcrumbs=array(
-	'Schedules'=>array('index'),
+	'Rozvrhy'=>array('index'),
 	$scheduleModel->id=>array('view','id'=>$scheduleModel->id),
-	'Update',
+	'Upraviť',
 );
 
 $this->menu=array(
-	array('label'=>'List Schedule', 'url'=>array('index')),
-	array('label'=>'Create Schedule', 'url'=>array('create')),
-	array('label'=>'View Schedule', 'url'=>array('view', 'id'=>$scheduleModel->id)),
-	array('label'=>'Manage Schedule', 'url'=>array('admin')),
+	array('label'=>'Zoznam rozvrhov', 'url'=>array('index')),
+	array('label'=>'Vytvoriť rozvrh', 'url'=>array('create')),
+	array('label'=>'Zobraziť rozvrh', 'url'=>array('view', 'id'=>$scheduleModel->id)),
+	array('label'=>'Spravovať rozvrh', 'url'=>array('admin')),
 );
 ?>
 

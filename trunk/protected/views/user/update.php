@@ -3,16 +3,16 @@
 /* @var $model User */
 
 $this->breadcrumbs=array(
-	'Používateľia'=>array('index'),
+	'Učitelia'=>array('index'),
 	$model->name=>array('view','id'=>$model->id),
 	'Úprava',
 );
 
 $this->menu=array(
-	array('label'=>'Zoznam používateľov', 'url'=>array('index')),
-	array('label'=>'Vytvoriť používateľa', 'url'=>array('create')),
-	array('label'=>'Detail používateľa', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Spravovať používateľa', 'url'=>array('admin')),
+	array('label'=>'Zoznam učiteľov', 'url'=>array('index')),
+	array('label'=>'Vytvoriť učiteľov', 'url'=>array('create')),
+	array('label'=>'Detail učiteľov', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Spravovať učiteľov', 'url'=>array('admin')),
 );
 ?>
 
