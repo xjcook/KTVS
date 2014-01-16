@@ -9,6 +9,10 @@ class LeagueController extends Controller
 	public $layout='//layouts/column2';
 
 	/**
+	* @var string set pageTitle
+	*/
+	public $pageTitle='Ligy';
+	/**
 	 * @return array action filters
 	 */
 	public function filters()
