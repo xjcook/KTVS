@@ -21,6 +21,10 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('phone')); ?>:</b>
 	<?php echo CHtml::encode($data->phone); ?>
 	<br />
+	
+	<b><?php echo CHtml::encode($data->getAttributeLabel('sport')); ?>:</b>
+	<?php echo CHtml::encode($data->sport->name); ?>
+	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('skills')); ?>:</b>
 	<?php echo CHtml::encode($data->skills); ?>

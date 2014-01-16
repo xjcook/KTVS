@@ -118,7 +118,14 @@ class StudentController extends Controller
 	{
 		if(Yii::app()->user->checkAccess('readStudent'))
 		{
-			$dataProvider=new CActiveDataProvider('Student');
+			$dataProvider=new CActiveDataProvider('Student', array(
+				'criteria'=>array(
+					'with'=>array('sport'=>array(
+						'together'=>'true',
+						'joinType'=>'INNER JOIN',
+					)),
+				),
+			));
 			$this->render('index',array(
 				'dataProvider'=>$dataProvider,
 			));
