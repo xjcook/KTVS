@@ -37,8 +37,9 @@ class MainMenu extends CMenu
         foreach ($model as $league)
         {
             $leagues[] = array(
-                'label'=>'<b>'.$league->name.'</b>',
+                'label'=>$league->name,
                 'url'=>array('league/view', 'id'=>$league->id),
+            	'linkOptions'=>array('class'=>'mainCategory'),
             );
         }
     	
@@ -48,8 +49,9 @@ class MainMenu extends CMenu
     	foreach ($model as $event)
     	{
     		$events[] = array(
-    			'label'=>'<b>'.$event->name.'</b>',
+    			'label'=>$event->name,
     			'url'=>array('event/view', 'id'=>$event->id),
+    			'linkOptions'=>array('class'=>'mainCategory'),
     		);
     	}
     	
@@ -61,6 +63,7 @@ class MainMenu extends CMenu
     		$courses[] = array(
     			'label'=>$course->name, 
     			'url'=>array('course/view', 'id'=>$course->id),
+    			'linkOptions'=>array('class'=>'mainCategory'),
     		);
     	}
         
@@ -115,10 +118,12 @@ class MainMenu extends CMenu
         	array('label'=>'Ligy', 'url'=>array('/league/index'), 'items'=>$leagues),
         	array('label'=>'Akcie', 'url'=>array('/event/index'), 'items'=>$events),
         	array('label'=>'Kurzy', 'url'=>array('/course/index'), 'items'=>$courses),
-        	array('label'=>'Galéria', 'url'=>array('/gallery/index')),
+        	array('label'=>'Galéria', 'url'=>'#'),
 
         );
-        $this->submenuHtmlOptions= array('class' => 'submenu');
+
+        $this->id = 'mainMenu';
+        $this->submenuHtmlOptions = array('class' => 'submenu');
 
         parent::init();
     }
