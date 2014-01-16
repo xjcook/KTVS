@@ -5,6 +5,7 @@ class m131219_002638_add_students extends CDbMigration
 	public function safeUp()
 	{
             $this->insert('tbl_student', array(
+            	'sport_id'=>'1',
             	'name'=>'Jožko Mrkvička',
             	'email'=>'jozko@jozko.sk',
             	'class'=>'2',
@@ -13,6 +14,7 @@ class m131219_002638_add_students extends CDbMigration
             ));
             
             $this->insert('tbl_student', array(
+            	'sport_id'=>'2',
             	'name'=>'Zuzanka Hraškovie',
             	'email'=>'zuzkaa@zuzka.sk',
             	'class'=>'1',
@@ -21,6 +23,7 @@ class m131219_002638_add_students extends CDbMigration
             ));
            
             $this->insert('tbl_student', array(
+            	'sport_id'=>'3',
             	'name'=>'Usain Bolt',
             	'email'=>'usain@usain.sk',
             	'class'=>'5',
