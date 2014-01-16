@@ -392,6 +392,9 @@ footer .copyright {
 #vyskakovacie_menu li:hover li a {background: #9e5560;}
 #vyskakovacie_menu li:hover li a:hover {color: #000;background-color: #f8f8f8;}
 
+ul#mainMenu li a.mainCategory {font-weight: bold;}
+ul#mainMenu li li a.subCategory {}
+
 #inputs{
 	border-style: none;
 }
