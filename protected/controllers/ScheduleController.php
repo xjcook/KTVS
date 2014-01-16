@@ -137,9 +137,14 @@ class ScheduleController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+	public function actionIndex($id)
 	{
-		$dataProvider=new CActiveDataProvider('Schedule');
+		$dataProvider=new CActiveDataProvider('Schedule', array(
+			'criteria'=>array(
+				'condition'=>'class=:class',
+				'params'=>array(':class'=>$id),
+			),
+		));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
