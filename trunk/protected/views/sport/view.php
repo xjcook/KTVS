@@ -31,7 +31,6 @@ endif;
             'type'=>'raw',
             'value'=>implode(',', CHtml::listData($model->users,'id','name')),
 		),
-		'schedule_id',
 		'name',
 		'description',
 		'capacity',
