@@ -81,23 +81,23 @@ class MainMenu extends CMenu
                 'items'=>array(
                     array(
                         'label'=>'1.ročník',
-                        'url'=>'#',
+                        'url'=>array('schedule/1'),
                     ),
                     array(
                         'label'=>'2.ročník',
-                        'url'=>'#',
+                        'url'=>array('schedule/2'),
                     ),
                     array(
                         'label'=>'3.ročník',
-                        'url'=>'#',
+                        'url'=>array('schedule/3'),
                     ),
                     array(
                         'label'=>'4.ročník',
-                        'url'=>'#',
+                        'url'=>array('schedule/4'),
                     ),
                     array(
                         'label'=>'5.ročník',
-                        'url'=>'#',
+                        'url'=>array('schedule/5'),
                     ),
                 ),
             ),
