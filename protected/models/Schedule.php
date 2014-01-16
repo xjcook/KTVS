@@ -37,7 +37,7 @@ class Schedule extends CActiveRecord
 			array('class, tvobject_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, class, tvobject_id, updated_at', 'safe', 'on'=>'search'),
+			array('id, class, tvobject, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -89,7 +89,7 @@ class Schedule extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('class',$this->class);
-		$criteria->compare('tvobject_id',$this->tvobject_id);
+		$criteria->compare('tvobject',$this->tvobject);
 		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(

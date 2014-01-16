@@ -12,6 +12,7 @@ class LeagueController extends Controller
 	* @var string set pageTitle
 	*/
 	public $pageTitle='Ligy';
+	
 	/**
 	 * @return array action filters
 	 */
