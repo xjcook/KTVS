@@ -19,17 +19,6 @@ class MainMenu extends CMenu
     			'url'=>array('news/view', 'id'=>$news->id),
     		);
     	}
-    	
-/*    	// Schedules
-    	$model = Schedule::model()->findAll();
-    	$schedules = array();
-    	foreach ($model as $schedule)
-    	{
-    		$schedules[] = array(
-    			'label'=>$schedule->page->title,
-    			'url'=>array('schedule/view', 'id'=>$schedule->id),
-    		);
-    	}*/
 
         // Leagues
         $model = El::model()->findAllByAttributes(array('type'=>1));
@@ -113,11 +102,10 @@ class MainMenu extends CMenu
                 ),
             ),
         	array('label'=>'Novinky', 'url'=>array('/news/index'), 'items'=>$newses),
-        	//array('label'=>'Rozvrh', 'url'=>array('/schedule/index'), 'items'=>$schedules),
         	array('label'=>'Prihlasovanie', 'url'=>array('/student/create')),
-        	array('label'=>'Ligy', 'url'=>array('/league/index'), 'items'=>$leagues),
-        	array('label'=>'Akcie', 'url'=>array('/event/index'), 'items'=>$events),
-        	array('label'=>'Kurzy', 'url'=>array('/course/index'), 'items'=>$courses),
+        	array('label'=>'Ligy', 'url'=>array('/league/index'), 'items'=>$leagues, 'itemOptions'=>array('class'=>'item')),
+        	array('label'=>'Akcie', 'url'=>array('/event/index'), 'items'=>$events, 'itemOptions'=>array('class'=>'item')),
+        	array('label'=>'Kurzy', 'url'=>array('/course/index'), 'items'=>$courses, 'itemOptions'=>array('class'=>'item')),
         	array('label'=>'Galéria', 'url'=>'#'),
 
         );
