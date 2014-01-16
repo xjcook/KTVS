@@ -20,7 +20,7 @@
 	<div class="row">
 		<?php echo $form->labelEx($model,'sport_id'); ?>
 		<?php echo $form->dropDownList($model,'sport_id',
-				CHtml::listData(Sport::model()->findAll(),'id','name')); ?>
+				CHtml::listData(Sport::model()->findAll(),'id','name'), array('empty' => 'Vyberte šport')); ?>
 		<?php echo $form->error($model,'sport_id'); ?>
 	</div>
 
