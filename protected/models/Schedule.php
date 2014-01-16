@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'tbl_schedule':
  * @property integer $id
+ * @property integer $class
  * @property integer $page_id
  * @property integer $tvobject_id
  * @property string $updated_at
@@ -32,11 +33,11 @@ class Schedule extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('tvobject_id', 'required'),
-			array('tvobject_id', 'numerical', 'integerOnly'=>true),
+			array('class, tvobject_id', 'required'),
+			array('class, tvobject_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, page_id, tvobject_id, updated_at', 'safe', 'on'=>'search'),
+			array('id, class, tvobject_id, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,6 +62,7 @@ class Schedule extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'class' => 'Ročník',
 			'page_id' => 'Page',
 			'tvobject_id' => 'Športovisko',
 			'updated_at' => 'Updated At',
@@ -86,7 +88,7 @@ class Schedule extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('page_id',$this->page_id);
+		$criteria->compare('class',$this->class);
 		$criteria->compare('tvobject_id',$this->tvobject_id);
 		$criteria->compare('updated_at',$this->updated_at,true);
 

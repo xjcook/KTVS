@@ -7,6 +7,7 @@ class m131121_110019_create_schedule_table extends CDbMigration
 		$this->createTable('tbl_schedule', array(
 			// keys
 			'id' => 'pk',
+			'class' => 'integer NOT NULL',
 			'page_id' => 'integer NOT NULL',
 			'tvobject_id' => 'integer NOT NULL',
 
