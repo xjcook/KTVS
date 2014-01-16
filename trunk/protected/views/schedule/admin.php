@@ -40,8 +40,8 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'page_id',
-		'tvobject_id',
+		'class',
+		'tvobject.name',
 		array(
 			'class'=>'CButtonColumn',
 		),
