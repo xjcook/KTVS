@@ -3,13 +3,13 @@
 /* @var $model User */
 
 $this->breadcrumbs=array(
-	'Používateľia'=>array('index'),
-	'Spravovať',
+	'Učitelia'=>array('index'),
+	'Spravovať učiteľov',
 );
 
 $this->menu=array(
-	array('label'=>'Zoznam používateľov', 'url'=>array('index')),
-	array('label'=>'Vytvoriť používateľa', 'url'=>array('create')),
+	array('label'=>'Zoznam učiteľov', 'url'=>array('index')),
+	array('label'=>'Vytvoriť učitela', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Sprava používateľov </h1>
+<h1>Správa učiteľov</h1>
 
 <?php echo CHtml::link('Pokročilé vyhľadávanie','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
@@ -40,12 +40,9 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
 		'name',
 		'email',
-		'password',
 		'is_admin',
-		'updated_at',
 		array(
 			'class'=>'CButtonColumn',
 		),

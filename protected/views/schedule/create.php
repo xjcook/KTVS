@@ -4,16 +4,16 @@
 /* @var $pageModel Page */
 
 $this->breadcrumbs=array(
-	'Schedules'=>array('index'),
-	'Create',
+	'Rozvrhy'=>array('index'),
+	'Vytvoriť rozvrh',
 );
 
 $this->menu=array(
-	array('label'=>'List Schedule', 'url'=>array('index')),
-	array('label'=>'Manage Schedule', 'url'=>array('admin')),
+	array('label'=>'Zoznam rozvrhov', 'url'=>array('index')),
+	array('label'=>'Spravovať rozvrhy', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Schedule</h1>
+<h1>Vytvoriť rozvrh</h1>
 
 <?php $this->renderPartial('_form', array('scheduleModel'=>$scheduleModel,'pageModel'=>$pageModel)); ?>

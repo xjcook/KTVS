@@ -31,6 +31,5 @@ endif;
 		'class',
 		'phone',
 		'skills',
-		'updated_at',
 	),
 )); ?>

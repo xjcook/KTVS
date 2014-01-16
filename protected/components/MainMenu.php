@@ -20,7 +20,7 @@ class MainMenu extends CMenu
     		);
     	}
     	
-    	// Schedules
+/*    	// Schedules
     	$model = Schedule::model()->findAll();
     	$schedules = array();
     	foreach ($model as $schedule)
@@ -29,7 +29,7 @@ class MainMenu extends CMenu
     			'label'=>$schedule->page->title,
     			'url'=>array('schedule/view', 'id'=>$schedule->id),
     		);
-    	}
+    	}*/
 
         // Leagues
         $model = El::model()->findAllByAttributes(array('type'=>1));
@@ -83,8 +83,34 @@ class MainMenu extends CMenu
         			),
         		),
         	),
+            array(
+                'label'=>'Rozvrh',
+                'url'=>array('/schedule/index'),
+                'items'=>array(
+                    array(
+                        'label'=>'1.ročník',
+                        'url'=>'#',
+                    ),
+                    array(
+                        'label'=>'2.ročník',
+                        'url'=>'#',
+                    ),
+                    array(
+                        'label'=>'3.ročník',
+                        'url'=>'#',
+                    ),
+                    array(
+                        'label'=>'4.ročník',
+                        'url'=>'#',
+                    ),
+                    array(
+                        'label'=>'5.ročník',
+                        'url'=>'#',
+                    ),
+                ),
+            ),
         	array('label'=>'Novinky', 'url'=>array('/news/index'), 'items'=>$newses),
-        	array('label'=>'Rozvrh', 'url'=>array('/schedule/index'), 'items'=>$schedules),
+        	//array('label'=>'Rozvrh', 'url'=>array('/schedule/index'), 'items'=>$schedules),
         	array('label'=>'Prihlasovanie', 'url'=>array('/student/create')),
         	array('label'=>'Ligy', 'url'=>array('/league/index'), 'items'=>$leagues),
         	array('label'=>'Akcie', 'url'=>array('/event/index'), 'items'=>$events),

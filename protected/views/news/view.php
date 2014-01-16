@@ -12,7 +12,7 @@ $this->menu=array(
 else:
 $this->menu=array(
 	array('label'=>'Zoznam noviniek', 'url'=>array('index')),
-	array('label'=>'Vytovriť novinku', 'url'=>array('create')),
+	array('label'=>'Vytvoriť novinku', 'url'=>array('create')),
 	array('label'=>'Upraviť novinku', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Odstrániť novinku', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Spravovať novinky', 'url'=>array('admin')),
@@ -30,6 +30,5 @@ endif;
 		'title',
 		'content',
 		'valid_to',
-		'updated_at',
 	),
 )); ?>
