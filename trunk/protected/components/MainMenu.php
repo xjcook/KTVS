@@ -123,6 +123,7 @@ class MainMenu extends CMenu
         );
 
         $this->id = 'mainMenu';
+        $this->activateParents = true;
         $this->submenuHtmlOptions = array('class' => 'submenu');
 
         parent::init();
