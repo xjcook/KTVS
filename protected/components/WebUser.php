@@ -48,9 +48,14 @@ class WebUser extends CWebUser {
   	$events = array();
   	
 	if($this->isAdmin())
+	{
   		$events = CHtml::listData(El::model()->findAllByAttributes(array('type'=>0)),'id','name');
+	}
 	else
-		$events = CHtml::listData(El::model()->findAllByAttributes(array('type'=>0,'user_id'=>Yii::app()->user->id)),'id','name');
+	{	
+		$events = CHtml::listData(User::model()->findByPk(Yii::app()->user->id)->
+										getRelated('els',true),'id','name');
+	}
   	
 	return $events;
   }
