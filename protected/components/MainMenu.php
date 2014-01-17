@@ -44,6 +44,12 @@ class MainMenu extends CMenu
     			'linkOptions'=>array('class'=>'mainCategory'),
     		);
     		
+    		// Add separator
+    		$events[] = array(
+    			'label'=>'',
+    			'itemOptions'=>array('class'=>'divider'),
+    		);
+    		
     		// Add subcategories
     		$modelSubEl = El::model()->findByPk($event->id)->getRelated('pages',true);
     		foreach ($modelSubEl as $subEvent)
@@ -112,14 +118,41 @@ class MainMenu extends CMenu
                         'url'=>array('schedule/5'),
                     ),
                 ),
+            	'active'=>strpos(Yii::app()->request->requestUri,'schedule') !== false,
             ),
-        	array('label'=>'Novinky', 'url'=>array('/news/index'), 'items'=>$newses),
-        	array('label'=>'Prihlasovanie', 'url'=>array('/student/create')),
-        	array('label'=>'Ligy', 'url'=>array('/league/index'), 'items'=>$leagues, 'itemOptions'=>array('class'=>'item')),
-        	array('label'=>'Akcie', 'url'=>array('/event/index'), 'items'=>$events, 'itemOptions'=>array('class'=>'item')),
-        	array('label'=>'Kurzy', 'url'=>array('/course/index'), 'items'=>$courses, 'itemOptions'=>array('class'=>'item')),
-        	array('label'=>'Galéria', 'url'=>'#'),
-
+        	array(
+        		'label'=>'Novinky', 
+        		'url'=>array('/news/index'), 
+        		'items'=>$newses,
+            ),
+        	array(
+        		'label'=>'Prihlasovanie', 
+        		'url'=>array('/student/create'),
+            ),
+        	array(
+        		'label'=>'Ligy', 
+        		'url'=>array('/league/index'), 
+        		'items'=>$leagues, 
+        		'itemOptions'=>array('class'=>'item'),
+        		'active'=>strpos(Yii::app()->request->requestUri,'league') !== false,
+            ),
+        	array(
+        		'label'=>'Akcie', 
+        		'url'=>array('/event/index'), 
+        		'items'=>$events, 
+        		'itemOptions'=>array('class'=>'item'),
+        		'active'=>strpos(Yii::app()->request->requestUri,'event') !== false,
+        	),
+        	array('label'=>'Kurzy', 
+        		'url'=>array('/course/index'), 
+        		'items'=>$courses, 
+        		'itemOptions'=>array('class'=>'item'),
+        		'active'=>strpos(Yii::app()->request->requestUri,'course') !== false,
+        	),
+        	array(
+        		'label'=>'Galéria', 
+        		'url'=>'#',
+            ),
         );
 
         $this->id = 'mainMenu';
