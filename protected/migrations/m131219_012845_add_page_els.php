@@ -6,13 +6,15 @@ class m131219_012845_add_page_els extends CDbMigration
 	{
             $this->insert('tbl_page_el', array('page_id'=>'1','el_id'=>'1'));
             
-            $this->insert('tbl_page_el', array('page_id'=>'1','el_id'=>'2'));
-            
-            $this->insert('tbl_page_el', array('page_id'=>'1','el_id'=>'3'));
-            
             $this->insert('tbl_page_el', array('page_id'=>'2','el_id'=>'1'));
             
-            $this->insert('tbl_page_el', array('page_id'=>'2','el_id'=>'4'));
+            $this->insert('tbl_page_el', array('page_id'=>'3','el_id'=>'1'));
+            
+            $this->insert('tbl_page_el', array('page_id'=>'2','el_id'=>'2'));
+            
+            $this->insert('tbl_page_el', array('page_id'=>'3','el_id'=>'3'));
+            
+            $this->insert('tbl_page_el', array('page_id'=>'4','el_id'=>'4'));
             
 	}
 
