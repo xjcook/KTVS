@@ -37,11 +37,23 @@ class MainMenu extends CMenu
     	$events = array();
     	foreach ($model as $event)
     	{
+    		// Add main category
     		$events[] = array(
     			'label'=>$event->name,
     			'url'=>array('event/view', 'id'=>$event->id),
     			'linkOptions'=>array('class'=>'mainCategory'),
     		);
+    		
+    		// Add subcategories
+    		$modelSubEl = El::model()->findByPk($event->id)->getRelated('pages',true);
+    		foreach ($modelSubEl as $subEvent)
+    		{
+    			$events[] = array(
+    				'label'=>$subEvent->title,
+    				'url'=>Yii::app()->createUrl('/', array('event'=>$event->id, 'page'=>$subEvent->id)),
+    				'linkOptions'=>array('class'=>'subCategory'),
+    			);
+    		}
     	}
     	
     	// Courses
