@@ -17,6 +17,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Schedule <?php echo $scheduleModel->id; ?></h1>
+<h1>Upraviť rozvrh <?php echo $scheduleModel->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('scheduleModel'=>$scheduleModel,'pageModel'=>$pageModel)); ?>
