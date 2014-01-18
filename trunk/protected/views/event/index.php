@@ -10,9 +10,9 @@ if(Yii::app()->user->isGuest):
 else:
 $this->menu=array(
 	array('label'=>'Vytvoriť akciu', 'url'=>array('create')),
+	array('label'=>'Vytvoriť podstránku akcie', 'url'=>array('event/createSubPage')),
 	array('label'=>'Spravovať akcie', 'url'=>array('admin')),
-	array('label'=>'Vytvoriť podstránku', 'url'=>array('event/createSubPage')),
-	);
+);
 endif;
 
 ?>

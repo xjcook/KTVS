@@ -86,8 +86,9 @@ class Schedule extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
+		
+		$criteria->with=array('tvobject');
 
-		$criteria->compare('id',$this->id);
 		$criteria->compare('class',$this->class);
 		$criteria->compare('tvobject',$this->tvobject);
 		$criteria->compare('updated_at',$this->updated_at,true);

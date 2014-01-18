@@ -118,6 +118,135 @@ class LeagueController extends Controller
 			Yii::app()->user->loginRequired();
 		}
 	}
+	
+	/**
+	 * Displays a particular model.
+	 * @param integer $id the ID of the model to be displayed
+	 */
+	public function actionViewSubPage($id,$id2)
+	{
+		$this->render('viewSubPage',array(
+			'model'=>Page::model()->findByPk($id2),
+		));
+	}
+	
+	/**
+	 * Create subpage
+	 * @param id Id of the League
+	 */
+	public function actionCreateSubPage()
+	{
+		if(!Yii::app()->user->isGuest) {
+			$pageElModel = new PageEl;
+			$pageModel = new Page;
+				
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);
+	
+			if(isset($_POST['PageEl'], $_POST['Page']))
+			{
+				$pageElModel->attributes=$_POST['PageEl'];
+				$pageModel->attributes=$_POST['Page'];
+	
+				$valid=$pageElModel->validate();
+				$valid=$pageModel->validate() && $valid;
+					
+				if($valid)
+				{
+					if(Yii::app()->user->checkAccess('updateOwnLeague',
+							array('league'=>El::model()->findByPk($pageElModel->el_id))) ||
+							Yii::app()->user->checkAccess('updateLeague'))
+					{
+						$pageModel->save(false);
+						$pageElModel->page_id=$pageModel->id;
+	
+						$pageElModel->save(false);
+						$this->redirect(Yii::app()->createUrl('/', array(
+							'league'=>$pageElModel->el_id, 'page'=>$pageModel->id)));
+					}
+					else
+					{
+						throw new CHttpException(401, 'Nemáte dostatočné práva');
+					}
+				}
+			}
+	
+			$this->render('createSubPage',array(
+				'pageElModel'=>$pageElModel,
+				'pageModel'=>$pageModel,
+			));
+		} else {
+			Yii::app()->user->loginRequired();
+		}
+	}
+	
+	/**
+	 * Update subpage
+	 * @param id Id of the League
+	 */
+	public function actionUpdateSubPage($id, $id2)
+	{
+		$model=$this->loadModel($id);
+	
+		if(Yii::app()->user->checkAccess('updateOwnLeague', array('league'=>$model)) ||
+		Yii::app()->user->checkAccess('updateLeague'))
+		{
+			$pageElModel = $this->loadPageElModel($id, $id2);
+			$pageModel = $this->loadPageModel($id2);
+				
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);
+	
+			if(isset($_POST['PageEl'], $_POST['Page']))
+			{
+				$pageElModel->attributes=$_POST['PageEl'];
+				$pageModel->attributes=$_POST['Page'];
+	
+				$valid=$pageElModel->validate();
+				$valid=$pageModel->validate() && $valid;
+					
+				if($valid)
+				{
+					$pageModel->save(false);
+					$pageElModel->page_id=$pageModel->id;
+						
+					$pageElModel->save(false);
+					$this->redirect(Yii::app()->createUrl('/', array(
+						'league'=>$pageElModel->el_id, 'page'=>$pageModel->id)));
+				}
+			}
+	
+			$this->render('updateSubPage',array(
+				'pageElModel'=>$pageElModel,
+				'pageModel'=>$pageModel,
+			));
+		} else {
+			Yii::app()->user->loginRequired();
+		}
+	}
+	
+	/**
+	 * Delete subpage
+	 * @param id Id of the League
+	 */
+	public function actionDeleteSubPage($id, $id2)
+	{
+		$model=$this->loadModel($id);
+	
+		if(Yii::app()->user->checkAccess('deleteLeague'))
+		{
+			PageEl::model()->findByAttributes(array('el_id'=>$id,'page_id'=>$id2))->delete();
+			Page::model()->findByPk($id2)->delete();
+	
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			if(!isset($_GET['ajax']))
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}
+		else
+		{
+			Yii::app()->user->loginRequired();
+		}
+	}
 
 	/**
 	 * Lists all models.
@@ -164,6 +293,21 @@ class LeagueController extends Controller
 	public function loadModel($id)
 	{
 		$model=El::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+	
+	/**
+	 * Returns the data model based on the primary key given in the GET variable.
+	 * If the data model is not found, an HTTP exception will be raised.
+	 * @param integer $id the ID of the model to be loaded
+	 * @return El the loaded model
+	 * @throws CHttpException
+	 */
+	public function loadPageElModel($eventId,$pageId)
+	{
+		$model=PageEl::model()->findByAttributes(array('el_id'=>$eventId,'page_id'=>$pageId));
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

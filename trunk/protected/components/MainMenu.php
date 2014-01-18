@@ -25,11 +25,29 @@ class MainMenu extends CMenu
         $leagues = array();
         foreach ($model as $league)
         {
+        	// Add main category
             $leagues[] = array(
                 'label'=>$league->name,
                 'url'=>array('league/view', 'id'=>$league->id),
             	'linkOptions'=>array('class'=>'mainCategory'),
             );
+
+            // Add separator
+            $leagues[] = array(
+            	'label'=>'',
+            	'itemOptions'=>array('class'=>'divider'),
+            );
+            
+            // Add subcategories
+            $modelSubEl = El::model()->findByPk($league->id)->getRelated('pages',true);
+            foreach ($modelSubEl as $subEvent)
+            {
+            	$leagues[] = array(
+            		'label'=>$subEvent->title,
+            		'url'=>Yii::app()->createUrl('/', array('league'=>$league->id, 'page'=>$subEvent->id)),
+            		'linkOptions'=>array('class'=>'subCategory'),
+            	);
+            }
         }
     	
     	// Events

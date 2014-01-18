@@ -7,17 +7,17 @@ class m131219_004453_add_els extends CDbMigration
            	$this->insert('tbl_el', array(
                 'name'=>'Večerná liga',
                 'description'=>'Zabav sa po večeroch s hokejkou v ruke',
-                'type'=>'0'));
+                'type'=>'1'));
             
             $this->insert('tbl_el', array(
                 'name'=>'Futbalová liga',
                 'description'=>'Zabav sa po večeroch s loptou',
-                'type'=>'0'));
+                'type'=>'1'));
            
             $this->insert('tbl_el', array(
                 'name'=>'Volejbalová liga',
                 'description'=>'Zabav sa po večeroch s loptou',
-                'type'=>'0'));
+                'type'=>'1'));
            
             $this->insert('tbl_el', array(
                 'name'=>'Vianočný turnaj',

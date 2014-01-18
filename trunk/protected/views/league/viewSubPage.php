@@ -1,10 +1,10 @@
 <?php
-/* @var $this LeagueController */
-/* @var $model El */
+/* @var $this PageController */
+/* @var $model Page */
 
 $this->breadcrumbs=array(
 	'Ligy'=>array('index'),
-	$model->name,
+	$model->title,
 );
 if(Yii::app()->user->isGuest):
 $this->menu=array(
@@ -13,7 +13,6 @@ else:
 $this->menu=array(
 	array('label'=>'Zoznam líg', 'url'=>array('index')),
 	array('label'=>'Vytvoriť ligu', 'url'=>array('create')),
-	array('label'=>'Vytvoriť podstránku ligy', 'url'=>array('event/createSubPage')),
 	array('label'=>'Upraviť ligu', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Odstrániť ligu', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Spravovať ligy', 'url'=>array('admin')),
@@ -21,16 +20,12 @@ $this->menu=array(
 endif;
 ?>
 
-<h1><?php echo $model->name; ?></h1>
+<h1><?php echo $model->title; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		array(
-			'label'=>'Učitelia',
-            'type'=>'raw',
-            'value'=>implode(',', CHtml::listData($model->users,'id','name')),
-		),
-		'description',
-	),
-)); ?>
+	<b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
+	<?php echo CHtml::encode($model->title); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($model->getAttributeLabel('content')); ?>:</b>
+	<?php echo CHtml::decode($model->content); ?>
+	<br />

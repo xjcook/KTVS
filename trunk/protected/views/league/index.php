@@ -10,6 +10,7 @@ if(Yii::app()->user->isGuest):
 else:
 $this->menu=array(
 	array('label'=>'Vytvoriť ligu', 'url'=>array('create')),
+	array('label'=>'Vytvoriť podstránku ligy', 'url'=>array('league/createSubPage')),
 	array('label'=>'Spravovať ligy', 'url'=>array('admin')),
 );
 endif;
