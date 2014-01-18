@@ -44,6 +44,7 @@ return array(
             'urlFormat'=>'path',
             'rules'=>array(
                 'sign'=>'student/create',
+                'student/view/email/<email:\w+>/hash/<hash:\w+>'=>'student/view',
                 'event/<id:\d+>/page/<id2:\d+>'=>'event/viewSubPage',
                 'event/update/<id:\d+>/page/<id2:\d+>'=>'event/updateSubPage',
                 'league/<id:\d+>/page/<id2:\d+>'=>'league/viewSubPage',
