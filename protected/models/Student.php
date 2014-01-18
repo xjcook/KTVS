@@ -44,7 +44,7 @@ class Student extends CActiveRecord
 			array('name, email, class, phone', 'required'),
 			array('class', 'numerical', 'integerOnly'=>true),
 			array('name, email, phone, skills', 'length', 'max'=>255),
-			array('sport_id', 'safe'),
+			array('sport_id, hashed_password', 'safe'),
 // 			array('sports', 'checkCapacity'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
