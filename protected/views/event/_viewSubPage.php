@@ -12,7 +12,7 @@
          'showLink'=>true,
          'model'=>$data,
          'linkText'=>'Čítaj viac',
-		 'linkUrl'=>Yii::app()->createUrl('/', array('event'=>Yii::app()->getRequest()->getParam('id'), 'page'=>$data->id)),
+		 'linkUrl'=>Yii::app()->user->getViewUrl('event',$data->id),
          'attribute'=>'content',
          'maxChar'=>100,
        ));
