@@ -82,7 +82,25 @@ class WebUser extends CWebUser {
   	 
   	return $leagues;
   }
- 
+  
+  function getViewUrl($model, $dataId)
+  {
+  	$url = Yii::app()->createUrl('/', array(
+					$model=>Yii::app()->getRequest()->getParam('id'), 
+  					'page'=>$dataId
+  	));
+  	return $url;
+  }
+  
+  function getUpdateUrl($model, $dataId)
+  {
+  	$url = Yii::app()->createUrl($model, array(
+  		'update'=>Yii::app()->getRequest()->getParam('id'),
+  		'page'=>$dataId
+  	));
+  	return $url;
+  }
+  
   // Load user model.
   protected function loadUser($id=null)
     {

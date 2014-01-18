@@ -6,9 +6,7 @@
 <div class="view">
 	<div id="element">	
    
-	<?php echo CHtml::link(CHtml::encode($data->title), Yii::app()->createUrl('/', array(
-					'event'=>Yii::app()->getRequest()->getParam('id'), 'page'=>$data->id)
-	)); ?>
+	<?php echo CHtml::link(CHtml::encode($data->title), Yii::app()->user->getViewUrl('event',$data->id)); ?>
 	<br />
 	<?php $this->widget('ext.XReadMore.XReadMore', array(
          'showLink'=>true,
