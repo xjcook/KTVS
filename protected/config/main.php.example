@@ -43,6 +43,10 @@ return array(
         'urlManager'=>array(
             'urlFormat'=>'path',
             'rules'=>array(
+                'sign/sport'=>'student/create',
+                'sign/event/<id:\d+>'=>'student/create',
+                'sign/league/<id:\d+>'=>'student/create',
+                'sign/course/<id:\d+>'=>'student/create',
                 'event/<id:\d+>/page/<id2:\d+>'=>'event/viewSubPage',
                 'event/update/<id:\d+>/page/<id2:\d+>'=>'event/updateSubPage',
                 'league/<id:\d+>/page/<id2:\d+>'=>'league/viewSubPage',

@@ -5,7 +5,6 @@
  *
  * The followings are the available columns in table 'tbl_el':
  * @property integer $id
- * @property integer $user_id
  * @property string $name
  * @property string $description
  * @property integer $type

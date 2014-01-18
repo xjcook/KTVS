@@ -86,8 +86,8 @@ class WebUser extends CWebUser {
   function getViewUrl($model, $dataId)
   {
   	$url = Yii::app()->createUrl('/', array(
-					$model=>Yii::app()->getRequest()->getParam('id'), 
-  					'page'=>$dataId
+		$model=>Yii::app()->getRequest()->getParam('id'), 
+  		'page'=>$dataId
   	));
   	return $url;
   }
@@ -95,8 +95,9 @@ class WebUser extends CWebUser {
   function getCreateUrl($model, $id, $id2)
   {
   	$url = Yii::app()->createUrl('/', array(
-					$model=>$id, 
-  					'page'=>$id2));
+		$model=>$id, 
+  		'page'=>$id2
+  	));
   	return $url;
   }
   

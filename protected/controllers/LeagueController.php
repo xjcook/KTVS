@@ -19,7 +19,7 @@ class LeagueController extends Controller
 	public function filters()
 	{
 		return array(
-			'postOnly + delete', // we only allow deletion via POST request
+			'postOnly + delete, deleteSubPage', // we only allow deletion via POST request
 		);
 	}
 
