@@ -103,7 +103,7 @@ class ScheduleController extends Controller
 				{
 					$pageModel->save(false);
 					$scheduleModel->save(false);
-					$this->redirect(array('view','class'=>$scheduleModel->id));
+					$this->redirect(array('view','id'=>$scheduleModel->class));
 				}
 			}
 	
