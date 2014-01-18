@@ -145,7 +145,7 @@ class MainMenu extends CMenu
             ),
         	array(
         		'label'=>'Prihlasovanie', 
-        		'url'=>array('/sign/sport'),
+        		'url'=>array('/sign'),
             ),
         	array(
         		'label'=>'Ligy', 
