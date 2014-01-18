@@ -36,7 +36,7 @@
 	<?php $this->widget('application.components.PageWidget', array('model'=>$pageModel,'form'=>$form)); ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($scheduleModel->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($scheduleModel->isNewRecord ? 'Vytvoriť' : 'Uložiť'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

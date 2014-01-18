@@ -165,7 +165,7 @@
 	
 	<footer>
 	    <p class="copyright">
-	        Copyright &copy; <a href="#">DreamTeam</a> | Designed by <a href="" title="free responsive templates">Matfyzaci</a>
+	        Copyright &copy; <b style="color: orange;">D r e a m T e a m</b> | Designed by <b style="color: orange;">M a t f y z a c i</b>
 	    </p>
 	</footer>
 </body>
