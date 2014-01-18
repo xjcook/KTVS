@@ -31,7 +31,7 @@ $this->menu=array(
 
 	<?php echo $form->labelEx($pageElModel,'el_id', array('label'=>'Liga')); ?>
 	<?php echo $form->dropDownList($pageElModel,'el_id',
-			Yii::app()->user->getEventsListData(),
+			Yii::app()->user->getLeaguesListData(),
 			array('empty'=>'Vyberte ligu')); ?>
 	<?php echo $form->error($pageElModel,'el_id'); ?>
 	

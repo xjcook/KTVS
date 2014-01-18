@@ -13,7 +13,7 @@ else:
 $this->menu=array(
 	array('label'=>'Zoznam líg', 'url'=>array('index')),
 	array('label'=>'Vytvoriť ligu', 'url'=>array('create')),
-	array('label'=>'Vytvoriť podstránku ligy', 'url'=>array('event/createSubPage')),
+	array('label'=>'Vytvoriť podstránku ligy', 'url'=>array('league/createSubPage')),
 	array('label'=>'Upraviť ligu', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Odstrániť ligu', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Spravovať ligy', 'url'=>array('admin')),
