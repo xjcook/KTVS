@@ -53,11 +53,34 @@ class WebUser extends CWebUser {
 	}
 	else
 	{	
-		$events = CHtml::listData(User::model()->findByPk(Yii::app()->user->id)->
-										getRelated('els',true),'id','name');
+		$events = CHtml::listData(User::model()->findByPk(Yii::app()->user->id)
+										->getRelated('els',true),'id','name')
+										->findByAttributes(array('type'=>0));
 	}
   	
 	return $events;
+  }
+  
+  /**
+   * Return leagues main categories
+   * if user is admin then return all else return only events which belongs to user
+   */
+  function getLeaguesListData()
+  {
+  	$leagues = array();
+  	 
+  	if($this->isAdmin())
+  	{
+  		$leagues = CHtml::listData(El::model()->findAllByAttributes(array('type'=>1)),'id','name');
+  	}
+  	else
+  	{
+		$leagues = CHtml::listData(User::model()->findByPk(Yii::app()->user->id)
+										->getRelated('els',true),'id','name')
+										->findByAttributes(array('type'=>1));
+  	}
+  	 
+  	return $leagues;
   }
  
   // Load user model.
