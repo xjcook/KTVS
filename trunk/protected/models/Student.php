@@ -41,9 +41,10 @@ class Student extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('sport_id, name, email, class, phone, skills', 'required'),
+			array('name, email, class, phone', 'required'),
 			array('class', 'numerical', 'integerOnly'=>true),
 			array('name, email, phone, skills', 'length', 'max'=>255),
+			array('sport_id', 'safe'),
 // 			array('sports', 'checkCapacity'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
