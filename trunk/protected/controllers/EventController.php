@@ -209,7 +209,8 @@ class EventController extends Controller
 						$pageElModel->page_id=$pageModel->id;
 						
 						$pageElModel->save(false);
-						$this->redirect(Yii::app()->createUrl('/', array('event'=>$pageElModel->el_id, 'page'=>$pageModel->id)));
+						$this->redirect(Yii::app()->createUrl('/', array(
+							'event'=>$pageElModel->el_id, 'page'=>$pageModel->id)));
 					}
 					else
 					{
@@ -258,7 +259,8 @@ class EventController extends Controller
 					$pageElModel->page_id=$pageModel->id;
 					
 					$pageElModel->save(false);
-					$this->redirect(array('view','id'=>$pageElModel->el_id));
+					$this->redirect(Yii::app()->createUrl('/', array(
+							'event'=>$pageElModel->el_id, 'page'=>$pageModel->id)));
 				}
 			}
 				
