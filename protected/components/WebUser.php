@@ -92,6 +92,14 @@ class WebUser extends CWebUser {
   	return $url;
   }
   
+  function getCreateUrl($model, $id, $id2)
+  {
+  	$url = Yii::app()->createUrl('/', array(
+					$model=>$id, 
+  					'page'=>$id2));
+  	return $url;
+  }
+  
   function getUpdateUrl($model, $dataId)
   {
   	$url = Yii::app()->createUrl($model, array(

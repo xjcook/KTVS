@@ -171,8 +171,8 @@ class LeagueController extends Controller
 						$pageElModel->page_id=$pageModel->id;
 	
 						$pageElModel->save(false);
-						$this->redirect(Yii::app()->createUrl('/', array(
-							'league'=>$pageElModel->el_id, 'page'=>$pageModel->id)));
+						$this->redirect(Yii::app()->user->getCreateUrl('league', 
+							$pageElModel->el_id,$pageModel->id));
 					}
 					else
 					{
@@ -221,8 +221,8 @@ class LeagueController extends Controller
 					$pageElModel->page_id=$pageModel->id;
 						
 					$pageElModel->save(false);
-					$this->redirect(Yii::app()->createUrl('/', array(
-						'league'=>$pageElModel->el_id, 'page'=>$pageModel->id)));
+					$this->redirect(Yii::app()->user->getCreateUrl('league', 
+							$pageElModel->el_id,$pageModel->id));
 				}
 			}
 	
