@@ -27,18 +27,11 @@ class StudentController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($id)
+	public function actionView($email,$hash)
 	{
-		if(Yii::app()->user->checkAccess('readStudent'))
-		{
-			$this->render('view',array(
-				'model'=>$this->loadModel($id),
-			));
-		}
-		else
-		{
-			Yii::app()->user->loginRequired();
-		}
+		$this->render('view',array(
+			'model'=>$this->loadModelByHash($email,$hash),
+		));
 	}
 
 	/**
@@ -56,7 +49,14 @@ class StudentController extends Controller
 		{
 			$model->attributes=$_POST['Student'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			{
+				$hash=CPasswordHelper::hashPassword($model->email);
+				// send email with hash
+				$this->redirect(Yii::app()->createUrl('student/view', array(
+					'email'=>$model->email,
+					'hash'=>$hash,
+				)));
+			}
 		}
 
 		$this->render('create',array(
@@ -175,6 +175,23 @@ class StudentController extends Controller
 		$model=Student::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+	
+	/**
+	 * Returns the data model based on the primary key given in the GET variable.
+	 * If the data model is not found, an HTTP exception will be raised.
+	 * @param integer $id the ID of the model to be loaded
+	 * @return Student the loaded model
+	 * @throws CHttpException
+	 */
+	public function loadModelByHash($email,$hash)
+	{
+		$model=Student::model()->findByAttributes(array('email'=>$email));
+		if($model===null)
+			throw new CHttpException(404,'Študent neexistuje.');
+		else if(!CPasswordHelper::verifyPassword($email,$hash))
+			throw new CHttpException(401,'Nemáte práva na prehliadanie.');
 		return $model;
 	}
 
