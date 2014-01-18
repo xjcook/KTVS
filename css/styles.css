@@ -89,8 +89,8 @@ header {
 }
 .logo1{	
 	position:relative;
-	left:13%;
-	float: left ;
+	right:13%;
+	float: right ;
 	width: 140px;
 	height: 140px;
 	margin: 10px;
@@ -98,8 +98,8 @@ header {
 }
 .logo2{	
 	position:relative;
-	left:13%;
-	float: left ;
+	right:13%;
+	float: right ;
 	width: 140px;
 	height: 140px;
 	margin: 10px;
@@ -107,9 +107,9 @@ header {
 }
 .logo {
 	position:relative;
-	left: 13%;
+	right: 13%;
 	margin:10px;
-	float: left ;
+	float: right ;
 	height: 110px;
 	width: 110px;
 	text-transform: uppercase;	
@@ -583,7 +583,7 @@ select {
 /* http://www.menucool.com */
 
 #sliderFrame {
-	float:right;
+	float:left;
    position:relative;
    width:400px;
    margin:10px 10px 30px 10px;
