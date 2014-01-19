@@ -17,6 +17,7 @@ class m131106_155404_create_student_table extends CDbMigration
 			'class' => 'integer NOT NULL',	// maybe 1:N (1-5)
 			'phone' => 'string NOT NULL',	
 			'skills' => 'string',	// maybe 1:N (beginner, intermediate, advanced) 
+			'hash' => 'string NOT NULL',
 			
 			// timestamp
 			'updated_at' => 'timestamp',

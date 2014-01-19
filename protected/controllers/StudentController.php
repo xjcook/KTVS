@@ -1,7 +1,7 @@
 <?php
 
 class StudentController extends Controller
-{
+{	
 	/**
 	* @var string set pageTitle
 	*/
@@ -27,10 +27,15 @@ class StudentController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionView($email,$hash)
+	public function actionView($id=null,$email=null,$hash=null)
 	{
+		if ($id!==null)
+			$model=$this->loadModel($id);
+		else
+			$model=$this->loadModelByHash($email,$hash);
+		
 		$this->render('view',array(
-			'model'=>$this->loadModelByHash($email,$hash),
+			'model'=>$model,
 		));
 	}
 
@@ -48,13 +53,15 @@ class StudentController extends Controller
 		if(isset($_POST['Student']))
 		{
 			$model->attributes=$_POST['Student'];
-			if($model->save())
+			if($model->validate())
 			{
-				$hash=CPasswordHelper::hashPassword($model->email);
-				// send email with hash
-				$this->redirect(Yii::app()->createUrl('student/view', array(
-					'email'=>$model->email,
-					'hash'=>$hash,
+				$hash=sha1(mt_rand(10000, 99999).time().$model->email);
+				$model->hash=$hash;
+				$model->save(false);
+				// TODO send email with hash
+				$this->redirect(Yii::app()->createUrl('/', array(
+					'e'=>$model->email,
+					'h'=>$hash,
 				)));
 			}
 		}
@@ -190,7 +197,7 @@ class StudentController extends Controller
 		$model=Student::model()->findByAttributes(array('email'=>$email));
 		if($model===null)
 			throw new CHttpException(404,'Študent neexistuje.');
-		else if(!CPasswordHelper::verifyPassword($email,$hash))
+		else if($hash != $model->hash)
 			throw new CHttpException(401,'Nemáte práva na prehliadanie.');
 		return $model;
 	}
