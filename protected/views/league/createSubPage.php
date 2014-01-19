@@ -4,8 +4,8 @@
 /* @var $pageModel Page */
 
 $this->breadcrumbs=array(
-	'Akcie'=>array('index'),
-	'Vytvorenie',
+	'Ligy'=>array('index'),
+	'Vytvorenie podstránky',
 );
 
 $this->menu=array(

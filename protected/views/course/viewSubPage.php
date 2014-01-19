@@ -24,11 +24,8 @@ endif;
 ?>
 
 <h1><?php echo $model->title; ?></h1>
-
-	<b><?php echo CHtml::encode($model->getAttributeLabel('title')); ?>:</b>
-	<?php echo CHtml::encode($model->title); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($model->getAttributeLabel('content')); ?>:</b>
-	<?php echo CHtml::decode($model->content); ?>
-	<br />
+  <div id="element">	
+  	<b><?php echo CHtml::encode($model->getAttributeLabel('content')); ?>:</b>
+  	<?php echo CHtml::decode($model->content); ?>
+  	<br />
+  </div>

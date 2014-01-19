@@ -6,7 +6,7 @@
 $this->breadcrumbs=array(
 	'Ligy'=>array('index'),
 	$elModel->name=>array('view', 'id'=>$elModel->id),
-	$model->title,
+  $model->title,
 );
 if(Yii::app()->user->isGuest):
 $this->menu=array(
@@ -25,8 +25,6 @@ endif;
 
 <h1><?php echo $model->title; ?></h1>
   <div id="element">	
-  	
-  
   	<b><?php echo CHtml::encode($model->getAttributeLabel('content')); ?>:</b>
   	<?php echo CHtml::decode($model->content); ?>
   	<br />
