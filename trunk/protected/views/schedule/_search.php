@@ -12,8 +12,8 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'page_id'); ?>
-		<?php echo $form->textField($model,'page_id'); ?>
+		<?php echo $form->label($model,'content'); ?>
+		<?php echo $form->textField($model,'content'); ?>
 	</div>
 
 	<div class="row">

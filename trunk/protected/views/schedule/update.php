@@ -1,7 +1,6 @@
 <?php
 /* @var $this ScheduleController */
 /* @var $scheduleModel Schedule */
-/* @var $pageModel Page */
 
 $this->breadcrumbs=array(
 	'Rozvrhy'=>array('index'),
@@ -19,4 +18,4 @@ $this->menu=array(
 
 <h1>Upraviť rozvrh <?php echo $scheduleModel->id; ?></h1>
 
-<?php $this->renderPartial('_form', array('scheduleModel'=>$scheduleModel,'pageModel'=>$pageModel)); ?>
+<?php $this->renderPartial('_form', array('scheduleModel'=>$scheduleModel)); ?>

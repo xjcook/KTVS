@@ -33,11 +33,11 @@ class Schedule extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('class, tvobject_id', 'required'),
+			array('class, tvobject_id, content', 'required'),
 			array('class, tvobject_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, class, tvobject, updated_at', 'safe', 'on'=>'search'),
+			array('class, tvobject, content, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,7 +49,6 @@ class Schedule extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'page' => array(self::BELONGS_TO, 'Page', 'page_id'),
 			'sports' => array(self::HAS_MANY, 'Sport', 'schedule_id'),
 			'tvobject' => array(self::BELONGS_TO, 'Tvobject', 'tvobject_id'),
 		);
@@ -63,8 +62,8 @@ class Schedule extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'class' => 'Ročník',
-			'page_id' => 'Page',
 			'tvobject_id' => 'Športovisko',
+			'content' => 'Obsah',
 			'updated_at' => 'Updated At',
 		);
 	}
@@ -91,6 +90,7 @@ class Schedule extends CActiveRecord
 
 		$criteria->compare('class',$this->class);
 		$criteria->compare('tvobject',$this->tvobject);
+		$criteria->compare('content',$this->tvobject);
 		$criteria->compare('updated_at',$this->updated_at,true);
 
 		return new CActiveDataProvider($this, array(
