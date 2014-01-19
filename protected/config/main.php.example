@@ -43,6 +43,7 @@ return array(
         'urlManager'=>array(
             'urlFormat'=>'path',
             'rules'=>array(
+                'sign'=>'site/page/view/sign',
                 'sign/sport'=>'student/create',
                 'sign/event'=>'student/create',
                 'sign/league'=>'student/create',
