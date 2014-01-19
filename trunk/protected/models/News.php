@@ -37,7 +37,7 @@ class News extends CActiveRecord
 			array('user_id, sport_id, title, content', 'required'),
 			array('user_id, sport_id', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
-			array('valid_to', 'safe'),
+			array('valid_to, important', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, user_id, sport_id, title, content, valid_to, updated_at', 'safe', 'on'=>'search'),
@@ -64,13 +64,14 @@ class News extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-      'sport_id' => 'Šport',
+     		'sport_id' => 'Šport',
 			'user.name' => 'Používateľ',
 			'sport.name' => 'Šport',
 			'title' => 'Nadpis',
 			'content' => 'Popis',
 			'valid_to' => 'Zobraziť do',
 			'updated_at' => 'Posledná úprava',
+			'important' => 'Dôležité',
 		);
 	}
 
