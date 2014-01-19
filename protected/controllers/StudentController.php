@@ -29,9 +29,11 @@ class StudentController extends Controller
 	 */
 	public function actionView($id=null,$email=null,$hash=null)
 	{
-<<<<<<< .mine
-		$model=$this->loadModelByHash($email,$hash);
-
+		if ($id!==null)
+			$model=$this->loadModel($id);
+		else
+			$model=$this->loadModelByHash($email,$hash);
+		
 		if(isset($_POST['Student']))
 		{
 			$model->attributes=$_POST['Student'];
@@ -44,14 +46,7 @@ class StudentController extends Controller
 				)));
 			}
 		}
-
-=======
-		if ($id!==null)
-			$model=$this->loadModel($id);
-		else
-			$model=$this->loadModelByHash($email,$hash);
 		
->>>>>>> .r216
 		$this->render('view',array(
 			'model'=>$model,
 		));
