@@ -1,0 +1,101 @@
+body{
+   width:100%;
+   margin:0;
+   background-image:url(runner_background.jpg);
+	background-repeat:no-repeat;
+	background-size:cover;
+	font-family: 'Noto Serif', serif;
+}
+
+/*hlavicka kde je navigacia, menu logo a prihlasenie*/
+
+#hlavicka{
+   width:100%;
+   background-image: url(authorBackground.jpg);
+	background-repeat: repeat;
+	height:100px;
+}
+
+.obr{
+	float:left;
+	width:4%;
+	margin-top:2.3vh;
+	margin-left:2%;
+	
+}
+
+.navigacia{
+   margin-left:3%;
+   width:79%;
+	float:left;
+	margin-top:3vh;	
+	font-weight: bold;
+	font-size:2.3vh;
+}
+
+.navigacia a{
+	color:#f1eae8;
+	text-decoration: none;
+}
+
+.prihlas{
+	width:10%;
+	float:right;
+	margin-top:3.3vh;
+	margin-right:2%;
+	height: 60%;
+}
+
+/* zacina okno s logami a nadpisom*/
+
+#logos{
+   width:100%;
+   height:165px;
+   padding-top:2%;
+}
+
+.nadpis{
+	float: left;
+	width: 50%;
+	font-size: 3.6vh;
+	padding-left: 2%;
+	padding-top: 1.9vh;
+	font-weight: bolder;
+}
+
+.logo{
+ float:right;
+ width:22%;	
+}
+
+#telo{
+   width:94%;
+   margin:2%;
+   background:#f1eae8;
+   border: thin solid;
+   border-color: #e8c291;
+   border-radius:20px;
+   padding-left:20px;
+	font-size: 2vh;
+}
+
+
+
+#pata{
+   width:100%;
+	position:relative;
+	bottom:0;
+   color:#f1eae8;
+   background-image:url(footerBackground.jpg);
+   background-repeat: repeat;
+   height:80px;	
+   padding-top:2.5vh;
+   padding-bottom:2.5vh;
+	text-align:center;
+	font-size:3vh;
+}
+
+#pata a{
+  color:#f1eae8; 
+}
+
