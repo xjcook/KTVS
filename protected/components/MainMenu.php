@@ -144,7 +144,7 @@ class MainMenu extends CMenu
         		'items'=>$newses,
             ),
         	array(
-        		'label'=>'Prihlasovanie', 
+        		'label'=>'Registrácia študentov', 
         		'url'=>array('/sign'),
             ),
         	array(
@@ -167,10 +167,10 @@ class MainMenu extends CMenu
         		'itemOptions'=>array('class'=>'item'),
         		'active'=>strpos(Yii::app()->request->requestUri,'course') !== false,
         	),
-        	array(
+        /*	array(
         		'label'=>'Galéria', 
         		'url'=>'#',
-            ),
+            ),  */
         );
 
         $this->id = 'mainMenu';
