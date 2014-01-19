@@ -14,6 +14,7 @@ class m131106_104858_create_news_table extends CDbMigration
 			'title' => 'string NOT NULL',
 			'content' => 'text NOT NULL',
 			'valid_to' => 'datetime',
+			'important' => 'boolean DEFAULT FALSE',
 			
 			// timestamp
 			'updated_at' => 'timestamp',
