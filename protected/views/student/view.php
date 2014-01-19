@@ -33,3 +33,5 @@ endif;
 		'skills',
 	),
 )); ?>
+
+<?php $this->renderPartial('_sign', array('model'=>$model)); ?>
