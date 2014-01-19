@@ -19,7 +19,7 @@ class StudentController extends Controller
 	public function filters()
 	{
 		return array(
-			'postOnly + delete', // we only allow deletion via POST request
+			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -30,21 +30,12 @@ class StudentController extends Controller
 	public function actionView($id=null,$email=null,$hash=null)
 	{
 		if ($id!==null)
-			$model=$this->loadModel($id);
-		else
-			$model=$this->loadModelByHash($email,$hash);
-		
-		if(isset($_POST['Student']))
 		{
-			$model->attributes=$_POST['Student'];
-			if($model->save())
-			{
-				// send email with hash
-				$this->redirect(Yii::app()->createUrl('student/view', array(
-					'email'=>$email,
-					'hash'=>$hash,
-				)));
-			}
+			$model=$this->loadModel($id);
+		}
+		else
+		{
+			$model=$this->loadModelByHash($email,$hash);
 		}
 		
 		$this->render('view',array(
@@ -72,10 +63,12 @@ class StudentController extends Controller
 				$model->hash=$hash;
 				$model->save(false);
 				// TODO send email with hash
-				$this->redirect(Yii::app()->createUrl('student/view', array(
+				/*$this->redirect(Yii::app()->createUrl('student/view', array(
 					'email'=>$model->email,
 					'hash'=>$hash,
-				)));
+				)));*/
+				Yii::app()->user->setFlash('success', "Úspešne ste prihlásený!");
+				$this->redirect(Yii::app()->request->baseUrl);
 			}
 		}
 
@@ -120,19 +113,28 @@ class StudentController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
+	public function actionDelete($id=null,$email=null,$hash=null)
 	{
-		if(Yii::app()->user->checkAccess('deleteStudent'))
+		if($id!==null)
 		{
-			$this->loadModel($id)->delete();
-	
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			if(Yii::app()->user->checkAccess('deleteStudent'))
+			{
+				$this->loadModel($id)->delete();
+		
+				// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+				if(!isset($_GET['ajax']))
+					$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			}
+			else
+			{
+				Yii::app()->user->loginRequired();
+			}
 		}
 		else
 		{
-			Yii::app()->user->loginRequired();
+			$this->loadModelByHash($email,$hash)->delete();
+			Yii::app()->user->setFlash('success', "Úspešne ste odhlásený!");
+			$this->redirect(Yii::app()->request->baseUrl);			
 		}
 	}
 
@@ -157,6 +159,7 @@ class StudentController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', "Prihláste sa prosím!");
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -180,6 +183,22 @@ class StudentController extends Controller
 		else
 		{
 			Yii::app()->user->loginRequired();
+		}
+	}
+	
+	/**
+	 * Perform AJAX to populate Leagues, Events and Courses dropDownList
+	 */
+	public function actionDynamicPages()
+	{
+		$data=El::model()->findByPk($_POST['el_id'])
+			->getRelated('pages',true);
+		$data=CHtml::listData($data,'id','title');
+		
+		foreach($data as $value=>$name)
+		{
+			echo CHtml::tag('option',
+					array('value'=>$value),CHtml::encode($name),true);
 		}
 	}
 
@@ -211,7 +230,7 @@ class StudentController extends Controller
 		if($model===null)
 			throw new CHttpException(404,'Študent neexistuje.');
 		else if($hash != $model->hash)
-			throw new CHttpException(401,'Nemáte práva na prehliadanie.');
+			throw new CHttpException(401,'Nemáte dostatočné práva.');
 		return $model;
 	}
 
@@ -227,4 +246,5 @@ class StudentController extends Controller
 			Yii::app()->end();
 		}
 	}
+		
 }

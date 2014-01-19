@@ -22,22 +22,20 @@
 		<?php echo $form->dropDownList($model,'sport_id',
 				CHtml::listData(Sport::model()->findAll(),'id','name'), array('empty' => 'Vyberte šport')); ?>
 		<?php echo $form->error($model,'sport_id'); ?>
-	</div>
-
-	<div class="row">
+		
 		<?php echo $form->labelEx($model,'skills'); ?>
 		<?php echo $form->dropDownList($model,'skills', 
               array('začiatočník' => 'začiatočník', 'mierne pokročilý' => 'mierne pokročilý', 'pokročilý' => 'pokročilý'),
               array('empty' => 'Vyberte skúsenosti')); ?>
         <?php echo $form->error($model,'skills'); ?>
-	</div> 
+	</div>
 
-		<div class="row">
-			<?php echo $form->labelEx($model,'els', array('label'=>'Liga')); ?>
-			<?php echo $form->dropDownList($model,'els',
-					CHtml::listData(El::model()->findAll(),'id','name'), array('empty'=>'Vyberte ligu')); ?>
-			<?php echo $form->error($model,'els'); ?>
-		</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'els', array('label'=>'Liga')); ?>
+		<?php echo $form->dropDownList($model,'els',
+				CHtml::listData(El::model()->findAll(),'id','name'), array('empty'=>'Vyberte ligu')); ?>
+		<?php echo $form->error($model,'els'); ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Vytvoriť' : 'Uložiť'); ?>

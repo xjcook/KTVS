@@ -161,8 +161,26 @@ class MainMenu extends CMenu
         		'items'=>$newses,
             ),
         	array(
-        		'label'=>'Registrácia študentov', 
+        		'label'=>'Prihlásenie na', 
         		'url'=>array('/sign'),
+        		'items'=>array(
+                	array(
+                		'label'=>'Šport',
+                		'url'=>array('/sign/sport'),
+        			),
+        			array(
+        				'label'=>'Ligu',
+        				'url'=>array('/sign/league'),
+        			),
+        			array(
+        				'label'=>'Akciu',
+        				'url'=>array('/sign/event'),
+        			),
+        			array(
+        				'label'=>'Kurz',
+        				'url'=>array('/sign/course'),
+        			),
+                ),
             ),
         	array(
         		'label'=>'Ligy', 

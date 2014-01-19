@@ -14,7 +14,7 @@ class m131121_113529_create_el_table extends CDbMigration
 			// attributes		
 			'name' => 'string NOT NULL',
 			'description' => 'text',
-			'type' => 'integer NOT NULL', 	// 0 event, 1 league 
+			'type' => 'integer NOT NULL', 	// 0 event, 1 league, 2 course
 			
 			// timestamp
 			'updated_at' => 'timestamp',
