@@ -22,13 +22,6 @@ endif;
 
 <h1><?php echo $model->title; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'user.name',
-		'sport.name',
-		'title',
-		'content',
-		'valid_to',
-	),
-)); ?>
+  <div id="element">	
+  	<?php echo CHtml::decode($model->content); ?>
+  </div >	
