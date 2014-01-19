@@ -64,6 +64,7 @@ class News extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+      'sport_id' => 'Šport',
 			'user.name' => 'Používateľ',
 			'sport.name' => 'Šport',
 			'title' => 'Nadpis',

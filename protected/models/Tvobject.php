@@ -38,9 +38,9 @@ class Tvobject extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('sports, name', 'required'),
+			array('name', 'required'),
 			array('name, image', 'length', 'max'=>255),
-			array('description, map, sportIds', 'safe'),
+			array('description, map, sports,sportIds', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, description, image, map, updated_at', 'safe', 'on'=>'search'),
