@@ -1,7 +1,6 @@
 <?php
 /* @var $this CourseController */
-/* @var $model Course */
-/* @var $userModel User */
+/* @var $model El */
 
 $this->breadcrumbs=array(
 	'Kurzy'=>array('index'),
@@ -13,7 +12,7 @@ $this->menu=array(
 	array('label'=>'Zoznam kurzov', 'url'=>array('index')),
 	array('label'=>'Vytvoriť kurz', 'url'=>array('create')),
 	array('label'=>'Detail kurzu', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Správať kurzy', 'url'=>array('admin')),
+	array('label'=>'Spravovať kurzy', 'url'=>array('admin')),
 );
 ?>
 

@@ -1,15 +1,15 @@
 <?php
 /* @var $this CourseController */
-/* @var $model Course */
+/* @var $model El */
 
 $this->breadcrumbs=array(
 	'Kurzy'=>array('index'),
-	'Správa',
+	'Spravovať',
 );
 
 $this->menu=array(
 	array('label'=>'Zoznam kurzov', 'url'=>array('index')),
-	array('label'=>'Vytvorenie kurzu', 'url'=>array('create')),
+	array('label'=>'Vytvoriť kurz', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -18,7 +18,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#course-grid').yiiGridView('update', {
+	$('#el-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Správa kurzov</h1>
+<h1>Spravovať kurzy</h1>
 
 <?php echo CHtml::link('Pokročilé vyhľadávanie','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
@@ -36,7 +36,7 @@ $('.search-form form').submit(function(){
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'course-grid',
+	'id'=>'el-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(

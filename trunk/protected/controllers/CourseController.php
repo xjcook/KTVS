@@ -29,8 +29,18 @@ class CourseController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$dataProvider=new CActiveDataProvider('Page', array(
+			'criteria'=>array(
+				'with'=>array('els'=>array(
+					'on'=>'els.id=' .$id,
+					'together'=>true,
+					'joinType'=>'INNER JOIN',
+				)),
+			),
+		));
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'dataProvider'=>$dataProvider,
 		));
 	}
 
@@ -42,14 +52,14 @@ class CourseController extends Controller
 	{
 		if(Yii::app()->user->checkAccess('createCourse'))
 		{
-			$model=new Course;
+			$model=new El;
 			
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
 	
-			if(isset($_POST['Course']))
+			if(isset($_POST['El']))
 			{
-				$model->attributes=$_POST['Course'];
+				$model->attributes=$_POST['El'];
 				$model->users=$model->userIds;
 				if($model->save())
 					$this->redirect(array('view','id'=>$model->id));
@@ -80,9 +90,9 @@ class CourseController extends Controller
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
 	
-			if(isset($_POST['Course']))
+			if(isset($_POST['El']))
 			{
-				$model->attributes=$_POST['Course'];
+				$model->attributes=$_POST['El'];
 				$model->users=$model->userIds;
 				if($model->save())
 					$this->redirect(array('view','id'=>$model->id));
@@ -124,7 +134,9 @@ class CourseController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Course');
+		$dataProvider=new CActiveDataProvider('El', array(
+			'criteria' => array('condition' => 'type=2'),
+		));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -139,12 +151,141 @@ class CourseController extends Controller
 		{
 			$model=new Course('search');
 			$model->unsetAttributes();  // clear any default values
-			if(isset($_GET['Course']))
-				$model->attributes=$_GET['Course'];
+			if(isset($_GET['El']))
+				$model->attributes=$_GET['El'];
 	
 			$this->render('admin',array(
 				'model'=>$model,
 			));
+		}
+		else
+		{
+			Yii::app()->user->loginRequired();
+		}
+	}
+	
+	/**
+	 * Displays a particular model.
+	 * @param integer $id the ID of the model to be displayed
+	 */
+	public function actionViewSubPage($id,$id2)
+	{
+		$this->render('viewSubPage',array(
+			'model'=>Page::model()->findByPk($id2),
+		));
+	}
+	
+	/**
+	 * Create subpage
+	 * @param id Id of the Event
+	 */
+	public function actionCreateSubPage()
+	{
+		if(!Yii::app()->user->isGuest) {
+			$pageElModel = new PageEl;
+			$pageModel = new Page;
+				
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);
+	
+			if(isset($_POST['PageEl'], $_POST['Page']))
+			{
+				$pageElModel->attributes=$_POST['PageEl'];
+				$pageModel->attributes=$_POST['Page'];
+	
+				$valid=$pageElModel->validate();
+				$valid=$pageModel->validate() && $valid;
+					
+				if($valid)
+				{
+					if(Yii::app()->user->checkAccess('updateOwnCourse',
+							array('course'=>El::model()->findByPk($pageElModel->el_id))) ||
+							Yii::app()->user->checkAccess('updateCourse'))
+					{
+						$pageModel->save(false);
+						$pageElModel->page_id=$pageModel->id;
+	
+						$pageElModel->save(false);
+						$this->redirect(Yii::app()->user->getCreateUrl('course',
+								$pageElModel->el_id,$pageModel->id));
+					}
+					else
+					{
+						throw new CHttpException(401, 'Nemáte dostatočné práva');
+					}
+				}
+			}
+	
+			$this->render('createSubPage',array(
+				'pageElModel'=>$pageElModel,
+				'pageModel'=>$pageModel,
+			));
+		} else {
+			Yii::app()->user->loginRequired();
+		}
+	}
+	
+	/**
+	 * Update subpage
+	 * @param id Id of the Event
+	 */
+	public function actionUpdateSubPage($id, $id2)
+	{
+		$model=$this->loadModel($id);
+	
+		if(Yii::app()->user->checkAccess('updateOwnCourse', array('course'=>$model)) ||
+		Yii::app()->user->checkAccess('updateCourse'))
+		{
+			$pageElModel = $this->loadPageElModel($id, $id2);
+			$pageModel = $this->loadPageModel($id2);
+				
+			// Uncomment the following line if AJAX validation is needed
+			// $this->performAjaxValidation($model);
+	
+			if(isset($_POST['PageEl'], $_POST['Page']))
+			{
+				$pageElModel->attributes=$_POST['PageEl'];
+				$pageModel->attributes=$_POST['Page'];
+	
+				$valid=$pageElModel->validate();
+				$valid=$pageModel->validate() && $valid;
+					
+				if($valid)
+				{
+					$pageModel->save(false);
+					$pageElModel->page_id=$pageModel->id;
+						
+					$pageElModel->save(false);
+					$this->redirect(Yii::app()->user->getCreateUrl('course',
+							$pageElModel->el_id,$pageModel->id));
+				}
+			}
+	
+			$this->render('updateSubPage',array(
+				'pageElModel'=>$pageElModel,
+				'pageModel'=>$pageModel,
+			));
+		} else {
+			Yii::app()->user->loginRequired();
+		}
+	}
+	
+	/**
+	 * Delete subpage
+	 * @param id Id of the Event
+	 */
+	public function actionDeleteSubPage($id, $id2)
+	{
+		$model=$this->loadModel($id);
+	
+		if(Yii::app()->user->checkAccess('deleteCourse'))
+		{
+			PageEl::model()->findByAttributes(array('el_id'=>$id,'page_id'=>$id2))->delete();
+			Page::model()->findByPk($id2)->delete();
+	
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			if(!isset($_GET['ajax']))
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 		}
 		else
 		{
@@ -161,7 +302,22 @@ class CourseController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Course::model()->findByPk($id);
+		$model=El::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
+	}
+	
+	/**
+	 * Returns the data model based on the primary key given in the GET variable.
+	 * If the data model is not found, an HTTP exception will be raised.
+	 * @param integer $id the ID of the model to be loaded
+	 * @return El the loaded model
+	 * @throws CHttpException
+	 */
+	public function loadPageElModel($courseId,$pageId)
+	{
+		$model=PageEl::model()->findByAttributes(array('el_id'=>$courseId,'page_id'=>$pageId));
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

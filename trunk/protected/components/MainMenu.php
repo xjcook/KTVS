@@ -81,7 +81,7 @@ class MainMenu extends CMenu
     	}
     	
     	// Courses
-    	$model = Course::model()->findAll();
+    	$model = El::model()->findAllByAttributes(array('type'=>2));
     	$courses = array();
     	foreach ($model as $course)
     	{
@@ -90,6 +90,23 @@ class MainMenu extends CMenu
     			'url'=>array('course/view', 'id'=>$course->id),
     			'linkOptions'=>array('class'=>'mainCategory'),
     		);
+    		
+    		// Add separator
+    		$courses[] = array(
+    			'label'=>'',
+    			'itemOptions'=>array('class'=>'divider'),
+    		);
+    		
+    		// Add subcategories
+    		$modelSubEl = El::model()->findByPk($course->id)->getRelated('pages',true);
+    		foreach ($modelSubEl as $subEvent)
+    		{
+    			$courses[] = array(
+    				'label'=>$subEvent->title,
+    				'url'=>Yii::app()->createUrl('/', array('course'=>$event->id, 'page'=>$subEvent->id)),
+    				'linkOptions'=>array('class'=>'subCategory'),
+    			);
+    		}
     	}
         
         $this->items=array(

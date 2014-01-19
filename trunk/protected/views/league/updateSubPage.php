@@ -1,5 +1,5 @@
 <?php
-/* @var $this EventController */
+/* @var $this CourseController */
 /* @var $pageElModel PageEl */
 /* @var $pageModel Page */
 
@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Zoznam líg ', 'url'=>array('index')),
-	array('label'=>'Spravovať ligy', 'url'=>array('admin')),
+	array('label'=>'Zoznam kurzov ', 'url'=>array('index')),
+	array('label'=>'Spravovať kurzy', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Upravenie podstránky Ligy</h1>
+<h1>Upravenie podstránky Kurzu</h1>
 
 <div class="form">
 
@@ -29,10 +29,10 @@ $this->menu=array(
 
 	<?php echo $form->errorSummary(array($pageElModel, $pageModel)); ?>
 
-	<?php echo $form->labelEx($pageElModel,'el_id', array('label'=>'Liga')); ?>
+	<?php echo $form->labelEx($pageElModel,'el_id', array('label'=>'Kurz')); ?>
 	<?php echo $form->dropDownList($pageElModel,'el_id',
 			Yii::app()->user->getLeaguesListData(),
-			array('empty'=>'Vyberte ligu')); ?>
+			array('empty'=>'Vyberte kurz')); ?>
 	<?php echo $form->error($pageElModel,'el_id'); ?>
 	
 	<?php $this->widget('application.components.PageWidget', array('model'=>$pageModel,'form'=>$form)); ?>

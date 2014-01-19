@@ -3,7 +3,7 @@
 /* @var $model El */
 
 $this->breadcrumbs=array(
-	'Ligy'=>array('inydex'),
+	'Ligy'=>array('index'),
 	$model->name=>array('view','id'=>$model->id),
 	'Úprava',
 );

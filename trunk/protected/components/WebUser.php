@@ -83,6 +83,28 @@ class WebUser extends CWebUser {
   	return $leagues;
   }
   
+  /**
+   * Return courses main categories
+   * if user is admin then return all else return only events which belongs to user
+   */
+  function getCoursesListData()
+  {
+  	$courses = array();
+  
+  	if($this->isAdmin())
+  	{
+  		$courses = CHtml::listData(El::model()->findAllByAttributes(array('type'=>2)),'id','name');
+  	}
+  	else
+  	{
+  		$courses = CHtml::listData(User::model()->findByPk(Yii::app()->user->id)
+  				->getRelated('els',true),'id','name')
+  				->findByAttributes(array('type'=>2));
+  	}
+  
+  	return $courses;
+  }
+  
   function getViewUrl($model, $dataId)
   {
   	$url = Yii::app()->createUrl('/', array(

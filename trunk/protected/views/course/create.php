@@ -1,6 +1,6 @@
 <?php
 /* @var $this CourseController */
-/* @var $model Course */
+/* @var $model El */
 
 $this->breadcrumbs=array(
 	'Kurzy'=>array('index'),

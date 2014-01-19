@@ -10,12 +10,14 @@ if(Yii::app()->user->isGuest):
 else:
 $this->menu=array(
 	array('label'=>'Vytvoriť kurz', 'url'=>array('create')),
+	array('label'=>'Vytvoriť podstránku kurzu', 'url'=>array('course/createSubPage')),
 	array('label'=>'Spravovať kurzy', 'url'=>array('admin')),
 );
 endif;
+
 ?>
 
-<h1>Kurzy</h1>
+<h1>Ligy</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

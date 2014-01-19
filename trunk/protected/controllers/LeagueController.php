@@ -315,9 +315,9 @@ class LeagueController extends Controller
 	 * @return El the loaded model
 	 * @throws CHttpException
 	 */
-	public function loadPageElModel($eventId,$pageId)
+	public function loadPageElModel($leagueId,$pageId)
 	{
-		$model=PageEl::model()->findByAttributes(array('el_id'=>$eventId,'page_id'=>$pageId));
+		$model=PageEl::model()->findByAttributes(array('el_id'=>$leagueId,'page_id'=>$pageId));
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
