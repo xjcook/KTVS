@@ -52,7 +52,6 @@ class Page extends CActiveRecord
 		return array(
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 			'els' => array(self::MANY_MANY, 'El', 'tbl_page_el(page_id, el_id)'),
-			'schedules' => array(self::HAS_MANY, 'Schedule', 'page_id'),
 		);
 	}
 

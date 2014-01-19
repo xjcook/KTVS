@@ -20,11 +20,6 @@ $this->menu=array(
 endif;
 ?>
 
-<h1><?php echo CHtml::encode($model->page->title); ?></h1>
+<h1>Rozvrh pre <?php echo CHtml::encode($model->tvobject->name); ?></h1>
 
-<?php echo CHtml::decode($model->page->content); ?>
-<br />
-
-<b><?php echo CHtml::encode($model->getAttributeLabel('tvobject_id')); ?>:</b>
-<?php echo CHtml::encode($model->tvobject->name); ?>
-<br />
+<?php echo CHtml::decode($model->content); ?>

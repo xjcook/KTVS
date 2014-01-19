@@ -43,31 +43,19 @@ class ScheduleController extends Controller
 		if(Yii::app()->user->checkAccess('createSchedule'))
 		{
 			$scheduleModel=new Schedule;
-			$pageModel=new Page;
 			
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
 	
-			if(isset($_POST['Schedule'], $_POST['Page']))
+			if(isset($_POST['Schedule']))
 			{
 				$scheduleModel->attributes=$_POST['Schedule'];
-				$pageModel->attributes=$_POST['Page'];
-				
-				$valid=$scheduleModel->validate();
-				$valid=$pageModel->validate() && $valid;
-				
-				if($valid)
-				{
-					$pageModel->save(false);
-					$scheduleModel->page_id=$pageModel->id;
-					$scheduleModel->save(false);
+				if($scheduleModel->save())
 					$this->redirect(array('view','id'=>$scheduleModel->class));
-				}
 			}
 	
 			$this->render('create',array(
 				'scheduleModel'=>$scheduleModel,
-				'pageModel'=>$pageModel,
 			));
 		}
 		else
@@ -86,30 +74,19 @@ class ScheduleController extends Controller
 		if(Yii::app()->user->checkAccess('updateSchedule'))
 		{
 			$scheduleModel=$this->loadModel($id);
-			$pageModel=Page::model()->findByPk($scheduleModel->page->id);
 	
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
 	
-			if(isset($_POST['Schedule'], $_POST['Page']))
+			if(isset($_POST['Schedule']))
 			{
 				$scheduleModel->attributes=$_POST['Schedule'];
-				$pageModel->attributes=$_POST['Page'];
-				
-				$valid=$scheduleModel->validate();
-				$valid=$pageModel->validate() && $valid;
-				
-				if($valid)
-				{
-					$pageModel->save(false);
-					$scheduleModel->save(false);
+				if($scheduleModel->save())
 					$this->redirect(array('view','id'=>$scheduleModel->class));
-				}
 			}
 	
 			$this->render('update',array(
 				'scheduleModel'=>$scheduleModel,
-				'pageModel'=>$pageModel,
 			));
 		}
 		else
