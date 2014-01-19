@@ -62,7 +62,9 @@ class StudentController extends Controller
 				$hash=sha1(mt_rand(10000, 99999).time().$model->email);
 				$model->hash=$hash;
 				$model->save(false);
+				
 				// TODO send email with hash
+				
 				/*$this->redirect(Yii::app()->createUrl('student/view', array(
 					'email'=>$model->email,
 					'hash'=>$hash,

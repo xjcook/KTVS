@@ -4,18 +4,10 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<h1>Novinky</h1>
 
-<p>Tu bude "O nás"</p>
-
-<?php echo CHtml::link('Gii Code Generator (password: gii)',array('gii/default/index')); ?><br/>
-
-<?php echo CHtml::link('Študenti',array('student/index')); ?><br/>
-
-<?php echo CHtml::link('Učitelia',array('user/index')); ?><br/>
-
-<?php echo CHtml::link('Prihlásenie na šport',array('student/create')); ?><br/>
-
-<?php echo CHtml::link('Rozvrhy',array('schedule/index')); ?><br/>
-
-<?php echo CHtml::link('Telovýchovné objekty',array('tvobject/index')); ?><br/>
+<?php $this->widget('zii.widgets.CListView', array(
+	'dataProvider'=>new CActiveDataProvider('News', array('criteria'=>array(
+		'condition'=>'important=true'))),
+	'itemView'=>'/news/_view',
+)); ?>

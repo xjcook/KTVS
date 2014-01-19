@@ -20,10 +20,6 @@
 	<?php echo $form->hiddenField($model,'user_id', array('value'=>Yii::app()->user->id)); ?>
 
 	<div class="row">
-	<!--	<?php echo $form->labelEx($model,'sport_id'); ?>
-		<?php echo $form->textField($model,'sport_id'); ?>
-		<?php echo $form->error($model,'sport_id'); ?> -->
-
 		<?php echo $form->labelEx($model,'sport_id'); ?>
 		<?php echo $form->dropDownList($model,'sport_id',
 				CHtml::listData(Sport::model()->findAll(),'id','name')); ?>
@@ -48,6 +44,12 @@
 		<?php echo $form->error($model,'valid_to'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->labelEx($model,'important'); ?>
+		<?php echo $form->checkBox($model,'important'); ?>
+		<?php echo $form->error($model,'important'); ?>
+	</div>
+	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Vytvoriť' : 'Uložiť'); ?>
 	</div>
