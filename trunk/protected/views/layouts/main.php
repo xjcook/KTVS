@@ -69,7 +69,7 @@
 			<ul>
 				<li id="login">
 					<?php if(Yii::app()->user->isGuest): ?>
-						<a id="login-trigger" href="#">Prihlásenie<span>▼</span></a>
+						<a id="login-trigger" href="#">Prihlásenie učiteľa<span>▼</span></a>
 					<?php else: ?>
 						<a id="login-trigger" href="#">Odhlásenie<span>▼</span></a>
 						<?php endif; ?>
@@ -148,6 +148,12 @@
 					'links'=>$this->breadcrumbs,
 				)); ?><!-- breadcrumbs -->
 			<?php endif?>
+			
+			<?php
+			    foreach(Yii::app()->user->getFlashes() as $key => $message) {
+			        echo '<div class="flash-' . $key . '">' . $message . "</div>\n";
+			    }
+			?>
 			
 	    	<div class="post">
 	    		<?php echo $content; ?>

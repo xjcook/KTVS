@@ -34,4 +34,4 @@ endif;
 	),
 )); ?>
 
-<?php $this->renderPartial('_sign', array('model'=>$model)); ?>
+<?php //$this->renderPartial('_sign', array('model'=>$model)); ?>

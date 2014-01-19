@@ -45,8 +45,9 @@ class Student extends CActiveRecord
 			array('email', 'unique'),
 			array('class', 'numerical', 'integerOnly'=>true),
 			array('name, email, phone, skills', 'length', 'max'=>255),
-			array('sport_id, hash', 'safe'),
+			array('sport_id, page_id, hash', 'safe'),
 // 			array('sports', 'checkCapacity'),
+			array('sport_id, page_id', 'customRequired'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, email, class, phone, skills, updated_at', 'safe', 'on'=>'search'),
@@ -185,5 +186,15 @@ class Student extends CActiveRecord
 				}
 			}
 		}
+	}
+	
+	public function customRequired($attribute)
+	{
+		if (empty($this->sport_id) && empty($this->page_id))
+		{
+			$this->addError($attribute, 'Načo sa prihlasujete musí byť vyplnené');
+			return false;
+		}
+		return true;
 	}
 }
