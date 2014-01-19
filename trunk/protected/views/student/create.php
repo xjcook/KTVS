@@ -16,7 +16,7 @@ $this->menu=array(
 <h1>Registrácia študenta</h1>
 <p><b>POZOR! </b>Študent sa registruje iba <b>jedenkrát</b> počas svojho štúdia,
 následne obdrží email s prihlasovacím linkom na svoju stránku študenta. 
-<b>Odporúčame</b> ho dôkladne  <b>uložiť </b>. Po zadaní linku do prehliadača
+<b>Odporúčame</b> ho dôkladne  <b>uložiť</b>. Po zadaní linku do prehliadača
 bude študent presmerovaný na svoju stránku, kde sa môže prihlasovať/odhlasovať
 na šport, akcie, kurzy a ďalšie podujatia </p><br />
 
