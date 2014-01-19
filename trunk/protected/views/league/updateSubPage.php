@@ -29,7 +29,7 @@ $this->menu=array(
 
 	<?php echo $form->errorSummary(array($pageElModel, $pageModel)); ?>
 
-	<?php echo $form->labelEx($pageElModel,'el_id', array('label'=>'Kurz')); ?>
+	<?php echo $form->labelEx($pageElModel,'el_id', array('label'=>'Liga')); ?>
 	<?php echo $form->dropDownList($pageElModel,'el_id',
 			Yii::app()->user->getLeaguesListData(),
 			array('empty'=>'Vyberte kurz')); ?>

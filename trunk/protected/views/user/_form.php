@@ -32,6 +32,16 @@
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'password'); ?>
+	</div>    
+  <div class="row">
+		<?php echo $form->labelEx($model,'description'); ?>
+		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'description'); ?>
+	</div>
+   <div class="row">
+		<?php echo $form->labelEx($model,'consultation'); ?>
+		<?php echo $form->textField($model,'consultation',array('rows'=>60, 'cols'=>255)); ?>
+		<?php echo $form->error($model,'consultation'); ?>
 	</div>
 
 	<div class="row">

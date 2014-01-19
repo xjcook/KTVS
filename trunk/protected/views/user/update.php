@@ -10,8 +10,8 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Zoznam učiteľov', 'url'=>array('index')),
-	array('label'=>'Vytvoriť učiteľov', 'url'=>array('create')),
-	array('label'=>'Detail učiteľov', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Vytvoriť učiteľa', 'url'=>array('create')),
+	array('label'=>'Detail učiteľa', 'url'=>array('view', 'id'=>$model->id)),
 	array('label'=>'Spravovať učiteľov', 'url'=>array('admin')),
 );
 ?>

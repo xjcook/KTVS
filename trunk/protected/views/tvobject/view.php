@@ -28,8 +28,7 @@ endif;
 		'id',
 		'name',
 		'description',
-		'image',
-		'map',
+	
 		'updated_at',
 	),
 )); ?>

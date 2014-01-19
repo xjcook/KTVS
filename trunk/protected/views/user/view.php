@@ -12,9 +12,9 @@ $this->menu=array(
 else:
 $this->menu=array(
 	array('label'=>'Zoznam učiteľov', 'url'=>array('index')),
-	array('label'=>'Vytvoriť učiteľov', 'url'=>array('create')),
-	array('label'=>'Upraviť učiteľov', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Odstrániť učiteľov', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Vytvoriť učiteľa', 'url'=>array('create')),
+	array('label'=>'Upraviť učiteľa', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Odstrániť učiteľa', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Spravovať učiteľov', 'url'=>array('admin')),
 );
 endif;
@@ -27,6 +27,8 @@ endif;
 	'attributes'=>array(
 		'email',
 		'name',
+    'description',
+    'consultation',
 		'is_admin',
 	),
 )); ?>
