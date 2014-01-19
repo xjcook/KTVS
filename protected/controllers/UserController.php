@@ -132,17 +132,10 @@ class UserController extends Controller
 	 */
 	public function actionIndex()
 	{
-		if(Yii::app()->user->checkAccess('readUser'))
-		{
-			$dataProvider=new CActiveDataProvider('User');
-			$this->render('index',array(
-				'dataProvider'=>$dataProvider,
-			));
-		}
-		else
-		{
-			Yii::app()->user->loginRequired();
-		}
+		$dataProvider=new CActiveDataProvider('User');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
 	}
 
 	/**
