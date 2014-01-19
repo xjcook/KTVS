@@ -60,6 +60,7 @@ class NewsController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -73,8 +74,8 @@ class NewsController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(Yii::app()->user->checkAccess('updateOwnNews', array('news'=>$model)) ||
-		   Yii::app()->user->checkAccess('updateNews'))
+		if(Yii::app()->user->checkAccess('updateOwnNews', array('news'=>$model)) 
+			|| Yii::app()->user->checkAccess('updateNews'))
 		{
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
@@ -92,6 +93,7 @@ class NewsController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -105,8 +107,8 @@ class NewsController extends Controller
 	{
 		$model=$this->loadModel($id);
 		
-		if(Yii::app()->user->checkAccess('deleteOwnNews', array('news'=>$model)) ||
-		   Yii::app()->user->checkAccess('deleteNews'))
+		if(Yii::app()->user->checkAccess('deleteOwnNews', array('news'=>$model)) 
+			|| Yii::app()->user->checkAccess('deleteNews'))
 		{
 			$model->delete();
 
@@ -116,6 +118,7 @@ class NewsController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -149,6 +152,7 @@ class NewsController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -164,7 +168,7 @@ class NewsController extends Controller
 	{
 		$model=News::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,'Požadovaná stránka nebola nájdená.');
 		return $model;
 	}
 

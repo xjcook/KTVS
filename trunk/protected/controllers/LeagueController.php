@@ -38,6 +38,7 @@ class LeagueController extends Controller
 				)),
 			),
 		));
+		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 			'dataProvider'=>$dataProvider,
@@ -71,6 +72,7 @@ class LeagueController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -84,8 +86,8 @@ class LeagueController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(Yii::app()->user->checkAccess('updateOwnLeague', array('league'=>$model)) ||
-		   Yii::app()->user->checkAccess('updateLeague'))
+		if(Yii::app()->user->checkAccess('updateOwnLeague', array('league'=>$model)) 
+			|| Yii::app()->user->checkAccess('updateLeague'))
 		{
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
@@ -104,6 +106,7 @@ class LeagueController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -125,6 +128,43 @@ class LeagueController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
+			Yii::app()->user->loginRequired();
+		}
+	}
+	
+	/**
+	 * Lists all models.
+	 */
+	public function actionIndex()
+	{
+		$dataProvider=new CActiveDataProvider('El', array(
+			'criteria' => array('condition' => 'type=1'),
+		));
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}
+	
+	/**
+	 * Manages all models.
+	 */
+	public function actionAdmin()
+	{
+		if(Yii::app()->user->checkAccess('updateLeague'))
+		{
+			$model=new El('search');
+			$model->unsetAttributes();  // clear any default values
+			if(isset($_GET['El']))
+				$model->attributes=$_GET['El'];
+	
+			$this->render('admin',array(
+				'model'=>$model,
+			));
+		}
+		else
+		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -165,8 +205,8 @@ class LeagueController extends Controller
 				if($valid)
 				{
 					if(Yii::app()->user->checkAccess('updateOwnLeague',
-							array('league'=>El::model()->findByPk($pageElModel->el_id))) ||
-							Yii::app()->user->checkAccess('updateLeague'))
+						array('league'=>El::model()->findByPk($pageElModel->el_id))) 
+						|| Yii::app()->user->checkAccess('updateLeague'))
 					{
 						$pageModel->save(false);
 						$pageElModel->page_id=$pageModel->id;
@@ -186,7 +226,10 @@ class LeagueController extends Controller
 				'pageElModel'=>$pageElModel,
 				'pageModel'=>$pageModel,
 			));
-		} else {
+		} 
+		else 
+		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -199,8 +242,8 @@ class LeagueController extends Controller
 	{
 		$model=$this->loadModel($id);
 	
-		if(Yii::app()->user->checkAccess('updateOwnLeague', array('league'=>$model)) ||
-		Yii::app()->user->checkAccess('updateLeague'))
+		if(Yii::app()->user->checkAccess('updateOwnLeague', array('league'=>$model))
+			|| Yii::app()->user->checkAccess('updateLeague'))
 		{
 			$pageElModel = $this->loadPageElModel($id, $id2);
 			$pageModel = $this->loadPageModel($id2);
@@ -255,41 +298,7 @@ class LeagueController extends Controller
 		}
 		else
 		{
-			Yii::app()->user->loginRequired();
-		}
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('El', array(
-			'criteria' => array('condition' => 'type=1'),
-		));
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		if(Yii::app()->user->checkAccess('updateLeague'))
-		{
-			$model=new El('search');
-			$model->unsetAttributes();  // clear any default values
-			if(isset($_GET['El']))
-				$model->attributes=$_GET['El'];
-	
-			$this->render('admin',array(
-				'model'=>$model,
-			));
-		}
-		else
-		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -305,7 +314,7 @@ class LeagueController extends Controller
 	{
 		$model=El::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,'Požadovaná stránka nebola nájdená.');
 		return $model;
 	}
 	
@@ -320,7 +329,7 @@ class LeagueController extends Controller
 	{
 		$model=PageEl::model()->findByAttributes(array('el_id'=>$leagueId,'page_id'=>$pageId));
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,'Požadovaná stránka nebola nájdená.');
 		return $model;
 	}
 	
@@ -335,7 +344,7 @@ class LeagueController extends Controller
 	{
 		$model=Page::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,'Požadovaná stránka nebola nájdená.');
 		return $model;
 	}
 

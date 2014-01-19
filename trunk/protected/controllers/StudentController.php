@@ -57,6 +57,7 @@ class StudentController extends Controller
 		if(isset($_POST['Student']))
 		{
 			$model->attributes=$_POST['Student'];
+			
 			if($model->validate())
 			{
 				$hash=sha1(mt_rand(10000, 99999).time().$model->email);
@@ -69,7 +70,7 @@ class StudentController extends Controller
 					'email'=>$model->email,
 					'hash'=>$hash,
 				)));*/
-				Yii::app()->user->setFlash('success', "Úspešne ste prihlásený!");
+				Yii::app()->user->setFlash('success', 'Úspešne ste prihlásený!');
 				$this->redirect(Yii::app()->request->baseUrl);
 			}
 		}
@@ -106,6 +107,7 @@ class StudentController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -129,13 +131,14 @@ class StudentController extends Controller
 			}
 			else
 			{
+				Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 				Yii::app()->user->loginRequired();
 			}
 		}
 		else
 		{
 			$this->loadModelByHash($email,$hash)->delete();
-			Yii::app()->user->setFlash('success', "Úspešne ste odhlásený!");
+			Yii::app()->user->setFlash('success', 'Úspešne ste odhlásený!');
 			$this->redirect(Yii::app()->request->baseUrl);			
 		}
 	}
@@ -161,7 +164,7 @@ class StudentController extends Controller
 		}
 		else
 		{
-			Yii::app()->user->setFlash('error', "Prihláste sa prosím!");
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -184,6 +187,7 @@ class StudentController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -215,7 +219,7 @@ class StudentController extends Controller
 	{
 		$model=Student::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,'Požadovaná stránka nebola nájdená.');
 		return $model;
 	}
 	
@@ -230,7 +234,7 @@ class StudentController extends Controller
 	{
 		$model=Student::model()->findByAttributes(array('email'=>$email));
 		if($model===null)
-			throw new CHttpException(404,'Študent neexistuje.');
+			throw new CHttpException(404,'Požadovaná stránka nebola nájdená.');
 		else if($hash != $model->hash)
 			throw new CHttpException(401,'Nemáte dostatočné práva.');
 		return $model;

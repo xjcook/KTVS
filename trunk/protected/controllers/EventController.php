@@ -38,6 +38,7 @@ class EventController extends Controller
 				)),
 			),
 		));
+		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 			'dataProvider'=>$dataProvider,
@@ -71,6 +72,7 @@ class EventController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -84,8 +86,8 @@ class EventController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(Yii::app()->user->checkAccess('updateOwnEvent', array('event'=>$model)) ||
-		   Yii::app()->user->checkAccess('updateEvent'))
+		if(Yii::app()->user->checkAccess('updateOwnEvent', array('event'=>$model)) 
+			|| Yii::app()->user->checkAccess('updateEvent'))
 		{
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
@@ -104,6 +106,7 @@ class EventController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -117,8 +120,8 @@ class EventController extends Controller
 	{
 		$model=$this->loadModel($id);
 		
-		if(Yii::app()->user->checkAccess('deleteOwnEvent', array('event'=>$model)) ||
-		   Yii::app()->user->checkAccess('deleteEvent'))
+		if(Yii::app()->user->checkAccess('deleteOwnEvent', array('event'=>$model)) 
+			|| Yii::app()->user->checkAccess('deleteEvent'))
 		{
 			$model->delete();
 
@@ -128,6 +131,7 @@ class EventController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -163,6 +167,7 @@ class EventController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -203,8 +208,8 @@ class EventController extends Controller
 				if($valid)
 				{
 					if(Yii::app()->user->checkAccess('updateOwnEvent', 
-							array('event'=>El::model()->findByPk($pageElModel->el_id))) ||
-					   Yii::app()->user->checkAccess('updateEvent'))
+						array('event'=>El::model()->findByPk($pageElModel->el_id))) 
+						|| Yii::app()->user->checkAccess('updateEvent'))
 					{
 						$pageModel->save(false);
 						$pageElModel->page_id=$pageModel->id;
@@ -224,7 +229,10 @@ class EventController extends Controller
 				'pageElModel'=>$pageElModel,
 				'pageModel'=>$pageModel, 
 			));
-		} else {
+		} 
+		else
+		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	} 
@@ -237,8 +245,8 @@ class EventController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(Yii::app()->user->checkAccess('updateOwnEvent', array('event'=>$model)) ||
-		   Yii::app()->user->checkAccess('updateEvent'))
+		if(Yii::app()->user->checkAccess('updateOwnEvent', array('event'=>$model))
+			|| Yii::app()->user->checkAccess('updateEvent'))
 		{
 			$pageElModel = $this->loadPageElModel($id, $id2);
 			$pageModel = $this->loadPageModel($id2);
@@ -269,7 +277,10 @@ class EventController extends Controller
 				'pageElModel'=>$pageElModel,
 				'pageModel'=>$pageModel, 
 			));
-		} else {
+		} 
+		else 
+		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	} 
@@ -294,6 +305,7 @@ class EventController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -309,7 +321,7 @@ class EventController extends Controller
 	{
 		$model=El::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,'Požadovaná stránka nebola nájdená.');
 		return $model;
 	}
 	
@@ -324,7 +336,7 @@ class EventController extends Controller
 	{
 		$model=PageEl::model()->findByAttributes(array('el_id'=>$eventId,'page_id'=>$pageId));
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,'Požadovaná stránka nebola nájdená.');
 		return $model;
 	}
 	
@@ -339,7 +351,7 @@ class EventController extends Controller
 	{
 		$model=Page::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,'Požadovaná stránka nebola nájdená.');
 		return $model;
 	}
 

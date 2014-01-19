@@ -19,7 +19,7 @@ class CourseController extends Controller
 	public function filters()
 	{
 		return array(
-			'postOnly + delete', // we only allow deletion via POST request
+			'postOnly + delete, deleteSubPage', // we only allow deletion via POST request
 		);
 	}
 
@@ -38,6 +38,7 @@ class CourseController extends Controller
 				)),
 			),
 		));
+		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 			'dataProvider'=>$dataProvider,
@@ -71,6 +72,7 @@ class CourseController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -84,8 +86,8 @@ class CourseController extends Controller
 	{
 		$model=$this->loadModel($id);
 
-		if(Yii::app()->user->checkAccess('updateOwnCourse', array('course'=>$model)) ||
-		   Yii::app()->user->checkAccess('updateCourse'))
+		if(Yii::app()->user->checkAccess('updateOwnCourse', array('course'=>$model)) 
+			|| Yii::app()->user->checkAccess('updateCourse'))
 		{
 			// Uncomment the following line if AJAX validation is needed
 			// $this->performAjaxValidation($model);
@@ -104,6 +106,7 @@ class CourseController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -125,6 +128,7 @@ class CourseController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -160,6 +164,7 @@ class CourseController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -200,8 +205,8 @@ class CourseController extends Controller
 				if($valid)
 				{
 					if(Yii::app()->user->checkAccess('updateOwnCourse',
-							array('course'=>El::model()->findByPk($pageElModel->el_id))) ||
-							Yii::app()->user->checkAccess('updateCourse'))
+						array('course'=>El::model()->findByPk($pageElModel->el_id))) 
+						|| Yii::app()->user->checkAccess('updateCourse'))
 					{
 						$pageModel->save(false);
 						$pageElModel->page_id=$pageModel->id;
@@ -221,7 +226,10 @@ class CourseController extends Controller
 				'pageElModel'=>$pageElModel,
 				'pageModel'=>$pageModel,
 			));
-		} else {
+		} 
+		else 
+		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -234,8 +242,8 @@ class CourseController extends Controller
 	{
 		$model=$this->loadModel($id);
 	
-		if(Yii::app()->user->checkAccess('updateOwnCourse', array('course'=>$model)) ||
-		Yii::app()->user->checkAccess('updateCourse'))
+		if(Yii::app()->user->checkAccess('updateOwnCourse', array('course'=>$model))
+			|| Yii::app()->user->checkAccess('updateCourse'))
 		{
 			$pageElModel = $this->loadPageElModel($id, $id2);
 			$pageModel = $this->loadPageModel($id2);
@@ -255,7 +263,7 @@ class CourseController extends Controller
 				{
 					$pageModel->save(false);
 					$pageElModel->page_id=$pageModel->id;
-						
+
 					$pageElModel->save(false);
 					$this->redirect(Yii::app()->user->getCreateUrl('course',
 							$pageElModel->el_id,$pageModel->id));
@@ -266,7 +274,10 @@ class CourseController extends Controller
 				'pageElModel'=>$pageElModel,
 				'pageModel'=>$pageModel,
 			));
-		} else {
+		} 
+		else 
+		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -290,6 +301,7 @@ class CourseController extends Controller
 		}
 		else
 		{
+			Yii::app()->user->setFlash('error', 'Nemáte dostatočné práva!');
 			Yii::app()->user->loginRequired();
 		}
 	}
@@ -305,7 +317,7 @@ class CourseController extends Controller
 	{
 		$model=El::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,'Požadovaná stránka nebola nájdená.');
 		return $model;
 	}
 	
@@ -320,7 +332,7 @@ class CourseController extends Controller
 	{
 		$model=PageEl::model()->findByAttributes(array('el_id'=>$courseId,'page_id'=>$pageId));
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,'Požadovaná stránka nebola nájdená.');
 		return $model;
 	}
 	
@@ -335,7 +347,7 @@ class CourseController extends Controller
 	{
 		$model=Page::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+			throw new CHttpException(404,'Požadovaná stránka nebola nájdená.');
 		return $model;
 	}
 
