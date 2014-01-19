@@ -17,7 +17,7 @@ endif;
 
 ?>
 
-<h1>Ligy</h1>
+<h1>Kurzy</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

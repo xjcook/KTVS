@@ -9,12 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Zoznam kurzov ', 'url'=>array('index')),
-	array('label'=>'Spravovať kurzy', 'url'=>array('admin')),
+	array('label'=>'Zoznam líg ', 'url'=>array('index')),
+	array('label'=>'Spravovať ligy', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Upravenie podstránky Kurzu</h1>
+<h1>Upravenie podstránky ligy</h1>
 
 <div class="form">
 
