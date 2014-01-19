@@ -174,6 +174,7 @@ class EventController extends Controller
 	public function actionViewSubPage($id,$id2)
 	{
 		$this->render('viewSubPage',array(
+			'elModel'=>El::model()->findByPk($id),
 			'model'=>Page::model()->findByPk($id2),
 		));
 	}
