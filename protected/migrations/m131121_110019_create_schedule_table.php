@@ -11,7 +11,7 @@ class m131121_110019_create_schedule_table extends CDbMigration
 			'tvobject_id' => 'integer NOT NULL',
 
 			// attributes		
-			'content' => 'string NOT NULL',
+			'content' => 'text NOT NULL',
 			
 			// timestamp
 			'updated_at' => 'timestamp',

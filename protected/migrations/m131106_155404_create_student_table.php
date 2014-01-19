@@ -8,7 +8,8 @@ class m131106_155404_create_student_table extends CDbMigration
 			// keys
 			'id' => 'pk',
 			'sport_id' => 'integer',
-			/* M:N relation in tbl_student_el */
+			'el_id' => 'integer',
+			/* TODO M:N relation in tbl_student_el */
 			/* M:N relation in tbl_student_course */
 			
 			// attributes	
