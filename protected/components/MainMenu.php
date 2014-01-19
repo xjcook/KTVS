@@ -103,7 +103,7 @@ class MainMenu extends CMenu
     		{
     			$courses[] = array(
     				'label'=>$subEvent->title,
-    				'url'=>Yii::app()->createUrl('/', array('course'=>$event->id, 'page'=>$subEvent->id)),
+    				'url'=>Yii::app()->createUrl('/', array('course'=>$course->id, 'page'=>$subEvent->id)),
     				'linkOptions'=>array('class'=>'subCategory'),
     			);
     		}
