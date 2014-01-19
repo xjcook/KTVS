@@ -5,7 +5,7 @@
 $this->breadcrumbs=array(
 	'Študenti'=>array('index'),
 	$model->name=>array('view','id'=>$model->id),
-	'¸Uprava',
+	'¸Úprava',
 );
 
 $this->menu=array(
