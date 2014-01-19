@@ -4,8 +4,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="keywords" content="pohyb, WOW Slider, Website Slide Show, Web Image Slider" />
-   	<meta name="description" content="pohyb created with WOW Slider, a free wizard program that helps you easily generate beautiful web slideshow" />
+	<meta name="keywords" content="ktvs, fmfi ktvs, katedra telesnej vychovy a sportu" />
+   	<meta name="description" content=" katedra telesnej vychovy a sportu. Univerzita komenskeho Bratislava" />
     <link href='http://fonts.googleapis.com/css?family=Noto+Serif&subset=latin-ext' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/styles.css" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
