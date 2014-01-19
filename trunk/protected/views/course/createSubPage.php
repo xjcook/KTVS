@@ -5,7 +5,7 @@
 
 $this->breadcrumbs=array(
 	'Kurzy'=>array('index'),
-	'Vytvorenie',
+	'Vytvorenie podstránky',
 );
 
 $this->menu=array(
