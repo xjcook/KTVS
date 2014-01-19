@@ -201,6 +201,7 @@ header {
 .sidebar li a {
 	display:block;
 	padding:10px 10px 10px 20px;
+  
 	background:url(../images/p.png) no-repeat 5px 15px;
 	text-decoration:none;
 	font-style:italic;
@@ -210,6 +211,7 @@ header {
 	background:#4f1817;
 	color:#dea20c;
 	text-shadow:0 0px, 1px 1px #000000;
+  border-radius:7%;)
 }
 .sidebar input[type="button"] {
 	position: relative;
@@ -311,7 +313,7 @@ footer .copyright {
 	background-image: url(../images/authorBackground.jpg);
 	box-shadow: 0 0px 6px rgba(76, 21, 20, 0.8);
 	color: white;
-	border-radius:20px;
+	border-radius:7px;
 
 }
 #login_link ul {
@@ -350,7 +352,7 @@ footer .copyright {
   padding: 5px 20px;
   text-decoration: none;
   background-image: url(../images/footerBackground.jpg);
-  border-radius:20px;
+  border-radius:7px;
 }
 #login_link #signup a {
   border-radius: 0 3px 3px 0;
@@ -539,7 +541,7 @@ ul#mainMenu li a.mainCategory:hover {color: white;font-weight: bold;}
 ul#mainMenu li li a.subCategory {color: white;padding-left: 30px;}
 ul#mainMenu  li > a:hover {
 	background:url(../images/authorBackground.jpg) repeat;
-	border-radius: 20px;
+	border-radius: 7px;
 	color: white;
 	text-decoration:none;	
 }
