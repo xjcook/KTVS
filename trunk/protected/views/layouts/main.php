@@ -119,10 +119,13 @@
 	</header>
 	
 	<div class="logo1">
-        <a href="http://www.uniba.sk/" target='_blank'><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo1.png" alt="FMFI"></a> 
+        <a href="http://www.uniba.sk/" target='_blank'><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo1.png" alt="FMFI">
+    	<p>Univerzita Komenského v Bratislave</p></a> 
     </div>
+
     <div class="logo2">
-        <a href="http://www.fmph.uniba.sk/" target='_blank'><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo2.png" alt="FMFI"></a> 
+        <a href="http://www.fmph.uniba.sk/" target='_blank'><img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo2.png" alt="FMFI">
+    	<p>Fakulta matematiky, fyziky a informatiky</p></a> 
     </div>
     <div class="logo">
     	<a href=""><?php echo CHtml::encode(Yii::app()->name); ?></a>
