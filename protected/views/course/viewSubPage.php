@@ -1,9 +1,11 @@
 <?php
 /* @var $this PageController */
 /* @var $model Page */
+/* @var $elModel El */
 
 $this->breadcrumbs=array(
 	'Kurzy'=>array('index'),
+	$elModel->name=>array('view', 'id'=>$elModel->id),
 	$model->title,
 );
 if(Yii::app()->user->isGuest):
