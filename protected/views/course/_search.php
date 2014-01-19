@@ -1,6 +1,6 @@
 <?php
 /* @var $this CourseController */
-/* @var $model Course */
+/* @var $model El */
 /* @var $form CActiveForm */
 ?>
 
@@ -22,7 +22,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Vyhľadaj'); ?>
+		<?php echo CHtml::submitButton('Search'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
