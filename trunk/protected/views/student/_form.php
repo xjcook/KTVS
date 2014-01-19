@@ -60,7 +60,7 @@
 	</div> -->
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Vytvoriť' : 'Uložiť'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrovať' : 'Uložiť'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
