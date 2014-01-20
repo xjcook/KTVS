@@ -36,3 +36,8 @@ endif;
 		'capacity',
 	),
 )); ?>
+
+<?php $this->widget('zii.widgets.CListView', array(
+	'dataProvider'=>$dataProvider,
+	'itemView'=>'/news/_view',
+)); ?>
