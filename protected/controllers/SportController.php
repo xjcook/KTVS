@@ -29,8 +29,19 @@ class SportController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$dataProvider=new CActiveDataProvider('News', array(
+			'criteria'=>array(
+				'with'=>array('sport'=>array(
+					'on'=>'sport.id=' .$id,
+					'together'=>true,
+					'joinType'=>'INNER JOIN',
+				)),
+			),
+		));
+		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'dataProvider'=>$dataProvider,
 		));
 	}
 

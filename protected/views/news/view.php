@@ -22,6 +22,6 @@ endif;
 
 <h1><?php echo $model->title; ?></h1>
 
-  <div id="element">	
-  	<?php echo CHtml::decode($model->content); ?>
-  </div >	
+<div id="element">	
+	<?php echo CHtml::decode($model->content); ?>
+</div >	
