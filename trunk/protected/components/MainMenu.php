@@ -158,7 +158,6 @@ class MainMenu extends CMenu
         	array(
         		'label'=>'Novinky', 
         		'url'=>array('/news/index'), 
-        		'items'=>$newses,
             ),
         	array(
         		'label'=>'Prihlásenie na', 

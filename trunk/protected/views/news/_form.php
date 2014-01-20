@@ -2,6 +2,7 @@
 /* @var $this NewsController */
 /* @var $model News */
 /* @var $form CActiveForm */
+use widgets\DatePicker
 ?>
 
 <div class="form">
@@ -57,8 +58,22 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'valid_to'); ?>
-		<?php echo $form->textField($model,'valid_to'); ?>
-		<?php echo $form->error($model,'valid_to'); ?>
+<?php
+$this->widget('zii.widgets.jui.CJuiDatePicker',array(
+	'model'=>$model,
+	'attribute'=>'valid_to',
+    'name'=>'datepicker',
+
+    'options'=>array(
+        'showAnim'=>'slide',
+        'dateFormat'=>'yy-mm-dd',
+    ),
+    'htmlOptions'=>array(
+        'style'=>'height:20px;background-color:white;color:black;',
+    ),
+));
+?>
+<?php echo $form->error($model,'valid_to'); ?>
 	</div>
 
 	<div class="row">
