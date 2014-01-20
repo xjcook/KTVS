@@ -54,8 +54,8 @@ class WebUser extends CWebUser {
 	else
 	{	
 		$events = CHtml::listData(User::model()->findByPk(Yii::app()->user->id)
-										->getRelated('els',true),'id','name')
-										->findByAttributes(array('type'=>0));
+										->getRelated('els',true),'id','name');
+		/* TODO filter only Events */
 	}
   	
 	return $events;
@@ -76,8 +76,8 @@ class WebUser extends CWebUser {
   	else
   	{
 		$leagues = CHtml::listData(User::model()->findByPk(Yii::app()->user->id)
-										->getRelated('els',true),'id','name')
-										->findByAttributes(array('type'=>1));
+			->getRelated('els',true),'id','name');
+		/* TODO filter only Leagues */
   	}
   	 
   	return $leagues;
@@ -98,8 +98,8 @@ class WebUser extends CWebUser {
   	else
   	{
   		$courses = CHtml::listData(User::model()->findByPk(Yii::app()->user->id)
-  				->getRelated('els',true),'id','name')
-  				->findByAttributes(array('type'=>2));
+  				->getRelated('els',true),'id','name');
+  		/* TODO filter only Courses */
   	}
   
   	return $courses;
