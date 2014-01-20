@@ -181,6 +181,7 @@ class MainMenu extends CMenu
         				'url'=>array('/sign/course'),
         			),
                 ),
+        		'active'=>strpos(Yii::app()->request->requestUri,'sign') !== false,
             ),
         	array(
         		'label'=>'Ligy', 
