@@ -65,11 +65,24 @@ class StudentController extends Controller
 				$model->save(false);
 				
 				// TODO send email with hash
+				$to      = $model->email;
+				$subject = 'KTVS Prihlasenie studenta';
+				$message = 'Uspesne ste sa prihlasili.\nLink na odhlasenie: '
+						.Yii::app()->createAbsoluteUrl('student/delete', array(
+							'email'=>$model->email,
+							'hash'=>$hash,
+				));
+				$headers = 'From: dreamteam@pobox.sk' . "\r\n" .
+						'Reply-To: dreamteam@pobox.sk' . "\r\n" .
+						'X-Mailer: PHP/' . phpversion();
 				
+				mail($to, $subject, $message, $headers);
+					
 				/*$this->redirect(Yii::app()->createUrl('student/view', array(
 					'email'=>$model->email,
 					'hash'=>$hash,
 				)));*/
+				
 				Yii::app()->user->setFlash('success', 'Úspešne ste prihlásený!');
 				$this->redirect(Yii::app()->request->baseUrl);
 			}
